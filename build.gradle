@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.apilifogladif.hero'
+group = 'com.projLDTS.blackjack'
 version = '1.0-SNAPSHOT'
 
 repositories {
