@@ -112,6 +112,7 @@ public class ExitMenu {
                     screen.close();
                     break;
                 default:
+                    screen.close();
                     new MainMenu().run();
                     break;
             }
