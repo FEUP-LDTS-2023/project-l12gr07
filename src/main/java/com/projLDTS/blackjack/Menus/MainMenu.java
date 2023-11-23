@@ -121,7 +121,8 @@ public class MainMenu {
                     //call start menu
                     break;
                 case 1:
-                    //call how to play
+                    screen.close();
+                    new HowToPlay(screen).run();
                     break;
                 default:
                     screen.close();
