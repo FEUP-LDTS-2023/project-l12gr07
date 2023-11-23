@@ -1,4 +1,4 @@
-package com.projLDTS.blackjack;
+package com.projLDTS.blackjack.Menus;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -9,6 +9,7 @@ import com.googlecode.lanterna.gui2.TextBox;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.projLDTS.blackjack.Board;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
