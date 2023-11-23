@@ -1,8 +1,10 @@
-## LDTS_<12><7> - <BLACKJACK>
+## LDTS_<1207> - BLACKJACK
 
 In this exiciting gambling game of 'Blackjack', we provide an engaging and strategic experience for players within the constraints of purely textual interface.
 
 Players are dealt virtual cards, and the objective is to build a hand with a total value as close to 21 as possible without exceeding it. The game incorporates the classic rules of this iconic game, where numbered cards retain their face value, face cards are worth 10 points, and an Ace can be either 1 or 11 points. Players make decisions to hit, stand, double down, or split based on their current hand and the dealer's visible card. The challenge lies in making strategic choices to beat the dealer while managing the risk of going over 21.
+
+We also included in the game a last ten games menu, that allows us to see who here the last ten people to play and their gains and losses.
 
 This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filipa Fidalgo* (*up202208039*@fe.up.pt) and *Leonor Couto* (*up202205796*@fe.up.pt) for LDTS 2023/24.
 
@@ -10,23 +12,25 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 
 > This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
 
-**Examples**:
+- **Change selected button** - using arrow keys you can change the selected button (it's the red one).
+- **Select button** - to select a button for the program to execute an action (e.g. start game, exit, etc.) you need to press enter key.
 
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
 
 ### PLANNED FEATURES
 
 > This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
+- **Change selected coin** - using arrow keys you can change the selected coin.
+- **Increase the value of the bet** - after choosing a coin, press enter key to increase the bet.
+- **Decrease the value of the bet** - after choosing a coin, press backspace key to decrease the bet.
+- **Chose how many decks** - in a menu the user is presented with 3 options, to play with one deck, two decks, or the infinite mode.
+- **Chose the move** - the user can choose between hit, stand, double down, or split.
+
 
 ### DESIGN
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
 
-- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
-- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
-- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
-- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
+- **1** Design explanation 1.
 
 **Example of one of such subsections**:
 
@@ -77,7 +81,7 @@ The use of the State Pattern in the current design allows the following benefits
 
 > In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
 
-**Example**:
 
-- John Doe: 40%
-- Jane Doe: 60%
+- Filipa Geraldes: 33%
+- Filipa Fidago: 33%
+- Leonor Couto: 33%
