@@ -15,8 +15,8 @@ import java.io.IOException;
 
 public class ExitMenu {
     private final TerminalScreen screen;
-    private final int width = 100;
-    private final int height = 35;
+    private final int width = 130;
+    private final int height = 40;
     Button yes;
     Button no;
     TextColor buttonColor = TextColor.Factory.fromString("#00CA4C");
@@ -28,8 +28,8 @@ public class ExitMenu {
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);
         screen.startScreen();
-        yes = new Button(new TerminalPosition(25, 25), "YES", new TerminalSize(15, 3), new TerminalPosition(19, 24), selectedColor);
-        no = new Button(new TerminalPosition(70, 25), "NO", new TerminalSize(15, 3), new TerminalPosition(64, 24), buttonColor);
+        yes = new Button(new TerminalPosition(35, 28), "YES", new TerminalSize(15, 3), new TerminalPosition(29, 27), selectedColor);
+        no = new Button(new TerminalPosition(90, 28), "NO", new TerminalSize(15, 3), new TerminalPosition(84, 27), buttonColor);
     }
     public void run() throws IOException {
         while (true) {
@@ -50,19 +50,19 @@ public class ExitMenu {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
 
         //blackjack
-        textGraphics.putString(new TerminalPosition(9, 5), "BB          BB                       BB        BB                       BB         \n");
-        textGraphics.putString(new TerminalPosition(9, 6), "BB          BB                       BB        \"\"                       BB         \n");
-        textGraphics.putString(new TerminalPosition(9, 7), "BB          BB                       BB                                 BB         \n");
-        textGraphics.putString(new TerminalPosition(9, 8), "BB,dPPYba,  BB ,adPPYYba,  ,adPPYba, BB   ,dB  BB ,adPPYYba,  ,adPPYba, BB   ,dB   \n");
-        textGraphics.putString(new TerminalPosition(9, 9), "BBP'    \"Ba BB \"\"     `YB aB\"     \"\" BB ,aB'   BB \"\"     `YB aB\"     \"\" BB ,aB\"    \n");
-        textGraphics.putString(new TerminalPosition(9, 10), "BB       dB BB ,adPPPPPBB Bb         BBBB[     BB ,adPPPPPBB Bb         BBBB[      \n");
-        textGraphics.putString(new TerminalPosition(9, 11), "BBb,   ,aB\" BB BB,    ,BB \"Ba,   ,aa BB`\"Yba,  BB BB,    ,BB \"Ba,   ,aa BB`\"Yba,   \n");
-        textGraphics.putString(new TerminalPosition(9, 12), "BY\"YbbdB\"'  BB `\"BbbdP\"YB  `\"YbbdB\"' BB   `YBa BB `\"BbbdP\"YB  `\"YbbdB\"' BB   `YBa  \n");
-        textGraphics.putString(new TerminalPosition(9, 13), "                                              ,BB                                  \n");
-        textGraphics.putString(new TerminalPosition(9, 14), "                                            BBBP\"\n");
+        textGraphics.putString(new TerminalPosition(24, 5), "BB          BB                       BB        BB                       BB         \n");
+        textGraphics.putString(new TerminalPosition(24, 6), "BB          BB                       BB        \"\"                       BB         \n");
+        textGraphics.putString(new TerminalPosition(24, 7), "BB          BB                       BB                                 BB         \n");
+        textGraphics.putString(new TerminalPosition(24, 8), "BB,dPPYba,  BB ,adPPYYba,  ,adPPYba, BB   ,dB  BB ,adPPYYba,  ,adPPYba, BB   ,dB   \n");
+        textGraphics.putString(new TerminalPosition(24, 9), "BBP'    \"Ba BB \"\"     `YB aB\"     \"\" BB ,aB'   BB \"\"     `YB aB\"     \"\" BB ,aB\"    \n");
+        textGraphics.putString(new TerminalPosition(24, 10), "BB       dB BB ,adPPPPPBB Bb         BBBB[     BB ,adPPPPPBB Bb         BBBB[      \n");
+        textGraphics.putString(new TerminalPosition(24, 11), "BBb,   ,aB\" BB BB,    ,BB \"Ba,   ,aa BB`\"Yba,  BB BB,    ,BB \"Ba,   ,aa BB`\"Yba,   \n");
+        textGraphics.putString(new TerminalPosition(24, 12), "BY\"YbbdB\"'  BB `\"BbbdP\"YB  `\"YbbdB\"' BB   `YBa BB `\"BbbdP\"YB  `\"YbbdB\"' BB   `YBa  \n");
+        textGraphics.putString(new TerminalPosition(24, 13), "                                              ,BB                                  \n");
+        textGraphics.putString(new TerminalPosition(24, 14), "                                            BBBP\"\n");
 
-        textGraphics.putString(new TerminalPosition(35, 20), "Are you sure you want to");
-        textGraphics.putString(new TerminalPosition(40, 21), "leave the game?");
+        textGraphics.putString(new TerminalPosition(52, 22), "Are you sure you want to");
+        textGraphics.putString(new TerminalPosition(58, 23), "leave the game?");
         yes.drawButton(textGraphics);
         no.drawButton(textGraphics);
         screen.refresh();
