@@ -118,7 +118,8 @@ public class MainMenu {
         else if (key.getKeyType() == KeyType.Enter) {
             switch (buttonSelected) {
                 case 0:
-                    //call start menu
+                    screen.close();
+                    new StartMenu(screen).run();
                     break;
                 case 1:
                     //call how to play
