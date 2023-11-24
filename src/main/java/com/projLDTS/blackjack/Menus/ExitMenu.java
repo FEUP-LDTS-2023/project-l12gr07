@@ -1,6 +1,6 @@
 package com.projLDTS.blackjack.Menus;
 
-import Elements.Button;
+import com.projLDTS.blackjack.Elements.Button;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;

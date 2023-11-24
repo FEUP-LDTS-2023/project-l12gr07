@@ -1,4 +1,4 @@
-package Elements;
+package com.projLDTS.blackjack.Elements;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
