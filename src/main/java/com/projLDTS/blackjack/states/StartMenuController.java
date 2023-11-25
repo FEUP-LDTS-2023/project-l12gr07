@@ -38,6 +38,7 @@ public class StartMenuController implements StateController {
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
+        gui.close();
         if (startMenuViewer.getButtonSelected() == 0) applicationStateController.changeState(ApplicationState.MainMenu);
         else if (startMenuViewer.getButtonSelected() == 1) applicationStateController.changeState(ApplicationState.Game);
         else if (startMenuViewer.getButtonSelected() == 2) applicationStateController.changeState(ApplicationState.LastPlays);

@@ -38,6 +38,9 @@ public class ExitMenuController implements StateController {
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
         if (exitMenuViewer.getButtonSelected() == 0) gui.close();
-        else if (exitMenuViewer.getButtonSelected() == 1) applicationStateController.changeState(ApplicationState.MainMenu);
+        else if (exitMenuViewer.getButtonSelected() == 1) {
+            applicationStateController.changeState(ApplicationState.MainMenu);
+            gui.close();
+        }
     }
 }

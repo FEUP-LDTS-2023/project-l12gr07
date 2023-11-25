@@ -49,5 +49,6 @@ public class HowToPlayMenuController implements StateController {
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
         applicationStateController.changeState(ApplicationState.MainMenu);
+        gui.close();
     }
 }
