@@ -16,16 +16,29 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 
 ### PLANNED FEATURES
 
--**Change selected coin** - using arrow keys you can change the selected coin.
+- **Change selected coin** - using arrow keys you can change the selected coin.
 - **Increase the value of the bet** - after choosing a coin, press enter key to increase the bet.
 - **Decrease the value of the bet** - after choosing a coin, press backspace key to decrease the bet.
 - **Chose how many decks** - in a menu the user is presented with 3 options, to play with one deck, two decks, or the infinite mode.
 - **Chose the move** - the user can choose between hit, stand, double down, or split.
 
+### MOCKUPS
+
+<img src='src/main/resources/photos/mainmenu.png' width='250'>
+<img src='src/main/resources/photos/startmenu.png' width='250'>
+<img src='src/main/resources/photos/last10games.png' width='250'>
+<img src='src/main/resources/photos/typeOfGame.png' width='250'>
+<img src='src/main/resources/photos/game.png' width='250'>
+<img src='src/main/resources/photos/howtoplay1.png' width='250'>
+<img src='src/main/resources/photos/howtoplay2.png' width='250'>
+<img src='src/main/resources/photos/howtoplay3.png' width='250'>
+<img src='src/main/resources/photos/howtoplay4.png' width='250'>
+<img src='src/main/resources/photos/exit.png' width='250'>
+
 
 ### DESIGN
 
-#### We aim to distinctively separate the underlying data structures and logic from how information is displayed to the user and how user inputs are received.
+#### WE AIM TO DISTINCTIVELY SEPARATE THE UNDERLYING DATA STRUCTURES AND LOGIC FROM  HOW INFORMATION IS DISPLAYED TO THE USER AND HOW USER INPUTS ARE RECEIVED.
 
 **Problem in Context**
 
@@ -34,7 +47,7 @@ dividing our code in three different parts.
 
 **The Pattern**
 
-We have applied the Model-View-Controller (MVC) pattern.
+We have applied the **Model-View-Controller** (MVC) pattern.
 This architectural design pattern provides a structured approach to organizing our application, promoting modularity and maintainability.
 
 **Implementation:**
@@ -48,27 +61,23 @@ The use of the Model-View-Controller (MVC) pattern in the current design offers 
 
 - Separation of Concerns 
 
-MVC separates data (Model), presentation (View), and application logic (Controller), promoting a modular and organized code.
+    - MVC separates data (Model), presentation (View), and application logic (Controller), promoting a modular and organized code.
 
 - Code Organization
 
-The pattern enhances code organization, making it easier to understand, modify, and extend specific parts of the application without affecting others.
+    - The pattern enhances code organization, making it easier to understand, modify, and extend specific parts of the application without affecting others.
 
 - Improved Readability
 
-MVC reduces the need for complex conditional statements, enhancing code readability by providing a well-defined structure.
-
-- Polymorphism for Flexibility
-
-Polymorphism is used to activate behavior based on states, offering a more flexible and intuitive approach than extensive conditional statements.
+    - MVC reduces the need for complex conditional statements, enhancing code readability by providing a well-defined structure.
 
 - Maintainable Scalability
 
-MVC supports scalable development, allowing the introduction of new components without disrupting the existing code.
+    - MVC supports scalable development, allowing the introduction of new components without disrupting the existing code.
 
 - Explicit Representation
 
-Each MVC component explicitly represents its role, aiding developers in understanding and navigating the codebase.
+    - Each MVC component explicitly represents its role, aiding developers in understanding and navigating the codebase.
 
 
 #### We aim to simplify the process of transitioning between various game menus and play states, making it effortless to switch between different aspects of the game.
@@ -79,7 +88,7 @@ We faced complexity managing various game states and menus, so we needed a strai
 
 **The Pattern**
 
-We applied the State pattern. This design allows each game state to be represented by a separate subclass, enabling smooth transitions between various phases like betting, playing with and without split. This approach simplifies the management of different game states, addressing our identified challenges effectively.
+We applied the **State** pattern. This design allows each game state to be represented by a separate subclass, enabling smooth transitions between various phases like betting, playing with and without split. This approach simplifies the management of different game states, addressing our identified challenges effectively.
 
 **Implementation:**
 
@@ -87,9 +96,10 @@ We applied the State pattern. This design allows each game state to be represent
 
 **Consequences**
 
-By using the State design pattern we ensure that: Each game state is neatly organized with its own class,
-contributing to a well-structured code. The pattern allows effortless addition of new states without disrupting the code of existing states,
-ensuring flexibility in expanding game features. Massive conditional statements are avoided, keeping the code simple and readable.
+By using the State design pattern we ensure that: 
+- Each game state is neatly organized with its own class, contributing to a well-structured code. 
+- The pattern allows effortless addition of new states without disrupting the code of existing states, ensuring flexibility in expanding game features. 
+- Massive conditional statements are avoided, keeping the code simple and readable.
 
 
 #### KNOWN CODE SMELLS
@@ -98,8 +108,7 @@ For now, we believe that we don't have any known code smells.
 
 ### TESTING
 
-- Screenshot of coverage report.
-- Link to mutation testing report.
+- Not implemented yet.
 
 ### SELF-EVALUATION
 
