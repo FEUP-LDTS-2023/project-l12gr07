@@ -55,8 +55,7 @@ This architectural design pattern provides a structured approach to organizing o
 
 **Implementation:**
 
-
-c
+<img src='src/main/resources/photos/img.png' width='250'>
 
 **Consequences** 
 
