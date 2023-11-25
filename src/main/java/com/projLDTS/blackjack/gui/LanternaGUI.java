@@ -276,4 +276,10 @@ public class LanternaGUI {
     public TextGraphics newTextGraphics() {
         return this.screen.newTextGraphics();
     }
+
+    public void drawExitQ() throws IOException {
+        drawBlackjack();
+        textGraphics.putString(new TerminalPosition(52, 22), "Are you sure you want to");
+        textGraphics.putString(new TerminalPosition(58, 23), "leave the game?");
+    }
 }

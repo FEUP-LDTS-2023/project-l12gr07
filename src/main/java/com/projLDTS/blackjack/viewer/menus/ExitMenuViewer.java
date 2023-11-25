@@ -21,7 +21,7 @@ public class ExitMenuViewer implements Viewer {
     @Override
     public void draw() throws IOException {
         gui.clear();
-        gui.drawBlackjack();
+        gui.drawExitQ();
         drawElements();
         gui.refresh();
     }
