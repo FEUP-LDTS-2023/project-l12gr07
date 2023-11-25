@@ -36,6 +36,9 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 <img src='src/main/resources/photos/exit.png' width='250'>
 
 
+### UML
+<img src='src/main/resources/photos/LDTS_UML.drawio.png' width='500'>
+
 ### DESIGN
 
 #### WE AIM TO DISTINCTIVELY SEPARATE THE UNDERLYING DATA STRUCTURES AND LOGIC FROM  HOW INFORMATION IS DISPLAYED TO THE USER AND HOW USER INPUTS ARE RECEIVED.
@@ -53,7 +56,7 @@ This architectural design pattern provides a structured approach to organizing o
 **Implementation:**
 
 
-<img src='src/main/resources/photos/img.png' width='250'>
+c
 
 **Consequences** 
 
