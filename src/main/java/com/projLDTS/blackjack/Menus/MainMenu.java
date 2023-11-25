@@ -120,7 +120,8 @@ public class MainMenu {
                     new StartMenu(screen).run();
                     break;
                 case 1:
-                    //call how to play
+                    screen.close();
+                    new HowToPlay(screen).run();
                     break;
                 default:
                     screen.close();
