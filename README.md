@@ -10,16 +10,13 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 
 ### IMPLEMENTED FEATURES
 
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-
 - **Change selected button** - using arrow keys you can change the selected button (it's the red one).
 - **Select button** - to select a button for the program to execute an action (e.g. start game, exit, etc.) you need to press enter key.
 
 
 ### PLANNED FEATURES
 
-> This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
-- **Change selected coin** - using arrow keys you can change the selected coin.
+-**Change selected coin** - using arrow keys you can change the selected coin.
 - **Increase the value of the bet** - after choosing a coin, press enter key to increase the bet.
 - **Decrease the value of the bet** - after choosing a coin, press backspace key to decrease the bet.
 - **Chose how many decks** - in a menu the user is presented with 3 options, to play with one deck, two decks, or the infinite mode.
@@ -28,49 +25,76 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 
 ### DESIGN
 
-> This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
-
-- **1** Design explanation 1.
-
-**Example of one of such subsections**:
-
-------
-
-#### THE JUMP ACTION OF THE KANGAROOBOY SHOULD BEHAVE DIFFERENTLY DEPENDING ON ITS STATE
+#### We aim to distinctively separate the underlying data structures and logic from how information is displayed to the user and how user inputs are received.
 
 **Problem in Context**
 
-There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game (an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.). This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.
+To further organize our code, improve maintainability and enhance readability, we decided to use the Model-View-Controller pattern,
+dividing our code in three different parts.
 
 **The Pattern**
 
-We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation (i.e., another subclass). This pattern allowed to address the identified problems because […].
+We have applied the Model-View-Controller (MVC) pattern.
+This architectural design pattern provides a structured approach to organizing our application, promoting modularity and maintainability.
 
-**Implementation**
+**Implementation:**
 
-The following figure shows how the pattern’s roles were mapped to the application classes.
 
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
+<img src='src/main/resources/photos/img.png' width='250'>
 
-These classes can be found in the following files:
+**Consequences** 
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
-- [JumpAbilityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/JumpAbilityState.java)
-- [DoubleJumpState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/DoubleJumpState.java)
-- [HelicopterState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/HelicopterState.java)
-- [IncreasedGravityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/IncreasedGravityState.java)
+The use of the Model-View-Controller (MVC) pattern in the current design offers several advantages:
+
+- Separation of Concerns 
+
+MVC separates data (Model), presentation (View), and application logic (Controller), promoting a modular and organized code.
+
+- Code Organization
+
+The pattern enhances code organization, making it easier to understand, modify, and extend specific parts of the application without affecting others.
+
+- Improved Readability
+
+MVC reduces the need for complex conditional statements, enhancing code readability by providing a well-defined structure.
+
+- Polymorphism for Flexibility
+
+Polymorphism is used to activate behavior based on states, offering a more flexible and intuitive approach than extensive conditional statements.
+
+- Maintainable Scalability
+
+MVC supports scalable development, allowing the introduction of new components without disrupting the existing code.
+
+- Explicit Representation
+
+Each MVC component explicitly represents its role, aiding developers in understanding and navigating the codebase.
+
+
+#### We aim to simplify the process of transitioning between various game menus and play states, making it effortless to switch between different aspects of the game.
+
+**Problem Context**
+
+We faced complexity managing various game states and menus, so we needed a straightforward and efficient method for seamless navigation between these diverse elements.
+
+**The Pattern**
+
+We applied the State pattern. This design allows each game state to be represented by a separate subclass, enabling smooth transitions between various phases like betting, playing with and without split. This approach simplifies the management of different game states, addressing our identified challenges effectively.
+
+**Implementation:**
+
+<img src='src/main/resources/photos/img2.png' width='250'>
 
 **Consequences**
 
-The use of the State Pattern in the current design allows the following benefits:
+By using the State design pattern we ensure that: Each game state is neatly organized with its own class,
+contributing to a well-structured code. The pattern allows effortless addition of new states without disrupting the code of existing states,
+ensuring flexibility in expanding game features. Massive conditional statements are avoided, keeping the code simple and readable.
 
-- The several states that represent the character’s hability to jump become explicit in the code, instead of relying on a series of flags.
-- We don’t need to have a long set of conditional if or switch statements associated with the various states; instead, polimorphism is used to activate the right behavior.
-- There are now more classes and instances to manage, but still in a reasonable number.
 
 #### KNOWN CODE SMELLS
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation.
+For now, we believe that we don't have any known code smells.
 
 ### TESTING
 
@@ -79,9 +103,6 @@ The use of the State Pattern in the current design allows the following benefits
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-
-- Filipa Geraldes: 33%
-- Filipa Fidago: 33%
-- Leonor Couto: 33%
+- Filipa Geraldes: 33,3%
+- Filipa Fidago: 33,3%
+- Leonor Couto: 33,3%
