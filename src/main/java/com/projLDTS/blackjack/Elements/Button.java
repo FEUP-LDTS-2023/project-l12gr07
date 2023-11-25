@@ -21,10 +21,7 @@ public class Button {
     }
 
     public void drawButton(TextGraphics textGraphics) {
-        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
-        textGraphics.setBackgroundColor(color);
-        textGraphics.fillRectangle(pos,size,' ');
-        textGraphics.putString(stringPos, str);
+
     }
 
     public void setColor(TextColor color_) {color = color_;};
