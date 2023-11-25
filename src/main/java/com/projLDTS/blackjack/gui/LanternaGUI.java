@@ -177,8 +177,8 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(29, 27), new TerminalSize(15, 3),' ');
-        textGraphics.putString(new TerminalPosition(90, 28), "NO");
+        textGraphics.fillRectangle(new TerminalPosition(85, 27), new TerminalSize(15, 3),' ');
+        textGraphics.putString(new TerminalPosition(91, 28), "NO");
     }
 
     public void drawRet1() {

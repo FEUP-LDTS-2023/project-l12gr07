@@ -28,10 +28,8 @@ public class ExitMenuViewer implements Viewer {
 
     @Override
     public void drawElements() throws IOException {
-        gui.drawYesButton(false);
-        gui.drawNoButton(false);
-        if (buttonSelected == 0) gui.drawYesButton(true);
-        else if (buttonSelected == 1) gui.drawNoButton(true);
+        gui.drawYesButton(buttonSelected == 0);
+        gui.drawNoButton(buttonSelected == 1);
         gui.refresh();
     }
 
