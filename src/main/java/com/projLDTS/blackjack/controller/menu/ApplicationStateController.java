@@ -33,7 +33,7 @@ public class ApplicationStateController {
         applicationState = state;
         switch (state) {
             case Game:
-                //stateController = new GameController(this);
+                stateController = new GameController(this);
                 break;
 
             case MainMenu:
