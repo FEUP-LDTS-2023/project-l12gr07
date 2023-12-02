@@ -282,4 +282,12 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(52, 22), "Are you sure you want to");
         textGraphics.putString(new TerminalPosition(58, 23), "leave the game?");
     }
+
+    public void drawCard(String suit, String rank) {
+        // por acabar
+    }
+
+    public void drawHiddenCard() {
+        // por acabar
+    }
 }
