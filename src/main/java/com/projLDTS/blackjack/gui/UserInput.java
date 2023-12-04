@@ -70,4 +70,25 @@ public class UserInput {
         }
         return buttonSelected;
     }
+    public int DecksMenuInput(int buttonSelected) throws IOException {
+        KeyStroke key = gui.getScreen().readInput();
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+            gui.getScreen().close();
+        else if (key.getKeyType() == KeyType.EOF)
+            return -1;
+        else if (key.getKeyType() == KeyType.ArrowLeft) {
+            buttonSelected--;
+            if (buttonSelected == -1) buttonSelected = 3;
+            return buttonSelected;
+        }
+        else if (key.getKeyType() == KeyType.ArrowRight) {
+            buttonSelected++;
+            if (buttonSelected == 4) buttonSelected = 0;
+            return buttonSelected;
+        }
+        else if (key.getKeyType() == KeyType.Enter) {
+            return 4;
+        }
+        return -1;
+    }
 }

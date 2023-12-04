@@ -48,6 +48,10 @@ public class ApplicationStateController {
                 stateController = new StartMenuController(this);
                 break;
 
+            case DecksMenu:
+                stateController = new DecksMenuController(this);
+                break;
+
 //            case LastPlays:
 //                stateController = new LastPlaysController(this);
 //                break;
