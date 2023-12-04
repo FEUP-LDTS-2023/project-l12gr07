@@ -318,6 +318,7 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(52, 22), "How many decks of cards?");
     }
     /*
+
     public void drawCard(String suit, String rank) {
         // por acabar
     }
