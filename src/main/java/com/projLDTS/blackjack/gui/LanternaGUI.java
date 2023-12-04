@@ -257,6 +257,36 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(63, 30), "4/4");
     }
 
+    public void drawOneButton (boolean selected){
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(29, 27), new TerminalSize(20, 3),' ');
+        textGraphics.putString(new TerminalPosition(35, 28), "One Deck");
+    }
+    public void drawTwoButton (boolean selected){
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(53, 27), new TerminalSize(21, 3),' ');
+        textGraphics.putString(new TerminalPosition(59, 28), "Two Decks");
+    }
+    public void drawInfButton (boolean selected){
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(79, 27), new TerminalSize(21, 3),' ');
+        textGraphics.putString(new TerminalPosition(85, 28), "Infinite");
+    }
+
+    public void drawRetDecks(boolean selected) throws IOException {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(10, 34), new TerminalSize(14, 3),' ');
+        textGraphics.putString(new TerminalPosition(14, 35), "RETURN");
+    }
+
     public void clear() throws IOException {
         screen.clear();
         textGraphics.setBackgroundColor(TextColor.Factory.fromString("#03C04A"));
@@ -281,5 +311,9 @@ public class LanternaGUI {
         drawBlackjack();
         textGraphics.putString(new TerminalPosition(52, 22), "Are you sure you want to");
         textGraphics.putString(new TerminalPosition(58, 23), "leave the game?");
+    }
+    public void drawDecksText() throws IOException {
+        drawBlackjack();
+        textGraphics.putString(new TerminalPosition(52, 22), "How many decks of cards?");
     }
 }
