@@ -4,8 +4,6 @@ import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
-import com.projLDTS.blackjack.viewer.menus.ExitMenuViewer;
-import com.projLDTS.blackjack.viewer.menus.MainMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -26,7 +24,6 @@ public class GameController implements StateController {
 
         gameViewer = new GameViewer(gui);
         gameViewer.draw();
-        /*
         while (true) {
             int aux = new UserInput(gui).MainMenuInput(gameViewer.getButtonSelected());
             if (aux == 3) {
@@ -36,17 +33,11 @@ public class GameController implements StateController {
             else gameViewer.setButtonSelected(aux);
             gameViewer.drawElements();
         }
-        */
     }
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        /*
-         if (exitMenuViewer.getButtonSelected() == 0) gui.close();
-        else if (exitMenuViewer.getButtonSelected() == 1) {
-            applicationStateController.changeState(ApplicationState.MainMenu);
-            gui.close();
-        }
-         */
+        gui.close();
+        applicationStateController.changeState(ApplicationState.MainMenu);
     }
 }
