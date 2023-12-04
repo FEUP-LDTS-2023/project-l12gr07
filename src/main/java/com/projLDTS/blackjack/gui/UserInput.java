@@ -28,7 +28,7 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.Enter) {
             return 3;
         }
-        return -1;
+        return buttonSelected;
     }
 
     public int StartMenuInput(int buttonSelected) throws IOException {
@@ -39,21 +39,21 @@ public class UserInput {
             return -1;
         if (key.getKeyType() == KeyType.ArrowRight) {
             buttonSelected++;
-            if (buttonSelected == 3) buttonSelected = 2;
+            if (buttonSelected == 3) buttonSelected = 0;
             return buttonSelected;
         }
         else if (key.getKeyType() == KeyType.ArrowLeft) {
             buttonSelected--;
-            if (buttonSelected == -1) buttonSelected = 0;
+            if (buttonSelected == -1) buttonSelected = 2;
             return buttonSelected;
         }
         else if (key.getKeyType() == KeyType.Enter) {
             return 3;
         }
-        return -1;
+        return buttonSelected;
     }
 
-    public int ExitAndHowToPlayMenuInput() throws IOException {
+    public int ExitAndHowToPlayMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             gui.getScreen().close();
@@ -68,6 +68,6 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.Enter) {
             return 2;
         }
-        return -1;
+        return buttonSelected;
     }
 }

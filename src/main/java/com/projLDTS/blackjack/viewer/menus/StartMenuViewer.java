@@ -37,9 +37,9 @@ public class StartMenuViewer implements Viewer {
         gui.drawLast10GamesButton(false);
         gui.drawbReturnButton(false);
         gui.drawPlayButton(false);
-        if (buttonSelected == 0) gui.drawLast10GamesButton(true);
-        else if (buttonSelected == 1) gui.drawbReturnButton(true);
-        else if (buttonSelected == 2) gui.drawPlayButton(true);
+        if (buttonSelected == 2) gui.drawLast10GamesButton(true);
+        else if (buttonSelected == 0) gui.drawbReturnButton(true);
+        else if (buttonSelected == 1) gui.drawPlayButton(true);
         gui.refresh();
     }
 }

@@ -97,12 +97,12 @@ public class LanternaGUI {
     }
 
     private void drawBox(int x, int y, int width, int height, TextColor borderColor) {
-        /*for (int i = 1; i < width - 1; i++) {
+        for (int i = 1; i < width - 1; i++) {
             for (int j = 1; j < height - 1; j++) {
-                textGraphics.setForegroundColor(boxColor);
+                // textGraphics.setForegroundColor(boxColor);
                 textGraphics.setCharacter(x + i, y + j, ' ');
             }
-        }*/
+        }
 
         for (int i = 0; i < width; i++) {
             textGraphics.setForegroundColor(borderColor);

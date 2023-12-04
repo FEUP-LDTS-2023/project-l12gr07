@@ -3,16 +3,14 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.viewer.Viewer;
 import com.projLDTS.blackjack.viewer.menus.HowToPlayMenuViewer;
-import com.projLDTS.blackjack.viewer.menus.MainMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class HowToPlayMenuController implements StateController {
-    private ApplicationStateController applicationStateController;
+    private final ApplicationStateController applicationStateController;
     private HowToPlayMenuViewer howToPlayMenuViewer;
     private final LanternaGUI gui;
 
@@ -26,7 +24,7 @@ public class HowToPlayMenuController implements StateController {
         howToPlayMenuViewer = new HowToPlayMenuViewer(gui);
         howToPlayMenuViewer.draw();
         while (true) {
-            int aux = new UserInput(gui).ExitAndHowToPlayMenuInput();
+            int aux = new UserInput(gui).ExitAndHowToPlayMenuInput(howToPlayMenuViewer.getButtonSelected());
             if (aux == 1 && howToPlayMenuViewer.getPage() == 3) {
                 nextState();
                 break;

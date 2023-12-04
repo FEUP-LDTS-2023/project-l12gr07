@@ -35,9 +35,9 @@ public class MainMenuController implements StateController {
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        gui.close();
         if (mainMenuViewer.getButtonSelected() == 0) applicationStateController.changeState(ApplicationState.StartMenu);
         else if (mainMenuViewer.getButtonSelected() == 1) applicationStateController.changeState(ApplicationState.HowToPlay);
         else if (mainMenuViewer.getButtonSelected() == 2) applicationStateController.changeState(ApplicationState.Exit);
+        gui.close();
     }
 }
