@@ -90,6 +90,7 @@ public class GameViewer {
         gui_.drawCard(firstCard.getSuit(), firstCard.getRank());
         // Draw the second card face down
         gui_.drawHiddenCard();
+
     }
      */
     private void drawPlayerHand(LanternaGUI gui_) throws IOException {
