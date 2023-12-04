@@ -25,8 +25,8 @@ public class GameController implements StateController {
         gameViewer = new GameViewer(gui);
         gameViewer.draw();
         while (true) {
-            int aux = new UserInput(gui).MainMenuInput(gameViewer.getButtonSelected());
-            if (aux == 3) {
+            int aux = new UserInput(gui).GameInput(gameViewer.getButtonSelected());
+            if (aux == 4) {
                 nextState();
                 break;
             }

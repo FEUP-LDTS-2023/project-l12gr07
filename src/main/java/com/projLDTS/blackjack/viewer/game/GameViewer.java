@@ -25,7 +25,9 @@ public class GameViewer {
 
     public void draw() throws IOException {
         gui.clear();
-        gui.drawBlackjack();
+        gui.drawCredit();
+        gui.drawLine();
+        gui.drawBet();
         gui.refresh();
     }
 
@@ -37,15 +39,14 @@ public class GameViewer {
     }
 
     public void drawElements() throws IOException {
-        // por acabar
-        /*
-        gui.drawStartButton(false);
-        gui.drawHowToPlayButton(false);
-        gui.drawExitButton(false);
-        if (buttonSelected == 0) gui.drawStartButton(true);
-        else if (buttonSelected == 1) gui.drawHowToPlayButton(true);
-        else if (buttonSelected == 2) gui.drawExitButton(true);
-         */
+        gui.drawHitButton(false);
+        gui.drawStandButton(false);
+        gui.drawDoubleDownButton(false);
+        gui.drawSplitButton(false);
+        if (buttonSelected == 0) gui.drawHitButton(true);
+        else if (buttonSelected == 1) gui.drawStandButton(true);
+        else if (buttonSelected == 2) gui.drawDoubleDownButton(true);
+        else if (buttonSelected == 3) gui.drawSplitButton(true);
         gui.refresh();
     }
 
@@ -83,7 +84,7 @@ public class GameViewer {
         determineWinner();
         gameOver = true;
     }
-    /*
+
     private void drawDealerHand(LanternaGUI gui_) throws IOException {
         // Draw the first card face up
         Card firstCard = dealerHand.get(0);
@@ -92,7 +93,7 @@ public class GameViewer {
         gui_.drawHiddenCard();
 
     }
-     */
+
     private void drawPlayerHand(LanternaGUI gui_) throws IOException {
         for (Card card : playerHand) {
             drawCard(card.getSuit(), card.getRank());

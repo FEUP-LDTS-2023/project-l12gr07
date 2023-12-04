@@ -91,4 +91,27 @@ public class UserInput {
         }
         return -1;
     }
+    public int GameInput(int buttonSelected) throws IOException {
+        KeyStroke key = gui.getScreen().readInput();
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+            gui.getScreen().close();
+        else if (key.getKeyType() == KeyType.EOF)
+            return -1;
+        else if (key.getKeyType() == KeyType.ArrowUp) {
+            buttonSelected = (buttonSelected - 2 + 4) % 4;
+        }
+        else if (key.getKeyType() == KeyType.ArrowDown) {
+            buttonSelected = (buttonSelected + 2) % 4;
+        }
+        else if (key.getKeyType() == KeyType.ArrowLeft) {
+            buttonSelected = (buttonSelected - 1 + 2) % 2 + (buttonSelected / 2) * 2;
+        }
+        else if (key.getKeyType() == KeyType.ArrowRight) {
+            buttonSelected = (buttonSelected + 1) % 2 + (buttonSelected / 2) * 2;
+        }
+        else if (key.getKeyType() == KeyType.Enter) {
+            return buttonSelected;
+        }
+        return buttonSelected;
+    }
 }
