@@ -71,6 +71,7 @@ public class ApplicationStateController {
 
             case Last10Games:
                 stateController = new Last10GamesMenuController(this);
+                stateViewer = new Last10GamesMenuViewer(gui);
                 break;
 
 //            case GameOver:
