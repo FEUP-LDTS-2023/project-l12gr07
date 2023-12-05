@@ -316,4 +316,8 @@ public class LanternaGUI {
         drawBlackjack();
         textGraphics.putString(new TerminalPosition(52, 22), "How many decks of cards?");
     }
+
+    public void drawLast10GamesText(){
+        textGraphics.putString(new TerminalPosition(52, 10), "Last 10 Games");
+    }
 }

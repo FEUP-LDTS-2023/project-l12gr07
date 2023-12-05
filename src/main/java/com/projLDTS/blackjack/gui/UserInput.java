@@ -91,4 +91,13 @@ public class UserInput {
         }
         return -1;
     }
+    public int Last10GamesMenuInput(int buttonSelected) throws IOException {
+        KeyStroke key = gui.getScreen().readInput();
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+            gui.getScreen().close();
+        else if (key.getKeyType() == KeyType.Enter) {
+            return 1;
+        }
+        return -1;
+    }
 }

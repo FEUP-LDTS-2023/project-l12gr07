@@ -52,9 +52,9 @@ public class ApplicationStateController {
                 stateController = new DecksMenuController(this);
                 break;
 
-//            case LastPlays:
-//                stateController = new LastPlaysController(this);
-//                break;
+            case Last10Games:
+                stateController = new Last10GamesMenuController(this);
+                break;
 
 //            case GameOver:
 //                stateController = new GameOverController(this);
