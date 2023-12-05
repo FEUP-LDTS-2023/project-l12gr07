@@ -1,11 +1,12 @@
 package com.projLDTS.blackjack.viewer.menus;
 
 import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.viewer.Viewer;
+import com.projLDTS.blackjack.gui.UserInput;
+import com.projLDTS.blackjack.viewer.StateViewer;
 
 import java.io.IOException;
 
-public class StartMenuViewer implements Viewer {
+public class StartMenuViewer implements StateViewer {
     int buttonSelected;
     private final LanternaGUI gui;
     private StringBuilder username = new StringBuilder();
@@ -41,5 +42,23 @@ public class StartMenuViewer implements Viewer {
         else if (buttonSelected == 0) gui.drawbReturnButton(true);
         else if (buttonSelected == 1) gui.drawPlayButton(true);
         gui.refresh();
+    }
+
+    @Override
+    public int getPage() {
+        return 0;
+    }
+
+    @Override
+    public void setPage(int i) {}
+
+    @Override
+    public int userInput() throws IOException {
+       return new UserInput(gui).StartMenuInput(buttonSelected);
+    }
+
+    @Override
+    public void close() throws IOException {
+        gui.close();
     }
 }

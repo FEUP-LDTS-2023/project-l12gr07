@@ -12,19 +12,14 @@ import java.net.URISyntaxException;
 public class Last10GamesMenuController implements StateController {
     private ApplicationStateController applicationStateController;
     private Last10GamesMenuViewer last10GamesMenuViewer;
-    private final LanternaGUI gui;
     public Last10GamesMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
-        gui = new LanternaGUI(130, 40);
     }
 
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        last10GamesMenuViewer = new Last10GamesMenuViewer(gui);
-        last10GamesMenuViewer.draw();
         while (true) {
-            int aux = new UserInput(gui).Last10GamesMenuInput(
-                    last10GamesMenuViewer.getButtonSelected());
+            int aux = userInput();
             if (aux == 1) {
                 nextState();
                 break;
@@ -38,7 +33,21 @@ public class Last10GamesMenuController implements StateController {
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
         if (last10GamesMenuViewer.getButtonSelected() == 0) {
             applicationStateController.changeState(ApplicationState.StartMenu);
-            gui.close();
         }
+    }
+
+    @Override
+    public int getButtonSelected() {
+        return applicationStateController.getButtonSelected();
+    }
+
+    @Override
+    public void setButtonSelected(int i) {
+        applicationStateController.setButtonSelected(i);
+    }
+
+    @Override
+    public int userInput() throws IOException {
+        return applicationStateController.userInput();
     }
 }

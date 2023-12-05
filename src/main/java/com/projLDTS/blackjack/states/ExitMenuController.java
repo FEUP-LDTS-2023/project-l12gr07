@@ -3,7 +3,6 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.viewer.menus.ExitMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,34 +10,43 @@ import java.net.URISyntaxException;
 
 public class ExitMenuController implements StateController {
     private final ApplicationStateController applicationStateController;
-    private ExitMenuViewer exitMenuViewer;
-    private final LanternaGUI gui;
     public ExitMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
-        gui = new LanternaGUI(130, 40);
     }
 
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        exitMenuViewer = new ExitMenuViewer(gui);
-        exitMenuViewer.draw();
         while (true) {
-            int aux = new UserInput(gui).ExitAndHowToPlayMenuInput(exitMenuViewer.getButtonSelected());
+            int aux = userInput();
             if (aux == 2) {
                 nextState();
                 break;
             }
-            else exitMenuViewer.setButtonSelected(aux);
-            exitMenuViewer.drawElements();
+            else setButtonSelected(aux);
+            applicationStateController.redraw();
         }
     }
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        if (exitMenuViewer.getButtonSelected() == 0) gui.close();
-        else if (exitMenuViewer.getButtonSelected() == 1) {
+        if (getButtonSelected() == 0) applicationStateController.close();
+        else if (getButtonSelected() == 1) {
             applicationStateController.changeState(ApplicationState.MainMenu);
-            gui.close();
         }
+    }
+
+    @Override
+    public int getButtonSelected() {
+        return applicationStateController.getButtonSelected();
+    }
+
+    @Override
+    public void setButtonSelected(int i) {
+        applicationStateController.setButtonSelected(i);
+    }
+
+    @Override
+    public int userInput() throws IOException {
+        return applicationStateController.userInput();
     }
 }

@@ -1,18 +1,13 @@
 package com.projLDTS.blackjack.viewer.menus;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.viewer.Viewer;
+import com.projLDTS.blackjack.gui.UserInput;
+import com.projLDTS.blackjack.viewer.StateViewer;
 
 
 import java.io.IOException;
 
-public class HowToPlayMenuViewer implements Viewer {
+public class HowToPlayMenuViewer implements StateViewer {
     int buttonSelected;
     int page;
     private final LanternaGUI gui;
@@ -93,5 +88,15 @@ public class HowToPlayMenuViewer implements Viewer {
                 break;
         }
         gui.refresh();
+    }
+
+    @Override
+    public int userInput() throws IOException {
+        return new UserInput(gui).ExitAndHowToPlayMenuInput(buttonSelected);
+    }
+
+    @Override
+    public void close() throws IOException {
+        gui.close();
     }
 }

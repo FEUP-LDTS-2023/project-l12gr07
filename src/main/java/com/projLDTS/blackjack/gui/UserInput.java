@@ -89,7 +89,7 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.Enter) {
             return 4;
         }
-        return -1;
+        return buttonSelected;
     }
     public int Last10GamesMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();

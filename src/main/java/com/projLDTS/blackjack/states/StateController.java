@@ -9,4 +9,8 @@ public interface StateController {
 
     void nextState() throws IOException, FontFormatException, URISyntaxException;
 
+    int getButtonSelected();
+
+    void setButtonSelected(int i);
+    int userInput() throws IOException;
 }
