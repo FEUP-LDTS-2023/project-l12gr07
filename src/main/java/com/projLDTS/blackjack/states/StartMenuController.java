@@ -11,34 +11,44 @@ import java.net.URISyntaxException;
 
 public class StartMenuController implements StateController {
     private final ApplicationStateController applicationStateController;
-    private StartMenuViewer startMenuViewer;
-    private final LanternaGUI gui;
 
     public StartMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
-        gui = new LanternaGUI(130, 40);
+
     }
 
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        startMenuViewer = new StartMenuViewer(gui);
-        startMenuViewer.draw();
         while (true) {
-            int aux = new UserInput(gui).StartMenuInput(startMenuViewer.getButtonSelected());
+            int aux = userInput();
             if (aux == 3) {
                 nextState();
                 break;
             }
-            else startMenuViewer.setButtonSelected(aux);
-            startMenuViewer.drawElements();
+            else setButtonSelected(aux);
+            applicationStateController.redraw();
         }
     }
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        if (startMenuViewer.getButtonSelected() == 0) applicationStateController.changeState(ApplicationState.MainMenu);
-        else if (startMenuViewer.getButtonSelected() == 1) applicationStateController.changeState(ApplicationState.DecksMenu);
-        else if (startMenuViewer.getButtonSelected() == 2) applicationStateController.changeState(ApplicationState.LastPlays);
-        gui.close();
+        if (getButtonSelected() == 0) applicationStateController.changeState(ApplicationState.MainMenu);
+        else if (getButtonSelected() == 1) applicationStateController.changeState(ApplicationState.DecksMenu);
+        else if (getButtonSelected() == 2) applicationStateController.changeState(ApplicationState.LastPlays);
+    }
+
+    @Override
+    public int getButtonSelected() {
+        return applicationStateController.getButtonSelected();
+    }
+
+    @Override
+    public void setButtonSelected(int i) {
+        applicationStateController.setButtonSelected(i);
+    }
+
+    @Override
+    public int userInput() throws IOException {
+        return applicationStateController.userInput();
     }
 }

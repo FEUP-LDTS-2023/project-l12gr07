@@ -11,45 +11,54 @@ import java.net.URISyntaxException;
 
 public class DecksMenuController implements StateController {
     private ApplicationStateController applicationStateController;
-    private DecksMenuViewer decksMenuViewer;
-    private final LanternaGUI gui;
     public DecksMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
-        gui = new LanternaGUI(130, 40);
     }
 
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        decksMenuViewer = new DecksMenuViewer(gui);
-        decksMenuViewer.draw();
         while (true) {
-            int aux = new UserInput(gui).DecksMenuInput(decksMenuViewer.getButtonSelected());
+            int aux = userInput();
             if (aux == 4) {
                 nextState();
                 break;
             }
-            else decksMenuViewer.setButtonSelected(aux);
-            decksMenuViewer.drawElements();
+            else setButtonSelected(aux);
+            applicationStateController.redraw();
         }
     }
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        if (decksMenuViewer.getButtonSelected() == 0) {
+        if (getButtonSelected() == 0) {
             //One Deck game
             applicationStateController.changeState(ApplicationState.Game);
-            gui.close();
-        } else if (decksMenuViewer.getButtonSelected() == 1) {
+        }
+        else if (getButtonSelected() == 1) {
             //Two Deck game
             applicationStateController.changeState(ApplicationState.Game);
-            gui.close();
-        }else if (decksMenuViewer.getButtonSelected() == 2) {
+        }
+        else if (getButtonSelected() == 2) {
             //Inf Deck game
             applicationStateController.changeState(ApplicationState.Game);
-            gui.close();
-        } else if (decksMenuViewer.getButtonSelected() == 3) {
-            applicationStateController.changeState(ApplicationState.MainMenu);
-            gui.close();
         }
+        else if (getButtonSelected() == 3) {
+            applicationStateController.changeState(ApplicationState.MainMenu);
+        }
+    }
+
+    @Override
+    public int getButtonSelected() {
+        return applicationStateController.getButtonSelected();
+    }
+
+    @Override
+    public void setButtonSelected(int i) {
+        applicationStateController.setButtonSelected(i);
+    }
+
+    @Override
+    public int userInput() throws IOException {
+        return applicationStateController.userInput();
     }
 }

@@ -89,6 +89,6 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.Enter) {
             return 4;
         }
-        return -1;
+        return buttonSelected;
     }
 }
