@@ -8,8 +8,13 @@ import java.util.ArrayList;
 
 public class Deck {
     private final ArrayList<Card> deck;
+    private boolean infinite = false;
     public Deck(int n) {
         deck = new ArrayList<>();
+        if (n == 0) {
+            infinite = true;
+            n = 1;
+        }
         for (int i = 0; i < n; i++) {
             for (String suit : new String[]{"Hearts", "Diamonds", "Clubs", "Spades"}) {
                 deck.add(new Card(suit, "2"));
@@ -26,6 +31,9 @@ public class Deck {
                 deck.add(new Card(suit, "A"));
             }
         }
+    }
+    public boolean isInfinite() {
+        return infinite;
     }
     public List<Card> getDeck() {
         return deck;

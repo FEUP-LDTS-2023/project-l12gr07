@@ -3,6 +3,7 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
+import com.projLDTS.blackjack.model.game.Decks.Deck;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 
 import java.awt.*;
@@ -11,6 +12,8 @@ import java.net.URISyntaxException;
 
 public class GameController implements StateController {
     private ApplicationStateController applicationStateController;
+    private Deck deck;
+
     public GameController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
     }
@@ -48,5 +51,9 @@ public class GameController implements StateController {
     @Override
     public int userInput() throws IOException {
         return applicationStateController.userInput();
+    }
+
+    public void setDeck(Deck deck_) {
+        deck = deck_;
     }
 }
