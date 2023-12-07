@@ -312,12 +312,68 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(52, 22), "Are you sure you want to");
         textGraphics.putString(new TerminalPosition(58, 23), "leave the game?");
     }
+
     public void drawDecksText() throws IOException {
         drawBlackjack();
         textGraphics.putString(new TerminalPosition(52, 22), "How many decks of cards?");
     }
 
-    public void drawLast10GamesText(){
+    public void drawLast10GamesText() {
         textGraphics.putString(new TerminalPosition(52, 10), "Last 10 Games");
+    }
+
+    public void drawCard(String suit, String rank) {
+    }
+
+    public void drawHiddenCard() {
+    }
+
+    public void drawCredit() {
+        textGraphics.putString(new TerminalPosition(61, 5), "credit");
+        // change this to correct credit
+        textGraphics.putString(new TerminalPosition(61, 8), "900 €");
+    }
+
+    public void drawLine() {
+        textGraphics.putString(new TerminalPosition(40, 20), "--------------------------------------------------");
+    }
+
+    public void drawBet() {
+        textGraphics.putString(new TerminalPosition(62, 32), "bet");
+        // change this to correct bet
+        textGraphics.putString(new TerminalPosition(60, 34), "10 €");
+
+    }
+
+    public void drawHitButton(boolean selected) {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(43, 31), new TerminalSize(14, 3),' ');
+        textGraphics.putString(new TerminalPosition(48, 32), "HIT");
+    }
+
+    public void drawStandButton(boolean selected) {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(70, 31), new TerminalSize(14, 3),' ');
+        textGraphics.putString(new TerminalPosition(75, 32), "STAND");
+    }
+
+    public void drawDoubleDownButton(boolean selected) {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(43, 35), new TerminalSize(14, 3),' ');
+        textGraphics.putString(new TerminalPosition(44, 36), "DOUBLE DOWN");
+    }
+
+    public void drawSplitButton(boolean selected) {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(14, 3),' ');
+        textGraphics.putString(new TerminalPosition(75, 36), "SPLIT");
     }
 }

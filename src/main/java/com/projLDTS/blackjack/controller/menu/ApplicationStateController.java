@@ -3,6 +3,7 @@ package com.projLDTS.blackjack.controller.menu;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.states.*;
 import com.projLDTS.blackjack.viewer.StateViewer;
+import com.projLDTS.blackjack.viewer.game.GameViewer;
 import com.projLDTS.blackjack.viewer.menus.*;
 
 import java.awt.*;
@@ -46,7 +47,8 @@ public class ApplicationStateController {
         applicationState = state;
         switch (state) {
             case Game:
-                //stateController = new GameController(this);
+                stateController = new GameController(this);
+                stateViewer = new GameViewer(gui);
                 break;
 
             case MainMenu:
