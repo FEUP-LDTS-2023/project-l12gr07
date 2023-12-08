@@ -10,4 +10,15 @@ public class Dealer extends CardSet {
             hand.addCard(deck);
         }
     }
+
+    public int stand(int playerHand, Deck deck) {
+        while (hand.getValue() < 21 || hand.getValue() < playerHand) {
+            hand.addCard(deck);
+            if (hand.getValue() > 21) {
+                return 0; // dealer lost
+            }
+        }
+        if (hand.getValue() == playerHand) return 2; // draw
+        return 1; // dealer won
+    }
 }
