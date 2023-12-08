@@ -18,6 +18,7 @@ public class GameViewer implements StateViewer {
 
     public void draw() throws IOException {
         gui.clear();
+        gui.drawExit();
         gui.drawCredit();
         gui.drawLine();
         gui.drawBet();

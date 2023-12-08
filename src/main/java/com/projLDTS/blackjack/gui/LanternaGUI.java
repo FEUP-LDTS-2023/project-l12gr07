@@ -376,4 +376,11 @@ public class LanternaGUI {
         textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(14, 3),' ');
         textGraphics.putString(new TerminalPosition(75, 36), "SPLIT");
     }
+
+    public void drawExit() {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(61, 3),' ');
+        textGraphics.putString(new TerminalPosition(85, 2), "Return to Main Menu: E");
+    }
 }

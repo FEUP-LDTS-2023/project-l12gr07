@@ -1,9 +1,6 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.viewer.menus.DecksMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,14 +30,20 @@ public class DecksMenuController implements StateController {
         if (getButtonSelected() == 0) {
             //One Deck game
             applicationStateController.changeState(ApplicationState.Game);
+            GameController gameController = (GameController) applicationStateController.getStateController();
+            gameController.setGameType(1);
         }
         else if (getButtonSelected() == 1) {
             //Two Deck game
             applicationStateController.changeState(ApplicationState.Game);
+            GameController gameController = (GameController) applicationStateController.getStateController();
+            gameController.setGameType(2);
         }
         else if (getButtonSelected() == 2) {
             //Inf Deck game
             applicationStateController.changeState(ApplicationState.Game);
+            GameController gameController = (GameController) applicationStateController.getStateController();
+            gameController.setGameType(0);
         }
         else if (getButtonSelected() == 3) {
             applicationStateController.changeState(ApplicationState.MainMenu);
