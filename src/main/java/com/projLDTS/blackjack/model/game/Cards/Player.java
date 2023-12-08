@@ -14,22 +14,22 @@ public class Player extends CardSet {
     public void setCredit(int credit) { this.credit = credit; }
     public Hand getSplitHand() { return splitHand; }
     public boolean hit(Deck deck, boolean split) {
-        // to do
+        // TODO
         return false;
     }
     public void stand() {
-        // to do
+        // TODO
     }
     public boolean doubleDown(Deck deck, boolean split) {
-        // to do
+        // TODO
         return false;
     }
     public boolean split(Deck deck) {
-        // to do
+        // TODO
         return false;
     }
     public boolean isSplit() {
-        // to do
+        // TODO
         return false;
     }
 

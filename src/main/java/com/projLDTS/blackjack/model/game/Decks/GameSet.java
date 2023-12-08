@@ -9,9 +9,9 @@ public class GameSet {
     private Deck deck;
     private static GameSet game = null;
 
-    public GameSet() {
+    public GameSet(int n) {
         super();
-        deck = new Deck(1); // to do : ir buscar aos decks
+        deck = new Deck(n); // TODO : ir buscar aos decks
         deck.randomize();
         player = new Player();
         dealer = new Dealer();
@@ -19,7 +19,7 @@ public class GameSet {
 
     public static GameSet getGame() {
         if (game == null) {
-            game = new GameSet();
+            game = new GameSet(1);
         }
         return game;
     }
@@ -36,10 +36,6 @@ public class GameSet {
         return deck;
     }
 
-    public void setNDecks(int n) {
-        deck = new Deck(n);
-    } // ir buscar ao outro menu
-
     public void dealCards() {
         player.getHand().addCard(deck);
         player.getHand().addCard(deck);
@@ -47,10 +43,10 @@ public class GameSet {
     }
 
     public void nextGame() {
-        // to do
+        // TODO
     }
 
     public void winningRounds() {
-        // to do
+        // TODO
     }
 }
