@@ -104,6 +104,8 @@ public class UserInput {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             gui.getScreen().close();
+        else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'e')
+            return 5; //Return to main menu
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         else if (key.getKeyType() == KeyType.ArrowUp) {
@@ -119,7 +121,7 @@ public class UserInput {
             buttonSelected = (buttonSelected + 1) % 2 + (buttonSelected / 2) * 2;
         }
         else if (key.getKeyType() == KeyType.Enter) {
-            return buttonSelected;
+            return 4;
         }
         return buttonSelected;
     }

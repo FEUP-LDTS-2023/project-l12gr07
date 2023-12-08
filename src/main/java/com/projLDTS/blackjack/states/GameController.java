@@ -26,13 +26,25 @@ public class GameController implements StateController {
         gameSet = new GameSet(gameType);
         while (true) {
             int aux = userInput();
-            if (aux == 4) {
+            if (aux == 5) {
                 nextState();
                 break;
             }
-            else setButtonSelected(aux);
+            else if (aux == 4) {
+                play();
+            }
+            else {
+                setButtonSelected(aux);
+            }
             applicationStateController.redraw();
         }
+    }
+
+    private void play() {
+        if (getButtonSelected() == 0) gameSet.hit();
+        else if (getButtonSelected() == 1) gameSet.stand();
+        else if (getButtonSelected() == 2) gameSet.doubledown();
+        else if (getButtonSelected() == 3) gameSet.split();
     }
 
     @Override

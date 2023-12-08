@@ -49,4 +49,22 @@ public class GameSet {
     public void winningRounds() {
         // TODO
     }
+
+    public void hit() {
+        // boolean split?
+        player.hit(deck, true);
+    }
+
+    public void stand() {
+        player.stand();
+    }
+
+    public void split() {
+        player.split(deck);
+    }
+
+    public void doubledown() {
+        // boolean split?
+        player.doubleDown(deck, true);
+    }
 }
