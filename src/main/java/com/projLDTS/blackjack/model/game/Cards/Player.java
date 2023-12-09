@@ -14,7 +14,11 @@ public class Player extends CardSet {
     public void setCredit(int credit) { this.credit = credit; }
     public Hand getSplitHand() { return splitHand; }
     public boolean hit(Deck deck, boolean split) {
-        // TODO
+        Hand currentHand = split ? splitHand : hand;
+        if (currentHand.getValue() < 21) {
+            currentHand.addCard(deck);
+            return true;
+        }
         return false;
     }
     public void stand() {
