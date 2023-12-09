@@ -41,10 +41,19 @@ public class GameController implements StateController {
     }
 
     private void play() {
-        if (getButtonSelected() == 0) gameSet.hit();
-        else if (getButtonSelected() == 1) gameSet.stand();
-        else if (getButtonSelected() == 2) gameSet.doubledown();
-        else if (getButtonSelected() == 3) gameSet.split();
+        if (getButtonSelected() == 0) {
+            boolean aux = gameSet.hit();
+        }
+        else if (getButtonSelected() == 1) {
+            gameSet.stand();
+        }
+        else if (getButtonSelected() == 2) {
+            boolean aux = gameSet.doubledown();
+        }
+        else if (getButtonSelected() == 3) {
+            boolean aux = gameSet.split();
+        }
+        //TODO: finish aux variable
     }
 
     @Override

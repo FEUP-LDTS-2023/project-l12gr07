@@ -50,21 +50,21 @@ public class GameSet {
         // TODO
     }
 
-    public void hit() {
-        // boolean split?
-        player.hit(deck, true);
+    public boolean hit() {
+        // TODO: boolean split?
+        return player.hit(deck, true);
     }
 
     public void stand() {
         player.stand();
     }
 
-    public void split() {
-        player.split(deck);
+    public boolean split() {
+        return player.split(deck);
     }
 
-    public void doubledown() {
-        // boolean split?
-        player.doubleDown(deck, true);
+    public boolean doubledown() {
+        // TODO: boolean split?
+        return player.doubleDown(deck, true);
     }
 }
