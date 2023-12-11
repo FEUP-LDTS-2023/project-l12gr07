@@ -53,4 +53,8 @@ public class Hand {
     }
     public void setBet() {
     }
+
+    public void removeCard(int i) {
+        hand.remove(i);
+    }
 }

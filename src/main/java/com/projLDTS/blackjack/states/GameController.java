@@ -1,9 +1,6 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.model.game.Decks.Deck;
 import com.projLDTS.blackjack.model.game.Decks.GameSet;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 
@@ -15,6 +12,7 @@ public class GameController implements StateController {
     private ApplicationStateController applicationStateController;
     private GameSet gameSet;
     private int gameType;
+    private boolean split = false;
 
     public GameController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
@@ -24,8 +22,13 @@ public class GameController implements StateController {
     public void run() throws IOException, FontFormatException, URISyntaxException {
         // TODO: POR ACABAR
         gameSet = new GameSet(gameType);
+        applicationStateController.redraw();
         while (true) {
+            canSplit();
+            GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
+            gameViewer.setSplit(split);
             int aux = userInput();
+            if (aux == 3 && !split) continue;
             if (aux == 5) {
                 nextState();
                 break;
@@ -40,6 +43,10 @@ public class GameController implements StateController {
         }
     }
 
+    private void canSplit() {
+        split = gameSet.canSplit();
+    }
+
     private void play() {
         if (getButtonSelected() == 0) {
             boolean aux = gameSet.hit();
@@ -50,7 +57,8 @@ public class GameController implements StateController {
         else if (getButtonSelected() == 2) {
             boolean aux = gameSet.doubledown();
         }
-        else if (getButtonSelected() == 3) {
+        else if (getButtonSelected() == 3 && split) {
+            split = false;
             boolean aux = gameSet.split();
         }
         //TODO: finish aux variable

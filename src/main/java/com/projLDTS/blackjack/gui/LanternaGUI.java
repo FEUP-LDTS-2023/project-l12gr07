@@ -369,9 +369,10 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(44, 36), "DOUBLE DOWN");
     }
 
-    public void drawSplitButton(boolean selected) {
+    public void drawSplitButton(boolean selected, boolean split) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
-        if (selected) textGraphics.setBackgroundColor(selectedColor);
+        if (selected && split) textGraphics.setBackgroundColor(selectedColor);
+        else if (!split) textGraphics.setBackgroundColor(TextColor.Factory.fromString("#808080"));
         else textGraphics.setBackgroundColor(buttonColor);
         textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(14, 3),' ');
         textGraphics.putString(new TerminalPosition(75, 36), "SPLIT");
@@ -380,7 +381,6 @@ public class LanternaGUI {
     public void drawExit() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(61, 3),' ');
         textGraphics.putString(new TerminalPosition(85, 2), "Return to Main Menu: E");
     }
 }

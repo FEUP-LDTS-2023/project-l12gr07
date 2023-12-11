@@ -11,6 +11,7 @@ public class GameViewer implements StateViewer {
     private final LanternaGUI gui;
 
     int buttonSelected;
+    boolean split;
 
     public GameViewer(LanternaGUI gui_) {
         gui = gui_;
@@ -55,11 +56,15 @@ public class GameViewer implements StateViewer {
         gui.drawHitButton(false);
         gui.drawStandButton(false);
         gui.drawDoubleDownButton(false);
-        gui.drawSplitButton(false);
+        gui.drawSplitButton(false, split);
         if (buttonSelected == 0) gui.drawHitButton(true);
         else if (buttonSelected == 1) gui.drawStandButton(true);
         else if (buttonSelected == 2) gui.drawDoubleDownButton(true);
-        else if (buttonSelected == 3) gui.drawSplitButton(true);
+        else if (buttonSelected == 3) gui.drawSplitButton(true, split);
         gui.refresh();
+    }
+
+    public void setSplit(boolean i) {
+        split = i;
     }
 }
