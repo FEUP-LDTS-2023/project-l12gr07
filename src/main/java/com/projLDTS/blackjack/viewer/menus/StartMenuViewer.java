@@ -1,5 +1,7 @@
 package com.projLDTS.blackjack.viewer.menus;
 
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.StateViewer;
@@ -27,7 +29,7 @@ public class StartMenuViewer implements StateViewer {
     @Override
     public void draw() throws IOException {
         gui.clear();
-        //gui.drawBlackjack();
+        gui.drawBlackjack();
         gui.drawGetUsername(username);
         drawElements();
         gui.refresh();
@@ -54,7 +56,7 @@ public class StartMenuViewer implements StateViewer {
 
     @Override
     public int userInput() throws IOException {
-       return new UserInput(gui).StartMenuInput(buttonSelected);
+        return new UserInput(gui).StartMenuInput(buttonSelected,username);
     }
 
     @Override

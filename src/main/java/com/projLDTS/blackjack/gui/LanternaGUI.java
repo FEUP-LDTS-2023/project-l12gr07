@@ -87,35 +87,37 @@ public class LanternaGUI {
     }
 
     public void drawGetUsername(StringBuilder username) {
-        textGraphics.putString(new TerminalPosition(30, 12), "Insert your username: (Max 20 characters)\n");
-        textGraphics.putString(new TerminalPosition(49, 17), username.toString() + "\n");
+        textGraphics.putString(new TerminalPosition(46, 17), "Insert your username: (Max 20 characters)\n");
+
+        int maxUsernameLength = 20;
+
         int boxWidth = 22;
         int boxHeight = 3;
-        int x = 48;
-        int y = 16;
+        int x = 48 + 5 + 2;
+        int y = 19;
+
+        String truncatedUsername = username.toString();
+        if (truncatedUsername.length() > maxUsernameLength) {
+            truncatedUsername = truncatedUsername.substring(0, maxUsernameLength);
+        }
+        int usernameX = x + (boxWidth - truncatedUsername.length()) / 2;
+        int usernameY = y + boxHeight / 2;
+        textGraphics.putString(new TerminalPosition(usernameX, usernameY), truncatedUsername);
+
         drawBox(x, y, boxWidth, boxHeight, TextColor.Factory.fromString("#028A02"));
     }
 
     private void drawBox(int x, int y, int width, int height, TextColor borderColor) {
-        for (int i = 1; i < width - 1; i++) {
-            for (int j = 1; j < height - 1; j++) {
-                // textGraphics.setForegroundColor(boxColor);
-                textGraphics.setCharacter(x + i, y + j, ' ');
-            }
-        }
-
         for (int i = 0; i < width; i++) {
             textGraphics.setForegroundColor(borderColor);
             textGraphics.setCharacter(x + i, y, '-');
             textGraphics.setCharacter(x + i, y + height - 1, '-');
         }
-
         for (int i = 1; i < height - 1; i++) {
             textGraphics.setForegroundColor(borderColor);
             textGraphics.setCharacter(x, y + i, '|');
             textGraphics.setCharacter(x + width - 1, y + i, '|');
         }
-        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
     }
 
     public void drawExitButton(boolean selected) {
@@ -153,16 +155,16 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(28, 24), new TerminalSize(14, 3),' ');
-        textGraphics.putString(new TerminalPosition(32, 25), "RETURN");
+        textGraphics.fillRectangle(new TerminalPosition(35, 24), new TerminalSize(14, 3),' ');
+        textGraphics.putString(new TerminalPosition(39, 25), "RETURN");
     }
 
     public void drawPlayButton(boolean selected) throws IOException {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(76, 24), new TerminalSize(12, 3),' ');
-        textGraphics.putString(new TerminalPosition(80, 25), "PLAY");
+        textGraphics.fillRectangle(new TerminalPosition(83, 24), new TerminalSize(12, 3),' ');
+        textGraphics.putString(new TerminalPosition(87, 25), "PLAY");
     }
 
     public void drawYesButton(boolean selected) {

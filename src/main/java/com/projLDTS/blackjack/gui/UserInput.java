@@ -31,23 +31,27 @@ public class UserInput {
         return buttonSelected;
     }
 
-    public int StartMenuInput(int buttonSelected) throws IOException {
+    public int StartMenuInput(int buttonSelected, StringBuilder username) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
-        else if (key.getKeyType() == KeyType.EOF)
-            return -1;
-        if (key.getKeyType() == KeyType.ArrowRight) {
+
+        if (key.getKeyType() == KeyType.Backspace && username.length() > 0) {
+            username.deleteCharAt(username.length() - 1);
+        } else if (key.getKeyType() == KeyType.Character) {
+            char character = key.getCharacter();
+            if (character == ' ') {
+                return buttonSelected; // Space bar pressed (simulate button click)
+            } else if (Character.isLetter(character)) {
+                username.append(character);
+            }
+        } else if (key.getKeyType() == KeyType.ArrowRight) {
             buttonSelected++;
             if (buttonSelected == 3) buttonSelected = 0;
             return buttonSelected;
-        }
-        else if (key.getKeyType() == KeyType.ArrowLeft) {
+        } else if (key.getKeyType() == KeyType.ArrowLeft) {
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 2;
             return buttonSelected;
-        }
-        else if (key.getKeyType() == KeyType.Enter) {
+        } else if (key.getKeyType() == KeyType.Enter) {
             return 3;
         }
         return buttonSelected;
