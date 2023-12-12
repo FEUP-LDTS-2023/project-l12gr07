@@ -22,18 +22,17 @@ public class DecksMenuViewer implements StateViewer {
     @Override
     public void draw() throws IOException {
         gui.clear();
-        gui.drawDecksText();
         drawElements();
         gui.refresh();
     }
 
     @Override
     public void drawElements() throws IOException {
+        gui.drawDecksText();
         gui.drawOneButton(buttonSelected == 0);
         gui.drawTwoButton(buttonSelected == 1);
         gui.drawInfButton(buttonSelected == 2);
         gui.drawRetDecks(buttonSelected == 3);
-        gui.refresh();
     }
 
 

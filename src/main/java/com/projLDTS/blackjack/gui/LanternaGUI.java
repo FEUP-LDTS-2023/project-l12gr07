@@ -55,6 +55,10 @@ public class LanternaGUI {
         screen.refresh();
     }
 
+    public TextGraphics getTextGraphics() {
+        return textGraphics;
+    }
+
     public Screen getScreen() {
         return this.screen;
     }
