@@ -14,7 +14,7 @@ public class ApplicationStateController {
     private StateController stateController;
     private StateViewer stateViewer;
     private ApplicationState applicationState;
-    private final LanternaGUI gui;
+    private LanternaGUI gui;
 
     public ApplicationStateController() throws IOException, FontFormatException, URISyntaxException {
         gui = new LanternaGUI(130, 40);
@@ -27,6 +27,10 @@ public class ApplicationStateController {
     }
 
     public StateViewer getStateViewer(){return stateViewer;}
+
+    public void setGui(LanternaGUI lanternaGUI) {
+        gui = lanternaGUI;
+    }
 
     public void run() throws IOException, FontFormatException, URISyntaxException {
         while (stateController != null) {
@@ -100,5 +104,13 @@ public class ApplicationStateController {
 
     public int getButtonSelected() {
         return stateViewer.getButtonSelected();
+    }
+
+    public void setStateViewer(StateViewer stateViewer_) {
+        stateViewer = stateViewer_;
+    }
+
+    public void setStateController(StateController stateController_) {
+        stateController = stateController_;
     }
 }

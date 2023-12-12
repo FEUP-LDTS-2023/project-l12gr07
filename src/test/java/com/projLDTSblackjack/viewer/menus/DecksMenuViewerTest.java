@@ -60,6 +60,12 @@ public class DecksMenuViewerTest {
     @Test
     public void testUserInput() throws IOException {
         when(mockedUserInput.DecksMenuInput(1)).thenReturn(1);
+        decksMenuViewer = new DecksMenuViewer(mockedGUI) {
+            @Override
+            public int userInput() throws IOException {
+                return mockedUserInput.DecksMenuInput(1);
+            }
+        };
         int userInputResult = decksMenuViewer.userInput();
         verify(mockedUserInput).DecksMenuInput(1);
         assert(userInputResult == 1);

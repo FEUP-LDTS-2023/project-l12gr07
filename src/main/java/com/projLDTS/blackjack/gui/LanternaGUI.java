@@ -55,6 +55,9 @@ public class LanternaGUI {
         screen.refresh();
     }
 
+    public TerminalSize getSize() {
+        return size;
+    }
     public TextGraphics getTextGraphics() {
         return textGraphics;
     }
