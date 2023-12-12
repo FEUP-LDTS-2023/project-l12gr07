@@ -383,4 +383,20 @@ public class LanternaGUI {
         textGraphics.setBackgroundColor(buttonColor);
         textGraphics.putString(new TerminalPosition(85, 2), "Return to Main Menu: E");
     }
+
+    public void drawPlayerLost() {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setBackgroundColor(selectedColor);
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.putString(new TerminalPosition(65, 18), "YOU LOST");
+        textGraphics.putString(new TerminalPosition(65, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+    }
+
+    public void drawPlayerWon() {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setBackgroundColor(selectedColor);
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.putString(new TerminalPosition(65, 18), "YOU WON");
+        textGraphics.putString(new TerminalPosition(65, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+    }
 }

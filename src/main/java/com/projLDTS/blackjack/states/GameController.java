@@ -47,21 +47,55 @@ public class GameController implements StateController {
         split = gameSet.canSplit();
     }
 
-    private void play() {
+    private void play() throws IOException, URISyntaxException, FontFormatException {
+        boolean aux = false;
         if (getButtonSelected() == 0) {
-            boolean aux = gameSet.hit();
+            aux = gameSet.hit();
         }
         else if (getButtonSelected() == 1) {
             gameSet.stand();
         }
         else if (getButtonSelected() == 2) {
-            boolean aux = gameSet.doubledown();
+            aux = gameSet.doubledown();
         }
         else if (getButtonSelected() == 3 && split) {
             split = false;
-            boolean aux = gameSet.split();
+            aux = gameSet.split();
         }
-        //TODO: finish aux variable
+        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
+        if (!aux) {
+            // Player Lost
+            gameViewer.setAfterPlay(true);
+            while (true) {
+                gameViewer.playerLost();
+                int input = gameViewer.userInput();
+                if (input == 0) {
+                    gameSet.nextGame();
+                    break;
+                }
+                else if (input == 1) {
+                    nextState();
+                    break;
+                }
+            }
+        }
+        else {
+            // Player Won
+            gameViewer.setAfterPlay(true);
+            while (true) {
+                gameViewer.playerWon();
+                int input = gameViewer.userInput();
+                if (input == 0) {
+                    gameSet.nextGame();
+                    break;
+                }
+                else if (input == 1) {
+                    nextState();
+                    break;
+                }
+            }
+        }
+        gameViewer.setAfterPlay(false);
     }
 
     @Override

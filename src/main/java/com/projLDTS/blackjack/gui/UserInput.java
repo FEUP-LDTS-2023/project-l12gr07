@@ -125,4 +125,17 @@ public class UserInput {
         }
         return buttonSelected;
     }
+
+    public int pLostInput() throws IOException {
+        KeyStroke key = gui.getScreen().readInput();
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+            gui.getScreen().close();
+        else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'y')
+            return 0;
+        else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'n')
+            return 1;
+        else if (key.getKeyType() == KeyType.EOF)
+            return -1;
+        return -1;
+    }
 }
