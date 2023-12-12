@@ -40,7 +40,7 @@ public class UserInput {
             char character = key.getCharacter();
             if (character == ' ') {
                 return buttonSelected; // Space bar pressed (simulate button click)
-            } else if (Character.isLetter(character)) {
+            } else if (Character.isLetter(character) && username.length() < 20) {
                 username.append(character);
             }
         } else if (key.getKeyType() == KeyType.ArrowRight) {
