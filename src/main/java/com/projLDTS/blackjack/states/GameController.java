@@ -40,6 +40,9 @@ public class GameController implements StateController {
                 setButtonSelected(aux);
             }
             applicationStateController.redraw();
+            gameViewer.drawCards(gameSet.getPlayer().getHand());
+            gameViewer.drawCards(gameSet.getDealer().getHand());
+            if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand());
         }
     }
 

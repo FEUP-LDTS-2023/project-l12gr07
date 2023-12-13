@@ -2,6 +2,7 @@ package com.projLDTS.blackjack.viewer.game;
 
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
+import com.projLDTS.blackjack.model.game.Cards.Hand;
 import com.projLDTS.blackjack.viewer.StateViewer;
 
 import java.io.IOException;
@@ -47,15 +48,10 @@ public class GameViewer implements StateViewer {
     }
 
     public void drawElements() throws IOException {
-
-        gui.drawHitButton(false);
-        gui.drawStandButton(false);
-        gui.drawDoubleDownButton(false);
-        gui.drawSplitButton(false, split);
-        if (buttonSelected == 0) gui.drawHitButton(true);
-        else if (buttonSelected == 1) gui.drawStandButton(true);
-        else if (buttonSelected == 2) gui.drawDoubleDownButton(true);
-        else if (buttonSelected == 3) gui.drawSplitButton(true, split);
+        gui.drawHitButton(buttonSelected == 0);
+        gui.drawStandButton(buttonSelected == 1);
+        gui.drawDoubleDownButton(buttonSelected == 2);
+        gui.drawSplitButton(buttonSelected == 3, split);
         gui.refresh();
     }
 
@@ -75,5 +71,9 @@ public class GameViewer implements StateViewer {
     public void playerWon() throws IOException {
         gui.drawPlayerWon();
         gui.refresh();
+    }
+
+    public void drawCards(Hand hand) {
+        gui.drawCards(hand);
     }
 }

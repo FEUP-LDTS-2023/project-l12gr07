@@ -47,4 +47,8 @@ public class BaseCard {
         playingCard.add("│       " + rankString + " │");
         playingCard.add("└─────────┘");
     }
+
+    public ArrayList<String> getPlayingCard() {
+        return playingCard;
+    }
 }

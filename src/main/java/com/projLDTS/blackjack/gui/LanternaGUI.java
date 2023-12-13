@@ -9,6 +9,9 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.projLDTS.blackjack.model.game.Cards.BaseCard;
+import com.projLDTS.blackjack.model.game.Cards.Card;
+import com.projLDTS.blackjack.model.game.Cards.Hand;
 
 import java.awt.*;
 import java.io.File;
@@ -407,5 +410,13 @@ public class LanternaGUI {
         textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
         textGraphics.putString(new TerminalPosition(65, 18), "YOU WON");
         textGraphics.putString(new TerminalPosition(65, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+    }
+
+    public void drawCards(Hand hand) {
+        BaseCard bc;
+        for (Card card : hand.getHand()) {
+            bc = new BaseCard(card.getValue(), card.suit());
+            // print de bc.getPlayingCard()
+        }
     }
 }

@@ -35,12 +35,9 @@ public class MainMenuViewer implements StateViewer {
 
     @Override
     public void drawElements() throws IOException {
-        gui.drawStartButton(false);
-        gui.drawHowToPlayButton(false);
-        gui.drawExitButton(false);
-        if (buttonSelected == 0) gui.drawStartButton(true);
-        else if (buttonSelected == 1) gui.drawHowToPlayButton(true);
-        else if (buttonSelected == 2) gui.drawExitButton(true);
+        gui.drawStartButton(buttonSelected == 0);
+        gui.drawHowToPlayButton(buttonSelected == 1);
+        gui.drawExitButton(buttonSelected == 2);
         gui.refresh();
     }
 
