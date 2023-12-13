@@ -25,8 +25,16 @@ public class Player extends CardSet {
         // TODO
     }
     public boolean doubleDown(Deck deck, boolean split) {
-        // TODO
-        return false;
+        Hand currentHand = split ? splitHand : hand;
+        if (currentHand.getHand().size() != 2 ||
+            currentHand.getValue() >= 21 ||
+            currentHand.getBet() > credit) { // bet nao pode ser maior do que o credito disponivel
+            return false;
+        }
+        currentHand.addCard(deck);
+        credit = credit - currentHand.getBet();
+        currentHand.setBet(currentHand.getBet() * 2);
+        return true;
     }
     public boolean split(Deck deck) {
         // TODO

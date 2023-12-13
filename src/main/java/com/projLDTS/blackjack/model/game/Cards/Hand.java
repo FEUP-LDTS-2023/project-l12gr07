@@ -1,6 +1,7 @@
 package com.projLDTS.blackjack.model.game.Cards;
 
 import com.projLDTS.blackjack.model.game.Decks.Deck;
+import com.projLDTS.blackjack.model.game.Decks.GameSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,8 @@ public class Hand {
     public int getBet() {
         return bet;
     }
-    public void setBet() {
+    public void setBet(int bet) {
+        int totalCredit = GameSet.getGame().getPlayer().getCredit();
+        GameSet.getGame().getPlayer().setCredit(totalCredit - bet);
     }
 }
