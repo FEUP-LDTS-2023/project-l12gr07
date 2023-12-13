@@ -32,7 +32,7 @@ class HowToPlayMenuViewerTest {
         howToPlayMenuViewer.draw();
 
         verify(mockedGUI).clear();
-        verify(mockedGUI, times(4)).refresh(); // Called multiple times within the method
+        verify(mockedGUI, times(4)).refresh();
     }
 
     @Test
