@@ -38,6 +38,7 @@ class MainMenuViewerTest {
 
         verify(mockedGUI).clear();
         verify(mockedGUI).drawBlackjack();
+
         verify(mockedGUI, times(1)).drawStartButton(anyBoolean());
         verify(mockedGUI, times(1)).drawHowToPlayButton(anyBoolean());
         verify(mockedGUI, times(1)).drawExitButton(anyBoolean());
