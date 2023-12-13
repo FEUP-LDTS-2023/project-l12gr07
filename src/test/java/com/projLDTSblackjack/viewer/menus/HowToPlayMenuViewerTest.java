@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+
 import java.io.IOException;
 
 import static org.mockito.Mockito.*;
@@ -31,7 +32,7 @@ class HowToPlayMenuViewerTest {
         howToPlayMenuViewer.draw();
 
         verify(mockedGUI).clear();
-        verify(mockedGUI, times(4)).refresh();
+        verify(mockedGUI, times(4)).refresh(); // Called multiple times within the method
     }
 
     @Test
