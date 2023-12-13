@@ -33,6 +33,7 @@ public class DecksMenuViewer implements StateViewer {
         gui.drawTwoButton(buttonSelected == 1);
         gui.drawInfButton(buttonSelected == 2);
         gui.drawRetDecks(buttonSelected == 3);
+        gui.refresh();
     }
 
 
