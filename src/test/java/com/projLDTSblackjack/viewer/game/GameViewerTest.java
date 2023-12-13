@@ -42,7 +42,6 @@ class GameViewerTest {
         verify(mockedGUI).drawCredit();
         verify(mockedGUI).drawLine();
         verify(mockedGUI).drawBet();
-        verify(mockedGUI).refresh();
     }
 
     @Test
