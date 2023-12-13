@@ -6,7 +6,6 @@ import com.projLDTS.blackjack.viewer.menus.HowToPlayMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -22,7 +21,6 @@ class HowToPlayMenuViewerTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
         mockedGUI = Mockito.mock(LanternaGUI.class);
         mockedUserInput = Mockito.mock(UserInput.class);
         howToPlayMenuViewer = new HowToPlayMenuViewer(mockedGUI);

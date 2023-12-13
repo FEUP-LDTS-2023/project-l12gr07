@@ -6,7 +6,6 @@ import com.projLDTS.blackjack.viewer.menus.ExitMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.*;
 
@@ -20,7 +19,6 @@ class ExitMenuViewerTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
         mockedGUI = Mockito.mock(LanternaGUI.class);
         mockedUserInput = Mockito.mock(UserInput.class);
         exitMenuViewer = new ExitMenuViewer(mockedGUI);
