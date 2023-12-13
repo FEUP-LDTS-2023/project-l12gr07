@@ -141,7 +141,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(50, 21), new TerminalSize(30, 3), ' ');
+        textGraphics.fillRectangle(new TerminalPosition(50, 21),new TerminalSize(30, 3),' ');
         textGraphics.putString(new TerminalPosition(63, 22), "START");
     }
 
@@ -506,6 +506,7 @@ public class LanternaGUI {
             textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
         }
     }
+
     public void setScreen(Screen mockScreen) {
         screen = mockScreen;
     }
