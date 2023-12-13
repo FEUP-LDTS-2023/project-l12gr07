@@ -37,7 +37,7 @@ public class StartMenuViewer implements StateViewer {
     public void draw() throws IOException {
         gui.clear();
         gui.drawBlackjack();
-        System.out.println("Current username: " + username.toString()); // Add this line
+        //System.out.println("Current username: " + username.toString());
         gui.drawGetUsername(username);
         drawElements();
         gui.refresh();
