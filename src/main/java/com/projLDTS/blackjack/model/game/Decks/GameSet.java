@@ -15,6 +15,7 @@ public class GameSet {
         deck.randomize();
         player = new Player();
         dealer = new Dealer();
+        dealCards();
     }
 
     public static GameSet getGame() {
@@ -67,4 +68,9 @@ public class GameSet {
         // TODO: boolean split?
         return player.doubleDown(deck, true);
     }
+
+    public boolean canSplit() {
+        return player.canSplit();
+    }
+
 }

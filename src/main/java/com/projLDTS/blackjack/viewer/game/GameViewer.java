@@ -11,6 +11,8 @@ public class GameViewer implements StateViewer {
     private final LanternaGUI gui;
 
     int buttonSelected;
+    boolean split;
+    boolean afterPlay = false;
 
     public GameViewer(LanternaGUI gui_) {
         gui = gui_;
@@ -43,6 +45,7 @@ public class GameViewer implements StateViewer {
 
     @Override
     public int userInput() throws IOException {
+        if (afterPlay) return new UserInput(gui).pLostInput();
         return new UserInput(gui).GameInput(buttonSelected);
     }
 
@@ -55,11 +58,29 @@ public class GameViewer implements StateViewer {
         gui.drawHitButton(false);
         gui.drawStandButton(false);
         gui.drawDoubleDownButton(false);
-        gui.drawSplitButton(false);
+        gui.drawSplitButton(false, split);
         if (buttonSelected == 0) gui.drawHitButton(true);
         else if (buttonSelected == 1) gui.drawStandButton(true);
         else if (buttonSelected == 2) gui.drawDoubleDownButton(true);
-        else if (buttonSelected == 3) gui.drawSplitButton(true);
+        else if (buttonSelected == 3) gui.drawSplitButton(true, split);
+        gui.refresh();
+    }
+
+    public void setSplit(boolean i) {
+        split = i;
+    }
+
+    public void playerLost() throws IOException {
+        gui.drawPlayerLost();
+        gui.refresh();
+    }
+
+    public void setAfterPlay(boolean i) {
+        afterPlay = i;
+    }
+
+    public void playerWon() throws IOException {
+        gui.drawPlayerWon();
         gui.refresh();
     }
 }

@@ -37,12 +37,21 @@ public class Player extends CardSet {
         return true;
     }
     public boolean split(Deck deck) {
-        // TODO
-        return false;
+        splitHand.addCard(hand.getHand().get(0));
+        hand.removeCard(0);
+        return true;
     }
     public boolean isSplit() {
         // TODO
         return false;
     }
 
+    public boolean canSplit() {
+        if (hand.getHand().size() == 2) {
+            if (hand.getHand().get(0).getValue() == hand.getHand().get(1).getValue()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

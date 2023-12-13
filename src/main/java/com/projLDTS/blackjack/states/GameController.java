@@ -1,9 +1,6 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.model.game.Decks.Deck;
 import com.projLDTS.blackjack.model.game.Decks.GameSet;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 
@@ -15,6 +12,7 @@ public class GameController implements StateController {
     private ApplicationStateController applicationStateController;
     private GameSet gameSet;
     private int gameType;
+    private boolean split = false;
 
     public GameController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
@@ -24,8 +22,13 @@ public class GameController implements StateController {
     public void run() throws IOException, FontFormatException, URISyntaxException {
         // TODO: POR ACABAR
         gameSet = new GameSet(gameType);
+        applicationStateController.redraw();
         while (true) {
+            canSplit();
+            GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
+            gameViewer.setSplit(split);
             int aux = userInput();
+            if (aux == 3 && !split) continue;
             if (aux == 5) {
                 nextState();
                 break;
@@ -40,20 +43,59 @@ public class GameController implements StateController {
         }
     }
 
-    private void play() {
+    private void canSplit() {
+        split = gameSet.canSplit();
+    }
+
+    private void play() throws IOException, URISyntaxException, FontFormatException {
+        boolean aux = false;
         if (getButtonSelected() == 0) {
-            boolean aux = gameSet.hit();
+            aux = gameSet.hit();
         }
         else if (getButtonSelected() == 1) {
             gameSet.stand();
         }
         else if (getButtonSelected() == 2) {
-            boolean aux = gameSet.doubledown();
+            aux = gameSet.doubledown();
         }
-        else if (getButtonSelected() == 3) {
-            boolean aux = gameSet.split();
+        else if (getButtonSelected() == 3 && split) {
+            split = false;
+            aux = gameSet.split();
         }
-        //TODO: finish aux variable
+        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
+        if (!aux) {
+            // Player Lost
+            gameViewer.setAfterPlay(true);
+            while (true) {
+                gameViewer.playerLost();
+                int input = gameViewer.userInput();
+                if (input == 0) {
+                    gameSet.nextGame();
+                    break;
+                }
+                else if (input == 1) {
+                    nextState();
+                    break;
+                }
+            }
+        }
+        else {
+            // Player Won
+            gameViewer.setAfterPlay(true);
+            while (true) {
+                gameViewer.playerWon();
+                int input = gameViewer.userInput();
+                if (input == 0) {
+                    gameSet.nextGame();
+                    break;
+                }
+                else if (input == 1) {
+                    nextState();
+                    break;
+                }
+            }
+        }
+        gameViewer.setAfterPlay(false);
     }
 
     @Override

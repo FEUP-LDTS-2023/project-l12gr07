@@ -56,4 +56,8 @@ public class Hand {
         int totalCredit = GameSet.getGame().getPlayer().getCredit();
         GameSet.getGame().getPlayer().setCredit(totalCredit - bet);
     }
+
+    public void removeCard(int i) {
+        hand.remove(i);
+    }
 }
