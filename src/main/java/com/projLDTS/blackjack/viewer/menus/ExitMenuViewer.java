@@ -40,14 +40,6 @@ public class ExitMenuViewer implements StateViewer {
     }
 
     @Override
-    public int getPage() {
-        return 0;
-    }
-
-    @Override
-    public void setPage(int i) {}
-
-    @Override
     public int userInput() throws IOException {
         return new UserInput(gui).ExitAndHowToPlayMenuInput(buttonSelected);
     }

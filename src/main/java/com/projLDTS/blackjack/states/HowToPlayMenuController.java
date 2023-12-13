@@ -3,6 +3,7 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
+import com.projLDTS.blackjack.viewer.menus.HowToPlayMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -39,11 +40,13 @@ public class HowToPlayMenuController implements StateController {
     }
 
     public int getPage() {
-        return applicationStateController.getStateViewer().getPage();
+        HowToPlayMenuViewer howToPlayMenuViewer = (HowToPlayMenuViewer) applicationStateController.getStateViewer();
+        return howToPlayMenuViewer.getPage();
     }
 
     public void setPage(int i) {
-        applicationStateController.getStateViewer().setPage(i);
+        HowToPlayMenuViewer howToPlayMenuViewer = (HowToPlayMenuViewer) applicationStateController.getStateViewer();
+        howToPlayMenuViewer.setPage(i);
     }
 
     @Override

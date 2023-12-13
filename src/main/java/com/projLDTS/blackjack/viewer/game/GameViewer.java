@@ -36,14 +36,6 @@ public class GameViewer implements StateViewer {
     }
 
     @Override
-    public int getPage() {
-        return 0;
-    }
-
-    @Override
-    public void setPage(int i) {}
-
-    @Override
     public int userInput() throws IOException {
         if (afterPlay) return new UserInput(gui).pLostInput();
         return new UserInput(gui).GameInput(buttonSelected);
@@ -55,6 +47,7 @@ public class GameViewer implements StateViewer {
     }
 
     public void drawElements() throws IOException {
+
         gui.drawHitButton(false);
         gui.drawStandButton(false);
         gui.drawDoubleDownButton(false);

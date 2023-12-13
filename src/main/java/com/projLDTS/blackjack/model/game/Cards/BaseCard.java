@@ -47,5 +47,4 @@ public class BaseCard {
         playingCard.add("│       " + rankString + " │");
         playingCard.add("└─────────┘");
     }
-
 }

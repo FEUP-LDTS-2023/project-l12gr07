@@ -26,12 +26,6 @@ public class MainMenuViewer implements StateViewer {
     }
 
     @Override
-    public int getPage() {return 0;}
-
-    @Override
-    public void setPage(int i) {}
-
-    @Override
     public void draw() throws IOException {
         gui.clear();
         gui.drawBlackjack();

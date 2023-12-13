@@ -7,8 +7,6 @@ public interface StateViewer {
     public void drawElements() throws IOException;
     public int getButtonSelected();
     public void setButtonSelected(int i);
-    int getPage();
-    void setPage(int i);
     int userInput() throws IOException;
     void close() throws IOException;
 }
