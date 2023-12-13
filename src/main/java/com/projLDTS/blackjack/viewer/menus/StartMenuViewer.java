@@ -13,6 +13,13 @@ public class StartMenuViewer implements StateViewer {
     private final LanternaGUI gui;
     private StringBuilder username = new StringBuilder();
 
+    public void setUsername(String username1){
+        username = new StringBuilder(username1);
+    }
+    public StringBuilder getUsername(){
+        return username;
+    }
+
     public StartMenuViewer(LanternaGUI gui_){
         buttonSelected = 0;
         gui = gui_;
@@ -30,6 +37,7 @@ public class StartMenuViewer implements StateViewer {
     public void draw() throws IOException {
         gui.clear();
         gui.drawBlackjack();
+        System.out.println("Current username: " + username.toString()); // Add this line
         gui.drawGetUsername(username);
         drawElements();
         gui.refresh();
@@ -63,4 +71,5 @@ public class StartMenuViewer implements StateViewer {
     public void close() throws IOException {
         gui.close();
     }
+
 }
