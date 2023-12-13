@@ -4,6 +4,7 @@ import com.projLDTS.blackjack.controller.menu.*;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.states.ApplicationState;
 import com.projLDTS.blackjack.states.StartMenuController;
+import com.projLDTS.blackjack.states.StateController;
 import com.projLDTS.blackjack.viewer.StateViewer;
 import com.projLDTS.blackjack.viewer.menus.StartMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,10 +38,14 @@ public class ApplicationStateControllerTest {
     public void testRun() throws IOException, FontFormatException, URISyntaxException {
         StateViewer mockedStateViewer = Mockito.mock(StateViewer.class);
         applicationStateController.setStateViewer(mockedStateViewer);
+        StateController mockedStateController = Mockito.mock(StateController.class);
+        applicationStateController.setStateController(mockedStateController);
 
+        // Run the application state controller
         applicationStateController.run();
 
-        verify(mockedStateViewer, times(1)).draw();
+        // Verify that state controller run method was called
+        verify(applicationStateController.getStateViewer(), times(1)).draw();
         verify(applicationStateController.getStateController(), times(1)).run();
     }
 
