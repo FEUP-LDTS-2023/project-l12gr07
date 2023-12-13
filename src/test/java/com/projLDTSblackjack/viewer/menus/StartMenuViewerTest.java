@@ -15,10 +15,7 @@ import static org.mockito.Mockito.*;
 
 public class StartMenuViewerTest {
     private LanternaGUI mockedGUI;
-    //@Mock
     private UserInput mockedUserInput;
-
-    //@InjectMocks
     private StartMenuViewer startMenuViewer;
 
     @BeforeEach
