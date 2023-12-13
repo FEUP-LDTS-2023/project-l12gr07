@@ -35,7 +35,7 @@ public class DecksMenuViewerTest {
         verify(mockedGUI, times(1)).drawInfButton(Mockito.anyBoolean());
         verify(mockedGUI, times(1)).drawRetDecks(Mockito.anyBoolean());
 
-        verify(mockedGUI, times(1)).refresh();
+        verify(mockedGUI, times(2)).refresh();
     }
 
     @Test
