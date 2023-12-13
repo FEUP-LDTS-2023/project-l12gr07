@@ -6,7 +6,6 @@ import com.projLDTS.blackjack.viewer.menus.Last10GamesMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
