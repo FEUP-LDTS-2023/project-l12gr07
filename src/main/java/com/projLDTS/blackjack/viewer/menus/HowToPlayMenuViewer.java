@@ -45,9 +45,10 @@ public class HowToPlayMenuViewer implements StateViewer {
     @Override
     public void drawElements() throws IOException {
         drawPageButtons();
+        gui.refresh();
     }
 
-    private void drawPageButtons() throws IOException {
+    public void drawPageButtons() throws IOException {
         if (page == 0) {
             gui.drawRet1();
             gui.drawNext();
@@ -66,22 +67,18 @@ public class HowToPlayMenuViewer implements StateViewer {
         }
         gui.refresh();
     }
-    private void drawPageContent() throws IOException {
+    public void drawPageContent() throws IOException {
         switch (page) {
             case 0:
-                gui.clear();
                 gui.drawHowToPlayPage1();
                 break;
             case 1:
-                gui.clear();
                 gui.drawHowToPlayPage2();
                 break;
             case 2:
-                gui.clear();
                 gui.drawHowToPlayPage3();
                 break;
             case 3:
-                gui.clear();
                 gui.drawHowToPlayPage4();
                 break;
             default:
