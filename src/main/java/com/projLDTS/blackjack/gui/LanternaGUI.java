@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +28,6 @@ public class LanternaGUI {
     private final TextGraphics textGraphics;
     TextColor buttonColor = TextColor.Factory.fromString("#00CA4C");
     TextColor selectedColor = TextColor.Factory.fromString("#FF0000");
-
 
     public LanternaGUI(Screen screen, TextGraphics textGraphics,  TerminalSize size) {
         this.screen = screen;
