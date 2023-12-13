@@ -8,23 +8,22 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 public class LanternaGUI {
-    private final Screen screen;
+    private Screen screen;
     private TerminalSize size;
-    private TextGraphics textGraphics;
+    private final TextGraphics textGraphics;
     TextColor buttonColor = TextColor.Factory.fromString("#00CA4C");
     TextColor selectedColor = TextColor.Factory.fromString("#FF0000");
 
-    public LanternaGUI(Screen screen) {
+    public LanternaGUI(Screen screen, TextGraphics textGraphics,  TerminalSize size) {
         this.screen = screen;
+        this.textGraphics = textGraphics;
+        this.size = size;
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
@@ -103,7 +102,7 @@ public class LanternaGUI {
         drawBox(x, y, boxWidth, boxHeight, TextColor.Factory.fromString("#028A02"));
     }
 
-    private void drawBox(int x, int y, int width, int height, TextColor borderColor) {
+    public void drawBox(int x, int y, int width, int height, TextColor borderColor) {
         for (int i = 1; i < width - 1; i++) {
             for (int j = 1; j < height - 1; j++) {
                 // textGraphics.setForegroundColor(boxColor);
@@ -136,7 +135,8 @@ public class LanternaGUI {
     public void drawStartButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
-        else textGraphics.setBackgroundColor(buttonColor);        textGraphics.fillRectangle(new TerminalPosition(50, 21),new TerminalSize(30, 3),' ');
+        else textGraphics.setBackgroundColor(buttonColor);
+        textGraphics.fillRectangle(new TerminalPosition(50, 21),new TerminalSize(30, 3),' ');
         textGraphics.putString(new TerminalPosition(63, 22), "START");
     }
 
@@ -389,5 +389,13 @@ public class LanternaGUI {
         textGraphics.setBackgroundColor(buttonColor);
         textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(61, 3),' ');
         textGraphics.putString(new TerminalPosition(85, 2), "Return to Main Menu: E");
+    }
+
+    public void setScreen(Screen mockScreen) {
+        screen = mockScreen;
+    }
+
+    public void setSize(TerminalSize mockTerminalSize) {
+        size = mockTerminalSize;
     }
 }
