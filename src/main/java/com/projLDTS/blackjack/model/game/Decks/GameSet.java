@@ -57,7 +57,12 @@ public class GameSet {
     }
 
     public void stand() {
-        player.stand();
+        int playerHand = player.stand();
+        int op = dealer.stand(playerHand, deck);
+        if (op == 0) player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 2x aposta do player
+        if (op == 2) player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 1x aposta do player
+        if (player.getCredit() == 0) {}// TODO: gameOver
+        else nextGame();
     }
 
     public boolean split() {

@@ -21,8 +21,8 @@ public class Player extends CardSet {
         }
         return false;
     }
-    public void stand() {
-        // TODO
+    public int stand() {
+        return hand.getValue();
     }
     public boolean doubleDown(Deck deck, boolean split) {
         Hand currentHand = split ? splitHand : hand;
