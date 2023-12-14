@@ -4,20 +4,21 @@ import java.util.ArrayList;
 
 public class BaseCard {
     ArrayList<String> playingCard = new ArrayList<>();
+    String rankString;
+    String suit;
     public BaseCard(int rank, String suit){
-        String rankString;
         switch (suit) {
             case "Hearts":
-                suit = "♥";
+                this.suit = "♥";
                 break;
             case "Diamonds":
-                suit = "♦";
+                this.suit = "♦";
                 break;
             case "Clubs":
-                suit = "♣";
+                this.suit = "♣";
                 break;
             case "Spades":
-                suit = "♠";
+                this.suit = "♠";
                 break;
         }
         switch (rank) {
@@ -37,18 +38,27 @@ public class BaseCard {
                 rankString = Integer.toString(rank);
                 break;
         }
-        playingCard.add("┌─────────┐");
-        playingCard.add("│" + rankString + "        │");
-        playingCard.add("│         │");
-        playingCard.add("│         │");
-        playingCard.add("│    " + suit + "    │");
-        playingCard.add("│         │");
-        playingCard.add("│         │");
-        playingCard.add("│       " + rankString + " │");
-        playingCard.add("└─────────┘");
+        // Add card content to the playingCard list
+        playingCard.add("+---------+");
+        playingCard.add("|" + rankString + "        |");
+        playingCard.add("|         |");
+        playingCard.add("|         |");
+        playingCard.add("|    " + this.suit + "    |");
+        playingCard.add("|         |");
+        playingCard.add("|         |");
+        playingCard.add("|       " + rankString + " |");
+        playingCard.add("+----------+");
     }
 
     public ArrayList<String> getPlayingCard() {
         return playingCard;
     }
+    public String getRank() {
+        return rankString;
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
 }

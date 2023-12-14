@@ -15,4 +15,7 @@ public record Card(String suit, String rank) {
             default -> 11; // Ace is 11 initially
         };
     }
+    public String getSuit() {
+        return suit;
+    }
 }

@@ -8,16 +8,14 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.projLDTS.blackjack.model.game.Cards.BaseCard;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.ArrayList;
 
 public class LanternaGUI {
     private final Screen screen;
@@ -414,9 +412,33 @@ public class LanternaGUI {
 
     public void drawCards(Hand hand) {
         BaseCard bc;
+        int position = 0;
         for (Card card : hand.getHand()) {
             bc = new BaseCard(card.getValue(), card.suit());
-            // print de bc.getPlayingCard()
+            drawCard(bc, position);
+            position += 5;
         }
+    }
+
+    private void drawCard(BaseCard card, int position) {
+        ArrayList<String> playingCard = card.getPlayingCard();
+        drawCardAscii(playingCard, position);
+    }
+
+    private void drawCardAscii(ArrayList<String> playingCard, int pos) {
+        for (int i = 0; i < playingCard.size(); i++) {
+            textGraphics.putString(new TerminalPosition(40 + pos, 20 + i), playingCard.get(i));
+        }
+        /*
+        textGraphics.putString(new TerminalPosition(40 + pos, 20), "+---------+");
+        textGraphics.putString(new TerminalPosition(41 + pos, 20),"|" + "rank" + "        |");
+        textGraphics.putString(new TerminalPosition(42 + pos, 20),"|         |");
+        textGraphics.putString(new TerminalPosition(43 + pos, 20),"|         |");
+        textGraphics.putString(new TerminalPosition(44 + pos, 20),"|    " + "suit" + "    |");
+        textGraphics.putString(new TerminalPosition(45 + pos, 20),"|         |");
+        textGraphics.putString(new TerminalPosition(46 + pos, 20),"|         |");
+        textGraphics.putString(new TerminalPosition(47 + pos, 20),"|       " + "rank" + " |");
+        textGraphics.putString(new TerminalPosition(48 + pos, 20),"+----------+");
+        */
     }
 }
