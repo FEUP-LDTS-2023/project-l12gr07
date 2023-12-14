@@ -87,4 +87,12 @@ public class GameViewer implements StateViewer {
         gui.drawPlayDraw();
         gui.refresh();
     }
+    private void drawDealerHand(LanternaGUI gui_) {
+        /*
+        List<Card> cards = new ArrayList<Card>(game.getGame().getDealer().getHand().getHand());
+        if (cards.size() < 2) {
+            cards.
+        }
+         */
+    }
 }

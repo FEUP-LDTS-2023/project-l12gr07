@@ -430,6 +430,7 @@ public class LanternaGUI {
         }
     }
 
+
     private void drawCard(Card card, int position, int row) {
         ArrayList<String> playingCard = card.getPlayingCard();
         drawCardAscii(playingCard, position, row);
