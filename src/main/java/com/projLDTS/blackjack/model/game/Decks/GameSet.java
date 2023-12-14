@@ -8,9 +8,11 @@ public class GameSet {
     private final Dealer dealer;
     private Deck deck;
     private static GameSet game = null;
+    int type;
 
     public GameSet(int n) {
         super();
+        type = n;
         deck = new Deck(n); // TODO : ir buscar aos decks
         deck.randomize();
         player = new Player();
@@ -44,7 +46,11 @@ public class GameSet {
     }
 
     public void nextGame() {
-        // TODO
+        deck = new Deck(type);
+        deck.randomize();
+        dealer.clearHand();
+        player.clearHand();
+        dealCards();
     }
 
     public void winningRounds() {
@@ -52,26 +58,37 @@ public class GameSet {
     }
 
     public boolean hit() {
-        // TODO: boolean split?
-        return player.hit(deck, true);
+        return player.hit(deck, canSplit());
     }
 
-    public void stand() {
+    public int stand() {
         int playerHand = player.stand();
-        int op = dealer.stand(playerHand, deck);
-        if (op == 0) player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 2x aposta do player
-        if (op == 2) player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 1x aposta do player
-        if (player.getCredit() == 0) {}// TODO: gameOver
-        else nextGame();
+        int op = 3;
+        while (op == 3) {
+            op = dealer.stand(playerHand, deck);
+
+        }
+        if (op == 0) {
+            player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 2x aposta do player
+            return 1;
+        }
+        if (op == 2) {
+            player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 1x aposta do player
+            return 2;
+        }
+        if (player.getCredit() == 0) {
+            return 0;
+        }
+        nextGame();
+        return 0;
     }
 
     public boolean split() {
-        return player.split(deck);
+        return player.split();
     }
 
     public boolean doubledown() {
-        // TODO: boolean split?
-        return player.doubleDown(deck, true);
+        return player.doubleDown(deck, canSplit());
     }
 
     public boolean canSplit() {

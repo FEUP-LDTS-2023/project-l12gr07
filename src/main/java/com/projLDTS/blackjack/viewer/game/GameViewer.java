@@ -38,7 +38,7 @@ public class GameViewer implements StateViewer {
 
     @Override
     public int userInput() throws IOException {
-        if (afterPlay) return new UserInput(gui).pLostInput();
+        if (afterPlay) return new UserInput(gui).playInput();
         return new UserInput(gui).GameInput(buttonSelected);
     }
 
@@ -75,5 +75,10 @@ public class GameViewer implements StateViewer {
 
     public void drawCards(Hand hand) {
         gui.drawCards(hand);
+    }
+
+    public void playDraw() throws IOException {
+        gui.drawPlayDraw();
+        gui.refresh();
     }
 }

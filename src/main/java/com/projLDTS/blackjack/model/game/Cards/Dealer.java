@@ -12,13 +12,16 @@ public class Dealer extends CardSet {
     }
 
     public int stand(int playerHand, Deck deck) {
-        while (hand.getValue() < 21 || hand.getValue() < playerHand) {
-            hand.addCard(deck);
-            if (hand.getValue() > 21) {
-                return 0; // dealer lost
-            }
+        hand.addCard(deck);
+        if (hand.getValue() > 21) return 0; // dealer lost
+        else if (hand.getValue() == playerHand) return 2; // draw
+        else if (hand.getValue() == playerHand && hand.getValue() < 21) return 1; // dealer won
+        return 3;
+    }
+
+    public void clearHand() {
+        for (int i = 0; i < hand.getHand().size(); i++) {
+            hand.removeCard(i);
         }
-        if (hand.getValue() == playerHand) return 2; // draw
-        return 1; // dealer won
     }
 }

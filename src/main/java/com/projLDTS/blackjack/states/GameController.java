@@ -20,21 +20,20 @@ public class GameController implements StateController {
 
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        // TODO: POR ACABAR
         gameSet = new GameSet(gameType);
-        applicationStateController.redraw();
+        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         while (true) {
             canSplit();
-            GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
             gameViewer.setSplit(split);
             int aux = userInput();
             if (aux == 3 && !split) continue;
             if (aux == 5) {
                 nextState();
-                break;
+                return;
             }
             else if (aux == 4) {
-                play();
+                int a = play(); // TODO: manage a
+                if (a == 1 || a == 0) return;
             }
             else {
                 setButtonSelected(aux);
@@ -50,13 +49,16 @@ public class GameController implements StateController {
         split = gameSet.canSplit();
     }
 
-    private void play() throws IOException, URISyntaxException, FontFormatException {
+    private int play() throws IOException, URISyntaxException, FontFormatException {
         boolean aux = false;
+        int staux = -1;
         if (getButtonSelected() == 0) {
             aux = gameSet.hit();
         }
         else if (getButtonSelected() == 1) {
-            gameSet.stand();
+            staux = gameSet.stand();
+            if (staux == 0) aux = false;
+            else if (staux == 1) aux = true;
         }
         else if (getButtonSelected() == 2) {
             aux = gameSet.doubledown();
@@ -66,7 +68,29 @@ public class GameController implements StateController {
             aux = gameSet.split();
         }
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
-        if (!aux) {
+
+        if (staux == 2) {
+            // Draw
+            gameViewer.setAfterPlay(true);
+            while (true) {
+                gameViewer.playDraw();
+                int input = gameViewer.userInput();
+                if (input == 0) {
+                    gameSet.nextGame();
+                    gameViewer.setAfterPlay(false);
+                    return 1;
+                }
+                else if (input == 1) {
+                    nextState();
+                    return 0;
+                }
+            }
+        }
+        else if (aux && getButtonSelected() == 0) {
+            // Keep playing
+            return 2;
+        }
+        else if (!aux) {
             // Player Lost
             gameViewer.setAfterPlay(true);
             while (true) {
@@ -74,11 +98,12 @@ public class GameController implements StateController {
                 int input = gameViewer.userInput();
                 if (input == 0) {
                     gameSet.nextGame();
-                    break;
+                    gameViewer.setAfterPlay(false);
+                    return 1;
                 }
                 else if (input == 1) {
                     nextState();
-                    break;
+                    return 0;
                 }
             }
         }
@@ -90,15 +115,15 @@ public class GameController implements StateController {
                 int input = gameViewer.userInput();
                 if (input == 0) {
                     gameSet.nextGame();
-                    break;
+                    gameViewer.setAfterPlay(false);
+                    return 1;
                 }
                 else if (input == 1) {
                     nextState();
-                    break;
+                    return 0;
                 }
             }
         }
-        gameViewer.setAfterPlay(false);
     }
 
     @Override

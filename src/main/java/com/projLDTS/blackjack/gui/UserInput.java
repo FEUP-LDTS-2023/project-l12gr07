@@ -12,7 +12,7 @@ public class UserInput {
     public int MainMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
+            System.exit(0);
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         else if (key.getKeyType() == KeyType.ArrowUp) {
@@ -60,7 +60,7 @@ public class UserInput {
     public int ExitAndHowToPlayMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
+            System.exit(0);
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         if (key.getKeyType() == KeyType.ArrowRight) {
@@ -77,7 +77,7 @@ public class UserInput {
     public int DecksMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
+            System.exit(0);
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         else if (key.getKeyType() == KeyType.ArrowLeft) {
@@ -98,7 +98,7 @@ public class UserInput {
     public int Last10GamesMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
+            System.exit(0);
         else if (key.getKeyType() == KeyType.Enter) {
             return 1;
         }
@@ -107,7 +107,7 @@ public class UserInput {
     public int GameInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
+            System.exit(0);
         else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'e')
             return 5; //Return to main menu
         else if (key.getKeyType() == KeyType.EOF)
@@ -130,10 +130,10 @@ public class UserInput {
         return buttonSelected;
     }
 
-    public int pLostInput() throws IOException {
+    public int playInput() throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            gui.getScreen().close();
+            System.exit(0);
         else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'y')
             return 0;
         else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'n')

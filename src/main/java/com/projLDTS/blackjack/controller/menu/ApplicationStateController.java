@@ -33,7 +33,7 @@ public class ApplicationStateController {
     }
 
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        while (stateController != null) {
+        while (true) {
             stateViewer.draw();
             stateController.run();
         }
@@ -80,10 +80,6 @@ public class ApplicationStateController {
                 stateViewer = new Last10GamesMenuViewer(gui);
                 break;
 
-//            case GameOver:
-//                stateController = new GameOverController(this);
-//                break;
-
             case Exit:
                 stateController = new ExitMenuController(this);
                 stateViewer = new ExitMenuViewer(gui);
@@ -106,6 +102,7 @@ public class ApplicationStateController {
         return stateViewer.getButtonSelected();
     }
 
+    // for tests
     public void setStateViewer(StateViewer stateViewer_) {
         stateViewer = stateViewer_;
     }

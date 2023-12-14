@@ -37,12 +37,9 @@ public class StartMenuViewer implements StateViewer {
 
     @Override
     public void drawElements() throws IOException {
-        gui.drawLast10GamesButton(false);
-        gui.drawbReturnButton(false);
-        gui.drawPlayButton(false);
-        if (buttonSelected == 2) gui.drawLast10GamesButton(true);
-        else if (buttonSelected == 0) gui.drawbReturnButton(true);
-        else if (buttonSelected == 1) gui.drawPlayButton(true);
+        gui.drawLast10GamesButton(buttonSelected == 2);
+        gui.drawbReturnButton(buttonSelected == 0);
+        gui.drawPlayButton(buttonSelected == 1);
         gui.refresh();
     }
 

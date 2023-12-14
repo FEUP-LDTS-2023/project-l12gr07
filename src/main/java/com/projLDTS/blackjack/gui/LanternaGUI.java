@@ -30,19 +30,8 @@ public class LanternaGUI {
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         size = new TerminalSize(width, height);
-//        URL resource = getClass().getClassLoader().getResource("GamePlayed.ttf");
-//        File fontFile = new File(resource.toURI());
-//        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-//
-//        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//        ge.registerFont(font);
 
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
-
-//        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
-//        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-//        factory.setTerminalEmulatorFontConfiguration(fontConfig);
-//        factory.setForceAWTOverSwing(true);
 
         Terminal terminal = factory.setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
         screen = new TerminalScreen(terminal);
@@ -113,6 +102,7 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(usernameX, usernameY), truncatedUsername);
 
         drawBox(x, y, boxWidth, boxHeight, TextColor.Factory.fromString("#028A02"));
+
     }
 
     private void drawBox(int x, int y, int width, int height, TextColor borderColor) {
@@ -399,7 +389,7 @@ public class LanternaGUI {
         textGraphics.setBackgroundColor(selectedColor);
         textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
         textGraphics.putString(new TerminalPosition(65, 18), "YOU LOST");
-        textGraphics.putString(new TerminalPosition(65, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+        textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
     }
 
     public void drawPlayerWon() {
@@ -407,7 +397,15 @@ public class LanternaGUI {
         textGraphics.setBackgroundColor(selectedColor);
         textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
         textGraphics.putString(new TerminalPosition(65, 18), "YOU WON");
-        textGraphics.putString(new TerminalPosition(65, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+        textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+    }
+
+    public void drawPlayDraw() {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setBackgroundColor(selectedColor);
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.putString(new TerminalPosition(65, 18), "DRAW");
+        textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
     }
 
     public void drawCards(Hand hand) {

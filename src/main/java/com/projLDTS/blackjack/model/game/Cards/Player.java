@@ -7,14 +7,14 @@ public class Player extends CardSet {
     private final Hand splitHand;
     public Player() {
         super();
-        this.credit = 1000; // comeca com 1000? ou user define quanto quer apostar
+        this.credit = 1000;
         splitHand = new Hand();
     }
     public int getCredit() { return credit; }
     public void setCredit(int credit) { this.credit = credit; }
     public Hand getSplitHand() { return splitHand; }
-    public boolean hit(Deck deck, boolean split) {
-        Hand currentHand = split ? splitHand : hand;
+    public boolean hit(Deck deck, boolean split) { // TODO: split hand
+        Hand currentHand = hand;
         if (currentHand.getValue() < 21) {
             currentHand.addCard(deck);
             return true;
@@ -24,11 +24,11 @@ public class Player extends CardSet {
     public int stand() {
         return hand.getValue();
     }
-    public boolean doubleDown(Deck deck, boolean split) {
-        Hand currentHand = split ? splitHand : hand;
+    public boolean doubleDown(Deck deck, boolean split) { // TODO: split hand
+        Hand currentHand = hand;
         if (currentHand.getHand().size() != 2 ||
             currentHand.getValue() >= 21 ||
-            currentHand.getBet() > credit) { // bet nao pode ser maior do que o credito disponivel
+            currentHand.getBet() > credit) {
             return false;
         }
         currentHand.addCard(deck);
@@ -36,22 +36,25 @@ public class Player extends CardSet {
         currentHand.setBet(currentHand.getBet() * 2);
         return true;
     }
-    public boolean split(Deck deck) {
+    public boolean split() {
         splitHand.addCard(hand.getHand().get(0));
         hand.removeCard(0);
         return true;
     }
     public boolean isSplit() {
-        // TODO
-        return false;
+        return !splitHand.getHand().isEmpty();
     }
 
     public boolean canSplit() {
-        if (hand.getHand().size() == 2) {
-            if (hand.getHand().get(0).getValue() == hand.getHand().get(1).getValue()) {
-                return true;
-            }
+        return hand.getHand().size() == 2 && hand.getHand().get(0).getValue() == hand.getHand().get(1).getValue();
+    }
+
+    public void clearHand() {
+        for (int i = 0; i < hand.getHand().size(); i++) {
+            hand.removeCard(i);
         }
-        return false;
+        for (int i = 0; i < splitHand.getHand().size(); i++) {
+            hand.removeCard(i);
+        }
     }
 }
