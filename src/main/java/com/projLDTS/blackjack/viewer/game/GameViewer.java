@@ -79,8 +79,10 @@ public class GameViewer implements StateViewer {
     }
 
     public void drawCards(Hand hand, int row) throws IOException {
-        gui.drawCards(hand, row);
-        gui.refresh();
+        if(UserInput.getBet().toString() != "" && UserInput.getbetEnded()) {
+            gui.drawCards(hand, row);
+            gui.refresh();
+        }
     }
 
     public void playDraw() throws IOException {
