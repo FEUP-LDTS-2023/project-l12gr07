@@ -13,7 +13,7 @@ public class Application {
             applicationStateController.run();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (FontFormatException | URISyntaxException e) {
+        } catch (FontFormatException | URISyntaxException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

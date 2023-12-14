@@ -46,7 +46,7 @@ public class GameViewer implements StateViewer {
     }
 
     public void drawElements() throws IOException {
-        if(UserInput.getBet().toString() != "" && UserInput.getbetEnded()){
+        if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()){
             gui.drawHitButton(buttonSelected == 0);
             gui.drawStandButton(buttonSelected == 1);
             gui.drawDoubleDownButton(buttonSelected == 2);
@@ -78,8 +78,16 @@ public class GameViewer implements StateViewer {
         gui.refresh();
     }
 
-    public void drawCards(Hand hand, int row) throws IOException {
-        if(UserInput.getBet().toString() != "" && UserInput.getbetEnded()) {
+    public void drawCards(Hand hand, int row, boolean dealer) throws IOException, InterruptedException {
+        if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
+            if (dealer) gui.drawDealerCards(hand, row);
+            else gui.drawCards(hand, row);
+            gui.refresh();
+        }
+    }
+
+    public void drawFirstCards(Hand hand, int row, boolean b) throws IOException {
+        if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
             gui.drawCards(hand, row);
             gui.refresh();
         }

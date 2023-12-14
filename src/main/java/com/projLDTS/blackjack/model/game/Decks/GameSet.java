@@ -64,11 +64,7 @@ public class GameSet {
 
     public int stand() {
         int playerHand = player.stand();
-        int op = 3;
-        while (op == 3) {
-            op = dealer.stand(playerHand, deck);
-
-        }
+        int op = dealer.stand(playerHand, deck);
         if (op == 0) {
             UserInput.setCredit(UserInput.getCredit() + 2 * Integer.parseInt(UserInput.getBet().toString()));
             return 1;
@@ -80,8 +76,7 @@ public class GameSet {
         if (UserInput.getCredit() == 0) {
             return 0;
         }
-        nextGame();
-        return 0;
+        return 3;
     }
 
     public boolean split() {

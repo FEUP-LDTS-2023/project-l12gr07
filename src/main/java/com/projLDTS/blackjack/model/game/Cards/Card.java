@@ -24,7 +24,7 @@ public class Card {
             case "7" -> 7;
             case "8" -> 8;
             case "9" -> 9;
-            case "Jack", "Queen", "King" -> 10;
+            case "J", "Q", "K" -> 10;
             default -> 11; // Ace is 11 initially
         };
     }
@@ -46,26 +46,8 @@ public class Card {
         }
         return suit;
     }
-    public String getRankString(int rank) {
-        String rank_;
-        switch (rank) {
-            case 11:
-                rank_ = "J";
-                break;
-            case 12:
-                rank_ = "Q";
-                break;
-            case 13:
-                rank_ = "K";
-                break;
-            case 1:
-                rank_ = "A";
-                break;
-            default:
-                rank_ = Integer.toString(rank);
-                break;
-        }
-        return rank_;
+    public String getRankString() {
+        return rank;
     }
 
     public void DrawPlayingCard() {

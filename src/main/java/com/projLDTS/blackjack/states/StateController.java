@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public interface StateController {
-    void run() throws IOException, FontFormatException, URISyntaxException;
+    void run() throws IOException, FontFormatException, URISyntaxException, InterruptedException;
 
     void nextState() throws IOException, FontFormatException, URISyntaxException;
 

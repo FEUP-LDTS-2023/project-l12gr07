@@ -32,7 +32,7 @@ public class ApplicationStateController {
         gui = lanternaGUI;
     }
 
-    public void run() throws IOException, FontFormatException, URISyntaxException {
+    public void run() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
         while (true) {
             stateViewer.draw();
             stateController.run();

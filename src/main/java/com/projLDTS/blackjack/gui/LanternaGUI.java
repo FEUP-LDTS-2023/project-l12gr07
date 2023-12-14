@@ -42,6 +42,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class LanternaGUI {
     private final Screen screen;
@@ -444,6 +445,15 @@ public class LanternaGUI {
         int position = 0;
         for (Card card : hand.getHand()) {
             drawCard(card, position, row);
+            position += 5;
+        }
+    }
+
+    public void drawDealerCards(Hand hand, int row) throws InterruptedException {
+        int position = 0;
+        for (Card card : hand.getHand()) {
+            drawCard(card, position, row);
+            TimeUnit.MILLISECONDS.sleep(250);
             position += 5;
         }
     }

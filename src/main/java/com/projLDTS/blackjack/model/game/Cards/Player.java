@@ -16,10 +16,11 @@ public class Player extends CardSet {
     public boolean hit(Deck deck, boolean split) { // TODO: split hand
         Hand currentHand = hand;
         if (currentHand.getValue() < 21) {
+            System.out.println(currentHand.getValue());
             currentHand.addCard(deck);
-            return true;
         }
-        return false;
+        if (currentHand.getValue() > 21) return false;
+        return true;
     }
     public int stand() {
         return hand.getValue();

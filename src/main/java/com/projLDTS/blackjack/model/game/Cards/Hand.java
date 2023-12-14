@@ -7,16 +7,17 @@ import com.projLDTS.blackjack.viewer.game.GameViewer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Hand {
     private final List<Card> hand;
     private int bet;
     public Hand() {
         hand = new ArrayList<>();
-        if (UserInput.getBet().toString() == ""){
+        if (UserInput.getBet().toString().isEmpty()){
             bet = 0;
         } else {
-            bet =  Integer.parseInt(UserInput.getBet().toString()); //transforma stringBuilder to String and then to int
+            bet =  Integer.parseInt(UserInput.getBet().toString()); // transforma stringBuilder to String and then to int
         }
 
     }
@@ -39,7 +40,7 @@ public class Hand {
         int numAces = 0;
         for (Card card : hand) {
             int cardValue = card.getValue();
-            if (cardValue == 11) {
+            if (Objects.equals(card.getRankString(), "A")) {
                 numAces++;
             }
             sum += cardValue;

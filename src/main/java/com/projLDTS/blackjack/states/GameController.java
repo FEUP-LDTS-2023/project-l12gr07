@@ -20,12 +20,12 @@ public class GameController implements StateController {
     }
 
     @Override
-    public void run() throws IOException, FontFormatException, URISyntaxException {
+    public void run() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
         gameSet = new GameSet(gameType);
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         while (true) {
             applicationStateController.redraw();
-            drawCards();
+            drawInitialCards();
             canSplit();
             gameViewer.setSplit(split);
             int aux = userInput();
@@ -43,27 +43,38 @@ public class GameController implements StateController {
             }
         }
     }
-    private void drawCards() throws IOException {
+
+    private void drawInitialCards() throws IOException, InterruptedException {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
-        gameViewer.drawCards(gameSet.getPlayer().getHand(), 20);
-        gameViewer.drawCards(gameSet.getDealer().getHand(), 10);
-        if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20);
+        gameViewer.drawFirstCards(gameSet.getPlayer().getHand(), 20, false);
+        gameViewer.drawFirstCards(gameSet.getDealer().getHand(), 10, true);
+        if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20, false);
+    }
+
+    private void drawCards() throws IOException, InterruptedException {
+        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
+        gameViewer.drawCards(gameSet.getPlayer().getHand(), 20, false);
+        gameViewer.drawCards(gameSet.getDealer().getHand(), 10, true);
+        if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20, false);
     }
 
     private void canSplit() {
         split = gameSet.canSplit();
     }
 
-    private int play() throws IOException, URISyntaxException, FontFormatException {
+    private int play() throws IOException, URISyntaxException, FontFormatException, InterruptedException {
         boolean aux = false;
-        int staux = -1;
+        int staux = 3;
         if (getButtonSelected() == 0) {
             aux = gameSet.hit();
         }
         else if (getButtonSelected() == 1) {
-            staux = gameSet.stand();
-            if (staux == 0) aux = false;
-            else if (staux == 1) aux = true;
+            while (staux == 3) {
+                staux = gameSet.stand();
+                if (staux == 0) aux = false;
+                else if (staux == 1) aux = true;
+                drawCards();
+            }
         }
         else if (getButtonSelected() == 2) {
             aux = gameSet.doubledown();
@@ -73,7 +84,7 @@ public class GameController implements StateController {
             aux = gameSet.split();
         }
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
-
+        drawInitialCards();
         gameViewer.setAfterPlay(true);
         if (UserInput.getCredit() == 0) {
             UserInput.setCredit(1000);
