@@ -8,7 +8,6 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.projLDTS.blackjack.model.game.Cards.BaseCard;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
 import com.projLDTS.blackjack.model.game.Cards.Player;
@@ -423,16 +422,14 @@ public class LanternaGUI {
     }
 
     public void drawCards(Hand hand) {
-        BaseCard bc;
         int position = 0;
         for (Card card : hand.getHand()) {
-            bc = new BaseCard(card.getValue(), card.suit());
-            drawCard(bc, position);
+            drawCard(card, position);
             position += 5;
         }
     }
 
-    private void drawCard(BaseCard card, int position) {
+    private void drawCard(Card card, int position) {
         ArrayList<String> playingCard = card.getPlayingCard();
         drawCardAscii(playingCard, position);
     }
