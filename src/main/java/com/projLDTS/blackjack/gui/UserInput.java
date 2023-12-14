@@ -9,11 +9,15 @@ import java.io.IOException;
 public class UserInput {
     private final LanternaGUI gui;
     private static StringBuilder bet = new StringBuilder();
+    static int credit = 1000;
     static boolean betEnded = false;
     public UserInput(LanternaGUI gui_) {gui = gui_; }
 
-    public void setBet(StringBuilder bet){
-        this.bet = bet;
+    public static int getCredit() { return credit; }
+    public static void setCredit(int credit) { UserInput.credit = credit; }
+
+    public static void setBet(StringBuilder bet){
+        UserInput.bet = bet;
     }
     public static StringBuilder getBet(){
         return bet;
@@ -121,23 +125,23 @@ public class UserInput {
     public int GameInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         if (key.getKeyType() == KeyType.Backspace && bet.length() > 0 && !betEnded) {
-            Player.setCredit(Player.getCredit()+Integer.parseInt(UserInput.getBet().toString()));
+            UserInput.setCredit(UserInput.getCredit()+Integer.parseInt(UserInput.getBet().toString()));
             bet.deleteCharAt(bet.length() - 1);
             if(!bet.toString().equals("")){
-                Player.setCredit(Player.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
+                UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
             }
         } else if (key.getKeyType() == KeyType.Character && !betEnded) {
             char character = key.getCharacter();
             if (character == ' ') {
                 return buttonSelected; // Space bar pressed (simulate button click)
-            } else if (Character.isDigit(character) && bet.length() < 5) {
-                if (bet.toString().equals("") && Player.getCredit() > 0){
+            } else if (Character.isDigit(character) && bet.length() < 6) {
+                if (bet.toString().equals("") && UserInput.getCredit() > 0){
                     bet.append(character);
-                    Player.setCredit(Player.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
-                } else if(Integer.parseInt(UserInput.getBet().toString())*10 + Character.getNumericValue(character) <= Player.getCredit()+ Integer.parseInt(UserInput.getBet().toString())){
-                    Player.setCredit(Player.getCredit()+Integer.parseInt(UserInput.getBet().toString()));
+                    UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
+                } else if(Integer.parseInt(UserInput.getBet().toString())*10 + Character.getNumericValue(character) <= UserInput.getCredit()+ Integer.parseInt(UserInput.getBet().toString())){
+                    UserInput.setCredit(UserInput.getCredit()+Integer.parseInt(UserInput.getBet().toString()));
                     bet.append(character);
-                    Player.setCredit(Player.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
+                    UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
                 }
             }
         }
@@ -168,6 +172,9 @@ public class UserInput {
 
     public int playInput() throws IOException {
         KeyStroke key = gui.getScreen().readInput();
+        betEnded = false;
+        //adicionar bet ao last10games
+        setBet(new StringBuilder()); //limpar a bet
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             System.exit(0);
         else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'y')

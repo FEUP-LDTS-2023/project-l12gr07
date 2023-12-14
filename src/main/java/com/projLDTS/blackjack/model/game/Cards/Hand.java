@@ -60,8 +60,8 @@ public class Hand {
         return bet;
     }
     public void setBet(int bet) {
-        int totalCredit = GameSet.getGame().getPlayer().getCredit();
-        GameSet.getGame().getPlayer().setCredit(totalCredit - bet);
+        int totalCredit = UserInput.getCredit();
+        UserInput.setCredit(totalCredit - bet);
     }
 
     public void removeCard(int i) {

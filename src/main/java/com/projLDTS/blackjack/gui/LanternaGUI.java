@@ -332,7 +332,7 @@ public class LanternaGUI {
 
     public void drawCredit() {
         textGraphics.putString(new TerminalPosition(61, 5), "credit");
-        int a = Player.getCredit();
+        int a = UserInput.getCredit();
         textGraphics.putString(new TerminalPosition(61, 8), String.valueOf(a));
     }
 
