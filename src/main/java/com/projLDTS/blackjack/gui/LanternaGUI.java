@@ -421,7 +421,6 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO PLAY AGAIN? Y/N");
     }
 
-
     public void drawCards(Hand hand, int row) {
         int position = 0;
         for (Card card : hand.getHand()) {
@@ -429,7 +428,6 @@ public class LanternaGUI {
             position += 5;
         }
     }
-
 
     private void drawCard(Card card, int position, int row) {
         ArrayList<String> playingCard = card.getPlayingCard();
