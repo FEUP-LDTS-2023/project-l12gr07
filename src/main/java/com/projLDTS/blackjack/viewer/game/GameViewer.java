@@ -78,8 +78,9 @@ public class GameViewer implements StateViewer {
         gui.refresh();
     }
 
-    public void drawCards(Hand hand) {
-        gui.drawCards(hand);
+    public void drawCards(Hand hand, int row) throws IOException {
+        gui.drawCards(hand, row);
+        gui.refresh();
     }
 
     public void playDraw() throws IOException {

@@ -421,33 +421,23 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO PLAY AGAIN? Y/N");
     }
 
-    public void drawCards(Hand hand) {
+
+    public void drawCards(Hand hand, int row) {
         int position = 0;
         for (Card card : hand.getHand()) {
-            drawCard(card, position);
+            drawCard(card, position, row);
             position += 5;
         }
     }
 
-    private void drawCard(Card card, int position) {
+    private void drawCard(Card card, int position, int row) {
         ArrayList<String> playingCard = card.getPlayingCard();
-        drawCardAscii(playingCard, position);
+        drawCardAscii(playingCard, position, row);
     }
 
-    private void drawCardAscii(ArrayList<String> playingCard, int pos) {
+    private void drawCardAscii(ArrayList<String> playingCard, int pos, int row) {
         for (int i = 0; i < playingCard.size(); i++) {
-            textGraphics.putString(new TerminalPosition(40 + pos, 20 + i), playingCard.get(i));
+            textGraphics.putString(new TerminalPosition(40 + pos, row + i), playingCard.get(i));
         }
-        /*
-        textGraphics.putString(new TerminalPosition(40 + pos, 20), "+---------+");
-        textGraphics.putString(new TerminalPosition(41 + pos, 20),"|" + "rank" + "        |");
-        textGraphics.putString(new TerminalPosition(42 + pos, 20),"|         |");
-        textGraphics.putString(new TerminalPosition(43 + pos, 20),"|         |");
-        textGraphics.putString(new TerminalPosition(44 + pos, 20),"|    " + "suit" + "    |");
-        textGraphics.putString(new TerminalPosition(45 + pos, 20),"|         |");
-        textGraphics.putString(new TerminalPosition(46 + pos, 20),"|         |");
-        textGraphics.putString(new TerminalPosition(47 + pos, 20),"|       " + "rank" + " |");
-        textGraphics.putString(new TerminalPosition(48 + pos, 20),"+----------+");
-        */
     }
 }

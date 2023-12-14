@@ -32,16 +32,16 @@ public class Card {
     public String getSuitString(String suit) {
         switch (suit) {
             case "Hearts":
-                suit = "♥";
+                suit = "H";
                 break;
             case "Diamonds":
-                suit = "♦";
+                suit = "D";
                 break;
             case "Clubs":
-                suit = "♣";
+                suit = "C";
                 break;
             case "Spades":
-                suit = "♠";
+                suit = "S";
                 break;
         }
         return suit;
@@ -79,7 +79,7 @@ public class Card {
         playingCard.add("|         |");
         playingCard.add("|         |");
         playingCard.add("|       " +  rank + " |");
-        playingCard.add("+----------+");
+        playingCard.add("+---------+");
     }
 
     public ArrayList<String> getPlayingCard() {
