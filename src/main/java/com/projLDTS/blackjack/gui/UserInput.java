@@ -13,6 +13,7 @@ public class UserInput {
     static boolean betEnded = false;
     public UserInput(LanternaGUI gui_) {gui = gui_; }
 
+
     public static int getCredit() { return credit; }
     public static void setCredit(int credit) { UserInput.credit = credit; }
 

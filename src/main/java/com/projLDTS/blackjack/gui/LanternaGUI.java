@@ -414,6 +414,14 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
     }
 
+    public void drawPlayerNoCredit() {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setBackgroundColor(selectedColor);
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.putString(new TerminalPosition(50, 18), "YOU LOST. THERE IS NO CREDIT LEFT");
+        textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO PLAY AGAIN? Y/N");
+    }
+
     public void drawCards(Hand hand) {
         BaseCard bc;
         int position = 0;

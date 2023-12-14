@@ -64,6 +64,11 @@ public class GameViewer implements StateViewer {
         gui.refresh();
     }
 
+    public void playerNoCredit() throws IOException {
+        gui.drawPlayerNoCredit();
+        gui.refresh();
+    }
+
     public void setAfterPlay(boolean i) {
         afterPlay = i;
     }
