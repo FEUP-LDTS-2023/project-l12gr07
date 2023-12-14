@@ -43,6 +43,7 @@ public class GameController implements StateController {
             }
         }
     }
+
     private void drawCards() throws IOException {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawCards(gameSet.getPlayer().getHand(), 20);
