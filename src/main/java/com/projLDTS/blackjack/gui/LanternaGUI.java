@@ -1,3 +1,28 @@
+/*
+else if (UserInput.getUsername().toString() != "") {
+            if (key.getKeyType() == KeyType.ArrowRight) {
+                buttonSelected++;
+                if (buttonSelected == 3) buttonSelected = 0;
+                return buttonSelected;
+            } else if (key.getKeyType() == KeyType.ArrowLeft) {
+                buttonSelected--;
+                if (buttonSelected == -1) buttonSelected = 2;
+                return buttonSelected;
+            } else if (key.getKeyType() == KeyType.Enter) {
+                return 3;
+            }
+        } else {
+            if (key.getKeyType() == KeyType.ArrowRight) {
+                return 2;
+            }
+            else if (key.getKeyType() == KeyType.ArrowLeft) {
+                return 0;
+            }
+            else if (key.getKeyType() == KeyType.Enter) {
+                return 3;
+            }
+        }
+ */
 package com.projLDTS.blackjack.gui;
 
 import com.googlecode.lanterna.TerminalPosition;
