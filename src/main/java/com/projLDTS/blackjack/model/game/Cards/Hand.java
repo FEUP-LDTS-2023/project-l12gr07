@@ -1,7 +1,9 @@
 package com.projLDTS.blackjack.model.game.Cards;
 
+import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Decks.Deck;
 import com.projLDTS.blackjack.model.game.Decks.GameSet;
+import com.projLDTS.blackjack.viewer.game.GameViewer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,12 @@ public class Hand {
     private int bet;
     public Hand() {
         hand = new ArrayList<>();
-        bet = 0;
+        if (UserInput.getBet().toString() == ""){
+            bet = 0;
+        } else {
+            bet =  Integer.parseInt(UserInput.getBet().toString()); //transforma stringBuilder to String and then to int
+        }
+
     }
     public List<Card> getHand() {
         return hand;
