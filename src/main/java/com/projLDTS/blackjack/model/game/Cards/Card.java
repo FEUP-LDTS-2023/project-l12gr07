@@ -14,6 +14,10 @@ public class Card {
         DrawPlayingCard();
     }
 
+    public String getSuit() {
+        return suit;
+    }
+
     public int getValue() {
         return switch (rank) {
             case "2" -> 2;
