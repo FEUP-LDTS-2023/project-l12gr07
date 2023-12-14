@@ -11,14 +11,6 @@ import java.io.IOException;
 public class StartMenuViewer implements StateViewer {
     int buttonSelected;
     private final LanternaGUI gui;
-    private StringBuilder username = new StringBuilder();
-
-    public void setUsername(String username1){
-        username = new StringBuilder(username1);
-    }
-    public StringBuilder getUsername(){
-        return username;
-    }
 
     public StartMenuViewer(LanternaGUI gui_){
         buttonSelected = 0;
@@ -37,7 +29,7 @@ public class StartMenuViewer implements StateViewer {
     public void draw() throws IOException {
         gui.clear();
         gui.drawBlackjack();
-        gui.drawGetUsername(username);
+        gui.drawGetUsername(UserInput.getUsername());
         drawElements();
         gui.refresh();
     }
@@ -46,13 +38,15 @@ public class StartMenuViewer implements StateViewer {
     public void drawElements() throws IOException {
         gui.drawLast10GamesButton(buttonSelected == 2);
         gui.drawbReturnButton(buttonSelected == 0);
-        gui.drawPlayButton(buttonSelected == 1);
+        if(UserInput.getUsername().toString() != ""){
+            gui.drawPlayButton(buttonSelected == 1);
+        }
         gui.refresh();
     }
 
     @Override
     public int userInput() throws IOException {
-        return new UserInput(gui).StartMenuInput(buttonSelected,username);
+        return new UserInput(gui).StartMenuInput(buttonSelected,UserInput.getUsername());
     }
 
     @Override

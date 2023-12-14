@@ -13,9 +13,18 @@ public class UserInput {
     static boolean betEnded = false;
     public UserInput(LanternaGUI gui_) {gui = gui_; }
 
+    private static StringBuilder username = new StringBuilder();
+
+    public static void setUsername(String username1){
+        username = new StringBuilder(username1);
+    }
+    public static StringBuilder getUsername(){
+        return username;
+    }
 
     public static int getCredit() { return credit; }
     public static void setCredit(int credit) { UserInput.credit = credit; }
+
 
     public static void setBet(StringBuilder bet){
         UserInput.bet = bet;
@@ -64,10 +73,16 @@ public class UserInput {
         } else if (key.getKeyType() == KeyType.ArrowRight) {
             buttonSelected++;
             if (buttonSelected == 3) buttonSelected = 0;
+            if(UserInput.getUsername().toString() == ""){
+                if (buttonSelected == 1) buttonSelected = 2;
+            }
             return buttonSelected;
         } else if (key.getKeyType() == KeyType.ArrowLeft) {
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 2;
+            if(UserInput.getUsername().toString() == ""){
+                if (buttonSelected == 1) buttonSelected = 0;
+            }
             return buttonSelected;
         } else if (key.getKeyType() == KeyType.Enter) {
             return 3;

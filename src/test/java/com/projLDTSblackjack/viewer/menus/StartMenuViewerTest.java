@@ -30,7 +30,7 @@ public class StartMenuViewerTest {
         LanternaGUI mockedGUI = mock(LanternaGUI.class);
         StartMenuViewer startMenuViewer = new StartMenuViewer(mockedGUI);
         String testUsername = "testUsername";
-        startMenuViewer.setUsername(testUsername);
+        UserInput.setUsername(testUsername);
 
         startMenuViewer.draw();
 
@@ -61,11 +61,11 @@ public class StartMenuViewerTest {
     @Test
     public void testUserInput() throws Exception {
         when(mockedUserInput.StartMenuInput(anyInt(), any(StringBuilder.class))).thenReturn(1);
-        startMenuViewer.setUsername("Stringggg");
+        UserInput.setUsername("Stringggg");
         startMenuViewer = new StartMenuViewer(mockedGUI){
             @Override
             public int userInput() throws IOException {
-                return mockedUserInput.StartMenuInput(1,getUsername());
+                return mockedUserInput.StartMenuInput(1,UserInput.getUsername());
             }
         };
         int userInputResult = startMenuViewer.userInput();
