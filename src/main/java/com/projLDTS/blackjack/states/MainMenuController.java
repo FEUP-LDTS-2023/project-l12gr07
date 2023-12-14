@@ -28,12 +28,9 @@ public class MainMenuController implements StateController {
 
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException {
-        System.out.println("HELLO");
         while (true) {
             int aux = userInput();
-            System.out.println(aux);
             if (aux == 3) {
-                System.out.println("3_");
                 nextState();
                 break;
             }

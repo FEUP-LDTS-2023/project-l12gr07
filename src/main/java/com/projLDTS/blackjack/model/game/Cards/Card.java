@@ -2,14 +2,18 @@ package com.projLDTS.blackjack.model.game.Cards;
 
 import java.util.ArrayList;
 
-public record Card(String suit, String rank) {
-    private static ArrayList<String> playingCard = new ArrayList<>();
+public class Card {
+    private String suit;
+    private String rank;
+    private ArrayList<String> playingCard = new ArrayList<>();
+
     public Card(String suit, String rank) {
         this.suit = suit;
         this.rank = rank;
         this.playingCard = new ArrayList<>();
         DrawPlayingCard();
     }
+
     public int getValue() {
         return switch (rank) {
             case "2" -> 2;
