@@ -50,13 +50,6 @@ public class GameController implements StateController {
         if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20);
     }
 
-    private void drawCards() throws IOException {
-        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
-        gameViewer.drawCards(gameSet.getPlayer().getHand(), 20);
-        gameViewer.drawCards(gameSet.getDealer().getHand(), 10);
-        if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20);
-    }
-
     private void canSplit() {
         split = gameSet.canSplit();
     }

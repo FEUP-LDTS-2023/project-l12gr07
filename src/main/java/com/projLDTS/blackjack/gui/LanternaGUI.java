@@ -323,12 +323,6 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(52, 10), "Last 10 Games");
     }
 
-    public void drawCard(String suit, String rank) {
-    }
-
-    public void drawHiddenCard() {
-    }
-
     public void drawCredit() {
         textGraphics.putString(new TerminalPosition(61, 5), "credit");
         int a = UserInput.getCredit();
