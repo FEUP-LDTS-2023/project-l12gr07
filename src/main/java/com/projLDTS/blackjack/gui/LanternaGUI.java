@@ -11,6 +11,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.projLDTS.blackjack.model.game.Cards.BaseCard;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
+import com.projLDTS.blackjack.model.game.Cards.Player;
+import com.projLDTS.blackjack.model.game.Decks.GameSet;
 
 import java.awt.*;
 import java.io.IOException;
@@ -330,8 +332,8 @@ public class LanternaGUI {
 
     public void drawCredit() {
         textGraphics.putString(new TerminalPosition(61, 5), "credit");
-        // change this to correct credit
-        textGraphics.putString(new TerminalPosition(61, 8), "900 €");
+        int a = UserInput.getCredit();
+        textGraphics.putString(new TerminalPosition(61, 8), String.valueOf(a));
     }
 
     public void drawLine() {
@@ -340,9 +342,13 @@ public class LanternaGUI {
 
     public void drawBet() {
         textGraphics.putString(new TerminalPosition(62, 32), "bet");
-        // change this to correct bet
-        textGraphics.putString(new TerminalPosition(60, 34), "10 €");
-
+        int maxUsernameLength = 5;
+        int boxWidth = 7;
+        int boxHeight = 3;
+        int x = 60;
+        int y = 33;
+        textGraphics.putString(new TerminalPosition(61, 34),UserInput.getBet().toString());
+        drawBox(x, y, boxWidth, boxHeight, TextColor.Factory.fromString("#028A02"));
     }
 
     public void drawHitButton(boolean selected) {
@@ -406,6 +412,14 @@ public class LanternaGUI {
         textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
         textGraphics.putString(new TerminalPosition(65, 18), "DRAW");
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
+    }
+
+    public void drawPlayerNoCredit() {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setBackgroundColor(selectedColor);
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.putString(new TerminalPosition(50, 18), "YOU LOST. THERE IS NO CREDIT LEFT");
+        textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO PLAY AGAIN? Y/N");
     }
 
     public void drawCards(Hand hand) {

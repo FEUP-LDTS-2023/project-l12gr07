@@ -10,11 +10,9 @@ import java.io.IOException;
 
 public class GameViewer implements StateViewer {
     private final LanternaGUI gui;
-
     int buttonSelected;
     boolean split;
     boolean afterPlay = false;
-
     public GameViewer(LanternaGUI gui_) {
         gui = gui_;
     }
@@ -48,10 +46,12 @@ public class GameViewer implements StateViewer {
     }
 
     public void drawElements() throws IOException {
-        gui.drawHitButton(buttonSelected == 0);
-        gui.drawStandButton(buttonSelected == 1);
-        gui.drawDoubleDownButton(buttonSelected == 2);
-        gui.drawSplitButton(buttonSelected == 3, split);
+        if(UserInput.getBet().toString() != "" && UserInput.getbetEnded()){
+            gui.drawHitButton(buttonSelected == 0);
+            gui.drawStandButton(buttonSelected == 1);
+            gui.drawDoubleDownButton(buttonSelected == 2);
+            gui.drawSplitButton(buttonSelected == 3, split);
+        }
         gui.refresh();
     }
 
@@ -61,6 +61,11 @@ public class GameViewer implements StateViewer {
 
     public void playerLost() throws IOException {
         gui.drawPlayerLost();
+        gui.refresh();
+    }
+
+    public void playerNoCredit() throws IOException {
+        gui.drawPlayerNoCredit();
         gui.refresh();
     }
 

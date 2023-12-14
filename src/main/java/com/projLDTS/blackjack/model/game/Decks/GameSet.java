@@ -1,5 +1,6 @@
 package com.projLDTS.blackjack.model.game.Decks;
 
+import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Cards.Player;
 import com.projLDTS.blackjack.model.game.Cards.Dealer;
 
@@ -69,14 +70,14 @@ public class GameSet {
 
         }
         if (op == 0) {
-            player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 2x aposta do player
+            UserInput.setCredit(UserInput.getCredit() + 2 * Integer.parseInt(UserInput.getBet().toString()));
             return 1;
         }
         if (op == 2) {
-            player.setCredit(player.getCredit() + 1); // TODO: trocar 1 por 1x aposta do player
+            UserInput.setCredit(UserInput.getCredit() + Integer.parseInt(UserInput.getBet().toString()));
             return 2;
         }
-        if (player.getCredit() == 0) {
+        if (UserInput.getCredit() == 0) {
             return 0;
         }
         nextGame();

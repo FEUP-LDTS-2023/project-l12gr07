@@ -1,17 +1,17 @@
 package com.projLDTS.blackjack.model.game.Cards;
 
+import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Decks.Deck;
 
 public class Player extends CardSet {
-    private int credit;
+    private static int credit = UserInput.getCredit();
     private final Hand splitHand;
     public Player() {
         super();
-        this.credit = 1000;
+        credit =  UserInput.getCredit();
         splitHand = new Hand();
     }
-    public int getCredit() { return credit; }
-    public void setCredit(int credit) { this.credit = credit; }
+
     public Hand getSplitHand() { return splitHand; }
     public boolean hit(Deck deck, boolean split) { // TODO: split hand
         Hand currentHand = hand;

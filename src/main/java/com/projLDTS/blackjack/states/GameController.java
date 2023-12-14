@@ -1,6 +1,7 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
+import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Decks.GameSet;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 
@@ -69,9 +70,23 @@ public class GameController implements StateController {
         }
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
 
+        gameViewer.setAfterPlay(true);
+        if (UserInput.getCredit() == 0) {
+            UserInput.setCredit(1000);
+            gameViewer.playerNoCredit();
+            int input = gameViewer.userInput();
+            if (input == 0) {
+                gameSet.nextGame();
+                gameViewer.setAfterPlay(false);
+                return 1;
+            }
+            else if (input == 1) {
+                nextState();
+                return 0;
+            }
+        }
         if (staux == 2) {
             // Draw
-            gameViewer.setAfterPlay(true);
             while (true) {
                 gameViewer.playDraw();
                 int input = gameViewer.userInput();
@@ -88,11 +103,11 @@ public class GameController implements StateController {
         }
         else if (aux && getButtonSelected() == 0) {
             // Keep playing
+            gameViewer.setAfterPlay(false);
             return 2;
         }
         else if (!aux) {
             // Player Lost
-            gameViewer.setAfterPlay(true);
             while (true) {
                 gameViewer.playerLost();
                 int input = gameViewer.userInput();
@@ -109,7 +124,6 @@ public class GameController implements StateController {
         }
         else {
             // Player Won
-            gameViewer.setAfterPlay(true);
             while (true) {
                 gameViewer.playerWon();
                 int input = gameViewer.userInput();
