@@ -24,6 +24,7 @@ public class GameViewer implements StateViewer {
         gui.drawLine();
         gui.drawBet();
         drawElements();
+        gui.drawDealerPlayerText();
         gui.refresh();
     }
 
