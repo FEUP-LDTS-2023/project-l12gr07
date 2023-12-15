@@ -479,4 +479,22 @@ public class LanternaGUI {
             textGraphics.putString(new TerminalPosition(40 + position, row + i), playingCard.get(i));
         }
     }
+
+    public void drawDealerPlayerText() {
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+
+        textGraphics.putString(new TerminalPosition(35, 8), "D");
+        textGraphics.putString(new TerminalPosition(35, 10), "E");
+        textGraphics.putString(new TerminalPosition(35, 12), "A");
+        textGraphics.putString(new TerminalPosition(35, 14), "L");
+        textGraphics.putString(new TerminalPosition(35, 16), "E");
+        textGraphics.putString(new TerminalPosition(35, 18), "R");
+
+        textGraphics.putString(new TerminalPosition(94, 20), "P");
+        textGraphics.putString(new TerminalPosition(94, 22), "L");
+        textGraphics.putString(new TerminalPosition(94, 24), "A");
+        textGraphics.putString(new TerminalPosition(94, 26), "Y");
+        textGraphics.putString(new TerminalPosition(94, 28), "E");
+        textGraphics.putString(new TerminalPosition(94, 30), "R");
+    }
 }
