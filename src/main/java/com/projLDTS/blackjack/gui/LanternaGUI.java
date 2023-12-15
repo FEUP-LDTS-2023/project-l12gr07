@@ -1,28 +1,3 @@
-/*
-else if (UserInput.getUsername().toString() != "") {
-            if (key.getKeyType() == KeyType.ArrowRight) {
-                buttonSelected++;
-                if (buttonSelected == 3) buttonSelected = 0;
-                return buttonSelected;
-            } else if (key.getKeyType() == KeyType.ArrowLeft) {
-                buttonSelected--;
-                if (buttonSelected == -1) buttonSelected = 2;
-                return buttonSelected;
-            } else if (key.getKeyType() == KeyType.Enter) {
-                return 3;
-            }
-        } else {
-            if (key.getKeyType() == KeyType.ArrowRight) {
-                return 2;
-            }
-            else if (key.getKeyType() == KeyType.ArrowLeft) {
-                return 0;
-            }
-            else if (key.getKeyType() == KeyType.Enter) {
-                return 3;
-            }
-        }
- */
 package com.projLDTS.blackjack.gui;
 
 import com.googlecode.lanterna.TerminalPosition;
@@ -36,8 +11,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
-import com.projLDTS.blackjack.model.game.Cards.Player;
-import com.projLDTS.blackjack.model.game.Decks.GameSet;
 
 import java.awt.*;
 import java.io.IOException;
@@ -393,8 +366,8 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(70, 31), new TerminalSize(14, 3),' ');
-        textGraphics.putString(new TerminalPosition(75, 32), "STAND");
+        textGraphics.fillRectangle(new TerminalPosition(70, 31), new TerminalSize(14, 7),' ');
+        textGraphics.putString(new TerminalPosition(74, 34), "STAND");
     }
 
     public void drawDoubleDownButton(boolean selected) {
@@ -403,15 +376,6 @@ public class LanternaGUI {
         else textGraphics.setBackgroundColor(buttonColor);
         textGraphics.fillRectangle(new TerminalPosition(43, 35), new TerminalSize(14, 3),' ');
         textGraphics.putString(new TerminalPosition(44, 36), "DOUBLE DOWN");
-    }
-
-    public void drawSplitButton(boolean selected, boolean split) {
-        textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        if (selected && split) textGraphics.setBackgroundColor(selectedColor);
-        else if (!split) textGraphics.setBackgroundColor(TextColor.Factory.fromString("#03C04A"));
-        else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(70, 35), new TerminalSize(14, 3),' ');
-        textGraphics.putString(new TerminalPosition(75, 36), "SPLIT");
     }
 
     public void drawExit() {
@@ -446,7 +410,7 @@ public class LanternaGUI {
 
     public void drawPlayerNoCredit() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        textGraphics.setBackgroundColor(selectedColor);
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString("#FF0000"));
         textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
         textGraphics.putString(new TerminalPosition(50, 18), "YOU LOST. THERE IS NO CREDIT LEFT");
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO PLAY AGAIN? Y/N");
@@ -479,4 +443,22 @@ public class LanternaGUI {
             textGraphics.putString(new TerminalPosition(40 + position, row + i), playingCard.get(i));
         }
     }
+
+    public void drawAPlay(String next, int pos) {
+        String[] parts = next.split(";");
+
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        textGraphics.putString(new TerminalPosition(42, pos), parts[0]);
+
+        int num = Integer.parseInt(parts[1]);
+        if (num < 0) {
+            textGraphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+            textGraphics.putString(new TerminalPosition(57, pos), parts[1]);
+        }
+        else {
+            textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
+            textGraphics.putString(new TerminalPosition(57, pos), parts[1]);
+        }
+    }
 }
+

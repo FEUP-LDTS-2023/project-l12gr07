@@ -47,6 +47,8 @@ public class GameSet {
     }
 
     public void nextGame() {
+        player.getHand().getBet();
+
         deck = new Deck(type);
         deck.randomize();
         dealer.clearHand();
@@ -59,11 +61,12 @@ public class GameSet {
     }
 
     public boolean hit() {
-        return player.hit(deck, canSplit());
+        return player.hit(deck);
     }
 
     public int stand() {
         int playerHand = player.stand();
+        System.out.println("A" + playerHand);
         int op = dealer.stand(playerHand, deck);
         if (op == 0) {
             UserInput.setCredit(UserInput.getCredit() + 2 * Integer.parseInt(UserInput.getBet().toString()));
@@ -79,16 +82,7 @@ public class GameSet {
         return 3;
     }
 
-    public boolean split() {
-        return player.split();
-    }
-
     public boolean doubledown() {
-        return player.doubleDown(deck, canSplit());
+        return player.doubleDown(deck);
     }
-
-    public boolean canSplit() {
-        return player.canSplit();
-    }
-
 }

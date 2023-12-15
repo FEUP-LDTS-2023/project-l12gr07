@@ -13,7 +13,7 @@ public class Player extends CardSet {
     }
 
     public Hand getSplitHand() { return splitHand; }
-    public boolean hit(Deck deck, boolean split) { // TODO: split hand
+    public boolean hit(Deck deck) {
         Hand currentHand = hand;
         if (currentHand.getValue() < 21) {
             System.out.println(currentHand.getValue());
@@ -25,29 +25,16 @@ public class Player extends CardSet {
     public int stand() {
         return hand.getValue();
     }
-    public boolean doubleDown(Deck deck, boolean split) { // TODO: split hand
+    public boolean doubleDown(Deck deck) {
         Hand currentHand = hand;
-        if (currentHand.getHand().size() != 2 ||
-            currentHand.getValue() >= 21 ||
-            currentHand.getBet() > credit) {
+        if (currentHand.getValue() >= 21 ||
+            2 * currentHand.getBet() > credit) {
             return false;
         }
         currentHand.addCard(deck);
         credit = credit - currentHand.getBet();
         currentHand.setBet(currentHand.getBet() * 2);
         return true;
-    }
-    public boolean split() {
-        splitHand.addCard(hand.getHand().get(0));
-        hand.removeCard(0);
-        return true;
-    }
-    public boolean isSplit() {
-        return !splitHand.getHand().isEmpty();
-    }
-
-    public boolean canSplit() {
-        return hand.getHand().size() == 2 && hand.getHand().get(0).getValue() == hand.getHand().get(1).getValue();
     }
 
     public void clearHand() {

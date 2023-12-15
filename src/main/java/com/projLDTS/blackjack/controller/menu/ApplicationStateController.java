@@ -7,19 +7,25 @@ import com.projLDTS.blackjack.viewer.game.GameViewer;
 import com.projLDTS.blackjack.viewer.menus.*;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Scanner;
 
 public class ApplicationStateController {
     private StateController stateController;
     private StateViewer stateViewer;
     private ApplicationState applicationState;
     private LanternaGUI gui;
+    List last10games;
 
     public ApplicationStateController() throws IOException, FontFormatException, URISyntaxException {
         gui = new LanternaGUI(130, 40);
         changeState(ApplicationState.MainMenu);
         stateViewer = new MainMenuViewer(gui);
+        //readFromCSV();
     }
 
     public StateController getStateController() {
@@ -58,6 +64,7 @@ public class ApplicationStateController {
             case MainMenu:
                 stateController = new MainMenuController(this);
                 stateViewer = new MainMenuViewer(gui);
+                //setToCSV();
                 break;
 
             case HowToPlay:
@@ -77,7 +84,7 @@ public class ApplicationStateController {
 
             case Last10Games:
                 stateController = new Last10GamesMenuController(this);
-                stateViewer = new Last10GamesMenuViewer(gui);
+                stateViewer = new Last10GamesMenuViewer(gui, last10games);
                 break;
 
             case Exit:
@@ -101,6 +108,29 @@ public class ApplicationStateController {
     public int getButtonSelected() {
         return stateViewer.getButtonSelected();
     }
+
+//    private void readFromCSV() throws FileNotFoundException {
+//        Scanner sc = new Scanner(new File("src/main/resources/last10games.csv"));
+//        //parsing a CSV file into the constructor of Scanner class
+//        sc.useDelimiter(",");
+//        //setting comma as delimiter pattern
+//        while (sc.hasNext()) {
+//            last10games.add(sc.next());
+//        }
+//        sc.close();
+//    }
+
+//    private void setToCSV() {
+//
+//    }
+
+//    private void addToCSV(String username, String value) {
+//        String result = username + ";" + value;
+//        last10games.add(result);
+//        if (last10games.size() == 11) {
+//            last10games.remove(0);
+//        }
+//    }
 
     // for tests
     public void setStateViewer(StateViewer stateViewer_) {

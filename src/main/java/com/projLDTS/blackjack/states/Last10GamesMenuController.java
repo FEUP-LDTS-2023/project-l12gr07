@@ -1,9 +1,6 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.viewer.menus.Last10GamesMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,7 +8,7 @@ import java.net.URISyntaxException;
 
 public class Last10GamesMenuController implements StateController {
     private ApplicationStateController applicationStateController;
-    private Last10GamesMenuViewer last10GamesMenuViewer;
+
     public Last10GamesMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
     }
@@ -24,14 +21,14 @@ public class Last10GamesMenuController implements StateController {
                 nextState();
                 break;
             }
-            else last10GamesMenuViewer.setButtonSelected(aux);
-            last10GamesMenuViewer.drawElements();
+            else applicationStateController.getStateViewer().setButtonSelected(aux);
+            applicationStateController.getStateViewer().drawElements();
         }
     }
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        if (last10GamesMenuViewer.getButtonSelected() == 0) {
+        if (applicationStateController.getStateViewer().getButtonSelected() == 0) {
             applicationStateController.changeState(ApplicationState.StartMenu);
         }
     }

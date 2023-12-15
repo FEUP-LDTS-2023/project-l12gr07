@@ -61,7 +61,7 @@ public class UserInput {
 
     public int StartMenuInput(int buttonSelected, StringBuilder username) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Backspace && username.length() > 0) {
+        if (key.getKeyType() == KeyType.Backspace && !username.isEmpty()) {
             username.deleteCharAt(username.length() - 1);
         } else if (key.getKeyType() == KeyType.Character) {
             char character = key.getCharacter();
@@ -73,14 +73,14 @@ public class UserInput {
         } else if (key.getKeyType() == KeyType.ArrowRight) {
             buttonSelected++;
             if (buttonSelected == 3) buttonSelected = 0;
-            if(UserInput.getUsername().toString() == ""){
+            if(UserInput.getUsername().toString().isEmpty()){
                 if (buttonSelected == 1) buttonSelected = 2;
             }
             return buttonSelected;
         } else if (key.getKeyType() == KeyType.ArrowLeft) {
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 2;
-            if(UserInput.getUsername().toString() == ""){
+            if(UserInput.getUsername().toString().isEmpty()){
                 if (buttonSelected == 1) buttonSelected = 0;
             }
             return buttonSelected;
@@ -140,10 +140,10 @@ public class UserInput {
 
     public int GameInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Backspace && bet.length() > 0 && !betEnded) {
+        if (key.getKeyType() == KeyType.Backspace && !bet.isEmpty() && !betEnded) {
             UserInput.setCredit(UserInput.getCredit()+Integer.parseInt(UserInput.getBet().toString()));
             bet.deleteCharAt(bet.length() - 1);
-            if(!bet.toString().equals("")){
+            if(!bet.toString().isEmpty()){
                 UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
             }
         } else if (key.getKeyType() == KeyType.Character && !betEnded) {
@@ -151,7 +151,7 @@ public class UserInput {
             if (character == ' ') {
                 return buttonSelected; // Space bar pressed (simulate button click)
             } else if (Character.isDigit(character) && bet.length() < 6) {
-                if (bet.toString().equals("") && UserInput.getCredit() > 0){
+                if (bet.toString().isEmpty() && UserInput.getCredit() > 0){
                     bet.append(character);
                     UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
                 } else if(Integer.parseInt(UserInput.getBet().toString())*10 + Character.getNumericValue(character) <= UserInput.getCredit()+ Integer.parseInt(UserInput.getBet().toString())){
@@ -167,20 +167,35 @@ public class UserInput {
             return 5; //Return to main menu
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
-        else if (UserInput.getBet().toString() != "" && betEnded) {
-            if (key.getKeyType() == KeyType.ArrowUp) {
-                buttonSelected = (buttonSelected - 2 + 4) % 4;
-            } else if (key.getKeyType() == KeyType.ArrowDown) {
-                buttonSelected = (buttonSelected + 2) % 4;
-            } else if (key.getKeyType() == KeyType.ArrowLeft) {
-                buttonSelected = (buttonSelected - 1 + 2) % 2 + (buttonSelected / 2) * 2;
-            } else if (key.getKeyType() == KeyType.ArrowRight) {
-                buttonSelected = (buttonSelected + 1) % 2 + (buttonSelected / 2) * 2;
-            } else if (key.getKeyType() == KeyType.Enter) {
+        else if (!UserInput.getBet().toString().isEmpty() && betEnded) {
+            if (key.getKeyType() == KeyType.ArrowUp || key.getKeyType() == KeyType.ArrowDown) {
+                switch (buttonSelected) {
+                    case 0:
+                        buttonSelected = 2;
+                        break;
+                    case 2:
+                        buttonSelected = 0;
+                        break;
+                }
+            }
+            else if (key.getKeyType() == KeyType.ArrowLeft || key.getKeyType() == KeyType.ArrowRight) {
+                switch (buttonSelected) {
+                    case 0:
+                        buttonSelected = 1;
+                        break;
+                    case 1:
+                        buttonSelected = 0;
+                        break;
+                    case 2:
+                        buttonSelected = 1;
+                        break;
+                }
+            }
+            else if (key.getKeyType() == KeyType.Enter) {
                 return 4;
             }
         }
-        if (key.getKeyType() == KeyType.Enter && UserInput.getBet().toString() != ""){
+        if (key.getKeyType() == KeyType.Enter && !UserInput.getBet().toString().isEmpty()){
             betEnded = true;
         }
         return buttonSelected;

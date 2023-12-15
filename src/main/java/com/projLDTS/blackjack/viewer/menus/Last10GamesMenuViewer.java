@@ -4,19 +4,31 @@ import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.StateViewer;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 public class Last10GamesMenuViewer implements StateViewer {
     int buttonSelected;
     private final LanternaGUI gui;
+    List last10games;
 
-    public Last10GamesMenuViewer(LanternaGUI gui_){
+    public Last10GamesMenuViewer(LanternaGUI gui_, List last10games){
         buttonSelected = 0;
         gui = gui_;
+        this.last10games = last10games;
     }
 
     public int getButtonSelected() {
         return buttonSelected;
+    }
+
+    private void drawCSV() throws FileNotFoundException {
+        int i = 12;
+        while (i - 12 < last10games.size()) {
+            gui.drawAPlay((String) last10games.get(i - 12), i);
+            i++;
+        }
     }
 
     @Override
@@ -24,6 +36,7 @@ public class Last10GamesMenuViewer implements StateViewer {
         gui.clear();
         gui.drawLast10GamesText();
         drawElements();
+        drawCSV();
         gui.refresh();
     }
 

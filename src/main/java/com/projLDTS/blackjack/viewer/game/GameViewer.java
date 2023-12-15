@@ -50,7 +50,6 @@ public class GameViewer implements StateViewer {
             gui.drawHitButton(buttonSelected == 0);
             gui.drawStandButton(buttonSelected == 1);
             gui.drawDoubleDownButton(buttonSelected == 2);
-            gui.drawSplitButton(buttonSelected == 3, split);
         }
         gui.refresh();
     }

@@ -26,8 +26,6 @@ public class GameController implements StateController {
         while (true) {
             applicationStateController.redraw();
             drawInitialCards();
-            canSplit();
-            gameViewer.setSplit(split);
             int aux = userInput();
             if (aux == 3 && !split) continue;
             if (aux == 5) {
@@ -44,23 +42,18 @@ public class GameController implements StateController {
         }
     }
 
-    private void drawInitialCards() throws IOException, InterruptedException {
+    private void drawInitialCards() throws IOException {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawFirstCards(gameSet.getPlayer().getHand(), 20, false);
         gameViewer.drawFirstCards(gameSet.getDealer().getHand(), 10, true);
-        if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20, false);
     }
 
     private void drawCards() throws IOException, InterruptedException {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawCards(gameSet.getPlayer().getHand(), 20, false);
         gameViewer.drawCards(gameSet.getDealer().getHand(), 10, true);
-        if (split) gameViewer.drawCards(gameSet.getPlayer().getSplitHand(), 20, false);
     }
 
-    private void canSplit() {
-        split = gameSet.canSplit();
-    }
 
     private int play() throws IOException, URISyntaxException, FontFormatException, InterruptedException {
         boolean aux = false;
@@ -75,31 +68,14 @@ public class GameController implements StateController {
                 else if (staux == 1) aux = true;
                 drawCards();
             }
+            System.out.println(staux);
         }
         else if (getButtonSelected() == 2) {
             aux = gameSet.doubledown();
         }
-        else if (getButtonSelected() == 3 && split) {
-            split = false;
-            aux = gameSet.split();
-        }
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
-        drawInitialCards();
+        gameViewer.drawCards(gameSet.getPlayer().getHand(), 20, false);
         gameViewer.setAfterPlay(true);
-        if (UserInput.getCredit() == 0) {
-            UserInput.setCredit(1000);
-            gameViewer.playerNoCredit();
-            int input = gameViewer.userInput();
-            if (input == 0) {
-                gameSet.nextGame();
-                gameViewer.setAfterPlay(false);
-                return 1;
-            }
-            else if (input == 1) {
-                nextState();
-                return 0;
-            }
-        }
         if (staux == 2) {
             // Draw
             while (true) {
@@ -123,6 +99,20 @@ public class GameController implements StateController {
         }
         else if (!aux) {
             // Player Lost
+            if (UserInput.getCredit() == 0) {
+                UserInput.setCredit(1000);
+                gameViewer.playerNoCredit();
+                int input = gameViewer.userInput();
+                if (input == 0) {
+                    gameSet.nextGame();
+                    gameViewer.setAfterPlay(false);
+                    return 1;
+                }
+                else if (input == 1) {
+                    nextState();
+                    return 0;
+                }
+            }
             while (true) {
                 gameViewer.playerLost();
                 int input = gameViewer.userInput();
