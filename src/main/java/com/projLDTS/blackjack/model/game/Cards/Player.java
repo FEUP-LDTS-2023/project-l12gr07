@@ -12,29 +12,27 @@ public class Player extends CardSet {
         splitHand = new Hand();
     }
 
-    public Hand getSplitHand() { return splitHand; }
     public boolean hit(Deck deck) {
         Hand currentHand = hand;
         if (currentHand.getValue() < 21) {
             System.out.println(currentHand.getValue());
             currentHand.addCard(deck);
         }
-        if (currentHand.getValue() > 21) return false;
-        return true;
+        return currentHand.getValue() <= 21;
     }
     public int stand() {
         return hand.getValue();
     }
     public boolean doubleDown(Deck deck) {
-        Hand currentHand = hand;
-        if (currentHand.getValue() >= 21 ||
-            2 * currentHand.getBet() > credit) {
+        if (hand.getHand().size() != 2 || hand.getValue() >= 21 ||
+            hand.getBet() >= credit) {
             return false;
         }
-        currentHand.addCard(deck);
-        credit = credit - currentHand.getBet();
-        currentHand.setBet(currentHand.getBet() * 2);
-        return true;
+        credit = credit - Integer.parseInt(UserInput.getBet().toString());
+        UserInput.setCredit(credit);
+        hand.setBet(hand.getBet() * 2);
+        System.out.println("BET: " + UserInput.getBet().toString());
+        return hit(deck);
     }
 
     public void clearHand() {

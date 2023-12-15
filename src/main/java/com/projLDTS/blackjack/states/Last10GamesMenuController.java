@@ -9,7 +9,7 @@ import java.net.URISyntaxException;
 public class Last10GamesMenuController implements StateController {
     private ApplicationStateController applicationStateController;
 
-    public Last10GamesMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
+    public Last10GamesMenuController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
     }
 
@@ -17,20 +17,18 @@ public class Last10GamesMenuController implements StateController {
     public void run() throws IOException, FontFormatException, URISyntaxException {
         while (true) {
             int aux = userInput();
-            if (aux == 1) {
+            if (aux == 0) {
                 nextState();
-                break;
+                return;
             }
-            else applicationStateController.getStateViewer().setButtonSelected(aux);
-            applicationStateController.getStateViewer().drawElements();
+            else setButtonSelected(aux);
+            applicationStateController.redraw();
         }
     }
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        if (applicationStateController.getStateViewer().getButtonSelected() == 0) {
-            applicationStateController.changeState(ApplicationState.StartMenu);
-        }
+        applicationStateController.changeState(ApplicationState.StartMenu);
     }
 
     @Override

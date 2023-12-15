@@ -9,6 +9,7 @@ import java.io.IOException;
 public class UserInput {
     private final LanternaGUI gui;
     private static StringBuilder bet = new StringBuilder();
+    private static int thisBet;
     static int credit = 1000;
     static boolean betEnded = false;
     public UserInput(LanternaGUI gui_) {gui = gui_; }
@@ -29,8 +30,12 @@ public class UserInput {
     public static void setBet(StringBuilder bet){
         UserInput.bet = bet;
     }
+
     public static StringBuilder getBet(){
         return bet;
+    }
+    public static int getintBet(){
+        return thisBet;
     }
     public static boolean getbetEnded(){
         return betEnded;
@@ -133,7 +138,7 @@ public class UserInput {
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             System.exit(0);
         else if (key.getKeyType() == KeyType.Enter) {
-            return 1;
+            return 0;
         }
         return -1;
     }
@@ -161,6 +166,7 @@ public class UserInput {
                 }
             }
         }
+        thisBet = Integer.parseInt(String.valueOf(bet));
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             System.exit(0);
         else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'e')

@@ -14,12 +14,7 @@ public class Hand {
     private int bet;
     public Hand() {
         hand = new ArrayList<>();
-        if (UserInput.getBet().toString().isEmpty()){
-            bet = 0;
-        } else {
-            bet =  Integer.parseInt(UserInput.getBet().toString()); // transforma stringBuilder to String and then to int
-        }
-
+        bet =  UserInput.getintBet();
     }
     public List<Card> getHand() {
         return hand;
@@ -58,11 +53,13 @@ public class Hand {
         return (hand.size() == 2 && getValue() == 21);
     }
     public int getBet() {
+        bet = UserInput.getintBet();
         return bet;
     }
     public void setBet(int bet) {
         int totalCredit = UserInput.getCredit();
-        UserInput.setCredit(totalCredit - bet);
+        UserInput.setCredit(totalCredit - bet / 2);
+        UserInput.setBet(new StringBuilder(bet));
     }
 
     public void removeCard(int i) {

@@ -28,6 +28,11 @@ public class GameViewer implements StateViewer {
         gui.refresh();
     }
 
+    public void refreshCreditBet() {
+        gui.drawCredit();
+        gui.drawBet();
+    }
+
     public int getButtonSelected() {
         return buttonSelected;
     }
@@ -55,10 +60,6 @@ public class GameViewer implements StateViewer {
         gui.refresh();
     }
 
-    public void setSplit(boolean i) {
-        split = i;
-    }
-
     public void playerLost() throws IOException {
         gui.drawPlayerLost();
         gui.refresh();
@@ -82,13 +83,15 @@ public class GameViewer implements StateViewer {
         if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
             if (dealer) gui.drawDealerCards(hand, row);
             else gui.drawCards(hand, row);
+            gui.drawValues(hand.getValue(), dealer);
             gui.refresh();
         }
     }
 
-    public void drawFirstCards(Hand hand, int row, boolean b) throws IOException {
+    public void drawFirstCards(Hand hand, int row, boolean dealer) throws IOException {
         if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
             gui.drawCards(hand, row);
+            gui.drawValues(hand.getValue(), dealer);
             gui.refresh();
         }
     }

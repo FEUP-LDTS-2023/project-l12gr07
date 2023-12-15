@@ -56,30 +56,28 @@ public class GameSet {
         dealCards();
     }
 
-    public void winningRounds() {
-        // TODO
-    }
-
     public boolean hit() {
         return player.hit(deck);
     }
 
     public int stand() {
         int playerHand = player.stand();
-        System.out.println("A" + playerHand);
         int op = dealer.stand(playerHand, deck);
-        if (op == 0) {
-            UserInput.setCredit(UserInput.getCredit() + 2 * Integer.parseInt(UserInput.getBet().toString()));
+        if (op == 0) { // Player Won
+            UserInput.setCredit(UserInput.getCredit() + 2 * player.getHand().getBet());
             return 1;
         }
-        if (op == 2) {
-            UserInput.setCredit(UserInput.getCredit() + Integer.parseInt(UserInput.getBet().toString()));
+        if (op == 2) { // Draw
+            UserInput.setCredit(UserInput.getCredit() + player.getHand().getBet());
             return 2;
         }
-        if (UserInput.getCredit() == 0) {
+        if (op == 1) { // Dealer Won
             return 0;
         }
-        return 3;
+        if (UserInput.getCredit() == 0) { // Lost, no credit left
+            return 0;
+        }
+        return 3; // another card
     }
 
     public boolean doubledown() {

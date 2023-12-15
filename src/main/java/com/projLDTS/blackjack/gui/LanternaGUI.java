@@ -479,4 +479,12 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(94, 28), "E");
         textGraphics.putString(new TerminalPosition(94, 30), "R");
     }
+
+    public void drawValues(int value, boolean dealer) {
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        if (dealer) textGraphics.putString(new TerminalPosition(90, 14), String.valueOf(value));
+        else textGraphics.putString(new TerminalPosition(90, 25), String.valueOf(value));
+    }
+
 }

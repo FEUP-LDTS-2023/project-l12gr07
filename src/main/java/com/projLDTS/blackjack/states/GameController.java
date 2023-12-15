@@ -13,7 +13,7 @@ public class GameController implements StateController {
     private ApplicationStateController applicationStateController;
     private GameSet gameSet;
     private int gameType;
-    private boolean split = false;
+    private boolean dd = true;
 
     public GameController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
@@ -27,17 +27,19 @@ public class GameController implements StateController {
             applicationStateController.redraw();
             drawInitialCards();
             int aux = userInput();
-            if (aux == 3 && !split) continue;
             if (aux == 5) {
                 nextState();
                 return;
             }
             else if (aux == 4) {
+                dd = false;
                 int a = play();
                 if (a == 1 || a == 0) return;
             }
             else {
-                setButtonSelected(aux);
+                if (aux != 2 || dd) {
+                    setButtonSelected(aux);
+                }
             }
         }
     }
@@ -73,15 +75,19 @@ public class GameController implements StateController {
         else if (getButtonSelected() == 2) {
             aux = gameSet.doubledown();
         }
+
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawCards(gameSet.getPlayer().getHand(), 20, false);
+        gameViewer.refreshCreditBet();
         gameViewer.setAfterPlay(true);
+
         if (staux == 2) {
             // Draw
             while (true) {
                 gameViewer.playDraw();
                 int input = gameViewer.userInput();
                 if (input == 0) {
+                    dd = true;
                     gameSet.nextGame();
                     gameViewer.setAfterPlay(false);
                     return 1;
@@ -92,7 +98,7 @@ public class GameController implements StateController {
                 }
             }
         }
-        else if (aux && getButtonSelected() == 0) {
+        else if (aux && (getButtonSelected() == 0 || getButtonSelected() == 2)) {
             // Keep playing
             gameViewer.setAfterPlay(false);
             return 2;
@@ -104,6 +110,7 @@ public class GameController implements StateController {
                 gameViewer.playerNoCredit();
                 int input = gameViewer.userInput();
                 if (input == 0) {
+                    dd = true;
                     gameSet.nextGame();
                     gameViewer.setAfterPlay(false);
                     return 1;
@@ -117,6 +124,7 @@ public class GameController implements StateController {
                 gameViewer.playerLost();
                 int input = gameViewer.userInput();
                 if (input == 0) {
+                    dd = true;
                     gameSet.nextGame();
                     gameViewer.setAfterPlay(false);
                     return 1;
@@ -133,6 +141,7 @@ public class GameController implements StateController {
                 gameViewer.playerWon();
                 int input = gameViewer.userInput();
                 if (input == 0) {
+                    dd = true;
                     gameSet.nextGame();
                     gameViewer.setAfterPlay(false);
                     return 1;
@@ -167,5 +176,9 @@ public class GameController implements StateController {
 
     public void setGameType(int n_) {
         gameType = n_;
+    }
+
+    public void setDd(boolean dd) {
+        this.dd = dd;
     }
 }
