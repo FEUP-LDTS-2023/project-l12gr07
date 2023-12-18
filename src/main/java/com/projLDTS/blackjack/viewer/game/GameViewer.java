@@ -11,7 +11,6 @@ import java.io.IOException;
 public class GameViewer implements StateViewer {
     private final LanternaGUI gui;
     int buttonSelected;
-    boolean split;
     boolean afterPlay = false;
     public GameViewer(LanternaGUI gui_) {
         gui = gui_;

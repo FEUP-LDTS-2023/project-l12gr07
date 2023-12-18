@@ -229,48 +229,42 @@ public class LanternaGUI {
     public void drawHowToPlayPage1() {
         drawHowToPlay();
         textGraphics.putString(new TerminalPosition(9, 18), "1. **Objective:**\n");
-        textGraphics.putString(new TerminalPosition(9, 19), "   The goal of Blackjack is to beat the dealer by having a hand value");
-        textGraphics.putString(new TerminalPosition(9, 21), "2. **Card Values:**\n");
-        textGraphics.putString(new TerminalPosition(9, 22), "   - Number cards (2-10) are worth their face value.\n");
-        textGraphics.putString(new TerminalPosition(9, 23), "   - Face cards (Jack, Queen, King) are each worth 10.");
-        textGraphics.putString(new TerminalPosition(9, 24), "   - Aces can be worth 1 or 11, depending on which value benefits the hand more.\n");
+        textGraphics.putString(new TerminalPosition(9, 20), "   The goal of Blackjack is to beat the dealer by having a hand value");
+        textGraphics.putString(new TerminalPosition(9, 22), "2. **Card Values:**\n");
+        textGraphics.putString(new TerminalPosition(9, 24), "   - Number cards (2-10) are worth their face value.\n");
+        textGraphics.putString(new TerminalPosition(9, 25), "   - Face cards (Jack, Queen, King) are each worth 10.");
+        textGraphics.putString(new TerminalPosition(9, 26), "   - Aces can be worth 1 or 11, depending on which value benefits the hand more.\n");
         textGraphics.putString(new TerminalPosition(63, 30), "1/4");
     }
 
     public void drawHowToPlayPage2() {
         drawHowToPlay();
         textGraphics.putString(new TerminalPosition(9, 18), "3. **Game Flow:**\n");
-        textGraphics.putString(new TerminalPosition(9, 19), "   - Each player, including the dealer, is dealt two cards.\n");
-        textGraphics.putString(new TerminalPosition(9, 20), "   - Players can 'Hit' to receive additional cards or 'Stand' to keep their current hand.\n");
-        textGraphics.putString(new TerminalPosition(9, 21), "   - If the total value of a player's cards exceeds 21, they bust and lose the round.\n");
+        textGraphics.putString(new TerminalPosition(9, 20), "   - Each player, including the dealer, is dealt two cards.\n");
+        textGraphics.putString(new TerminalPosition(9, 21), "   - Players can 'Hit' to receive additional cards or 'Stand' to keep their current hand.\n");
+        textGraphics.putString(new TerminalPosition(9, 22), "   - If the total value of a player's cards exceeds 21, they bust and lose the round.\n");
         textGraphics.putString(new TerminalPosition(9, 24), "4. **Winning:**\n");
-        textGraphics.putString(new TerminalPosition(9, 25), "   - If a player's total is closer to 21 than the dealer's, they win.\n");
-        textGraphics.putString(new TerminalPosition(9, 26), "   - If the dealer busts and the player doesn't, the player wins.\n");
-        textGraphics.putString(new TerminalPosition(9, 27), "   - If both the player and dealer have the same total, it's a push (no one wins or loses).\n");
+        textGraphics.putString(new TerminalPosition(9, 26), "   - If a player's total is closer to 21 than the dealer's, they win.\n");
+        textGraphics.putString(new TerminalPosition(9, 27), "   - If the dealer busts and the player doesn't, the player wins.\n");
+        textGraphics.putString(new TerminalPosition(9, 28), "   - If both the player and dealer have the same total, it's a draw (no one wins or loses).\n");
         textGraphics.putString(new TerminalPosition(63, 30), "2/4");
     }
 
     public void drawHowToPlayPage3() {
         drawHowToPlay();
         textGraphics.putString(new TerminalPosition(9, 18), "5. **Special Moves:**\n");
-        textGraphics.putString(new TerminalPosition(9, 19), "   - **Double Down:** Double your original bet and receive only one additional card.\n");
-        textGraphics.putString(new TerminalPosition(9, 20), "   - **Split:** If dealt two cards of the same rank, split them into two separate hands, each with its bet.\n");
-        textGraphics.putString(new TerminalPosition(9, 23), "6. **Blackjack:**\n");
-        textGraphics.putString(new TerminalPosition(9, 24), "   - A \"Blackjack\" is an Ace and a 10-value card. It usually pays 3:2.\n");
+        textGraphics.putString(new TerminalPosition(9, 20), "   - **Double Down:** Double your original bet and receive only one additional card.\n");
+        textGraphics.putString(new TerminalPosition(9, 22), "6. **Blackjack:**\n");
+        textGraphics.putString(new TerminalPosition(9, 24), "   - A \"Blackjack\" is an Ace and a 10-value card.\n");
         textGraphics.putString(new TerminalPosition(63, 30), "3/4");
     }
 
     public void drawHowToPlayPage4() {
         drawHowToPlay();
-        textGraphics.putString(new TerminalPosition(9, 17), "7. **Tips:**\n");
-        textGraphics.putString(new TerminalPosition(9, 18), "   - Pay attention to the dealer's upcard and adjust your strategy accordingly.\n");
-        textGraphics.putString(new TerminalPosition(9, 19), "   - Practice basic strategy to maximize your chances of winning.\n");
-        textGraphics.putString(new TerminalPosition(9, 21), "8. **Commands:**\n");
-        textGraphics.putString(new TerminalPosition(9, 22), "   - Type 'h' to Hit.\n");
-        textGraphics.putString(new TerminalPosition(9, 23), "   - Type 's' to Stand.\n");
-        textGraphics.putString(new TerminalPosition(9, 24), "   - Type 'd' to Double Down.\n");
-        textGraphics.putString(new TerminalPosition(9, 25), "   - Type 'p' to Split (if eligible).\n");
-        textGraphics.putString(new TerminalPosition(9, 27), "9. **Have Fun and Good Luck!**\n");
+        textGraphics.putString(new TerminalPosition(9, 18), "7. **Tips:**\n");
+        textGraphics.putString(new TerminalPosition(9, 20), "   - Pay attention to the dealer's upcard and adjust your strategy accordingly.\n");
+        textGraphics.putString(new TerminalPosition(9, 21), "   - Practice basic strategy to maximize your chances of winning.\n");
+        textGraphics.putString(new TerminalPosition(9, 23), "8. **Have Fun and Good Luck!**\n");
         textGraphics.putString(new TerminalPosition(63, 30), "4/4");
     }
 

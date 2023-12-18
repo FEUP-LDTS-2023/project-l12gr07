@@ -2,7 +2,8 @@
 
 In this exiciting gambling game of 'Blackjack', we provide an engaging and strategic experience for players within the constraints of purely textual interface.
 
-Players are dealt virtual cards, and the objective is to build a hand with a total value as close to 21 as possible without exceeding it. The game incorporates the classic rules of this iconic game, where numbered cards retain their face value, face cards are worth 10 points, and an Ace can be either 1 or 11 points. Players make decisions to hit, stand, double down, or split based on their current hand and the dealer's visible card. The challenge lies in making strategic choices to beat the dealer while managing the risk of going over 21.
+Players are dealt virtual cards, and the objective is to build a hand with a total value as close to 21 as possible without exceeding it. The game incorporates the classic rules of this iconic game, where numbered cards retain their face value, face cards are worth 10 points, and an Ace can be either 1 or 11 points. Players make decisions to hit, stand or 
+double down based on their current hand and the dealer's visible card. The challenge lies in making strategic choices to beat the dealer while managing the risk of going over 21.
 
 We also included in the game a last ten games menu, that allows us to see who here the last ten people to play and their gains and losses.
 
@@ -20,7 +21,7 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 - **Increase the value of the bet** - after choosing a coin, press enter key to increase the bet.
 - **Decrease the value of the bet** - after choosing a coin, press backspace key to decrease the bet.
 - **Chose how many decks** - in a menu the user is presented with 3 options, to play with one deck, two decks, or the infinite mode.
-- **Chose the move** - the user can choose between hit, stand, double down, or split.
+- **Chose the move** - the user can choose between hit, stand or double down.
 
 ### MOCKUPS
 
@@ -90,7 +91,7 @@ We faced complexity managing various game states and menus, so we needed a strai
 
 **The Pattern**
 
-We applied the **State** pattern. This design allows each game state to be represented by a separate subclass, enabling smooth transitions between various phases like betting, playing with and without split. This approach simplifies the management of different game states, addressing our identified challenges effectively.
+We applied the **State** pattern. This design allows each game state to be represented by a separate subclass, enabling smooth transitions between various phases like betting and playing. This approach simplifies the management of different game states, addressing our identified challenges effectively.
 
 **Implementation:**
 

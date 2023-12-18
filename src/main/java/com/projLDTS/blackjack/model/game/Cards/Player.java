@@ -5,11 +5,9 @@ import com.projLDTS.blackjack.model.game.Decks.Deck;
 
 public class Player extends CardSet {
     private static int credit = UserInput.getCredit();
-    private final Hand splitHand;
     public Player() {
         super();
         credit =  UserInput.getCredit();
-        splitHand = new Hand();
     }
 
     public boolean hit(Deck deck) {
@@ -37,9 +35,6 @@ public class Player extends CardSet {
 
     public void clearHand() {
         for (int i = 0; i < hand.getHand().size(); i++) {
-            hand.removeCard(i);
-        }
-        for (int i = 0; i < splitHand.getHand().size(); i++) {
             hand.removeCard(i);
         }
     }
