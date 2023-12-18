@@ -22,35 +22,34 @@ public class UserInput {
 
     private static StringBuilder username = new StringBuilder();
 
-    public static void setUsername(String username1){
+    public static void setUsername(String username1) {
         username = new StringBuilder(username1);
     }
-    public static StringBuilder getUsername(){
+    public static StringBuilder getUsername() {
         return username;
     }
 
-    public static int getCredit() { return credit; }
+    public static int getCredit() {return credit; }
     public static void setCredit(int credit) { UserInput.credit = credit; }
 
 
-    public static void setBet(StringBuilder bet){
+    public static void setBet(StringBuilder bet) {
         UserInput.bet = bet;
     }
 
-    public static StringBuilder getBet(){
+    public static StringBuilder getBet() {
         return bet;
     }
-    public static int getintBet(){
+    public static int getintBet() {
         return thisBet;
     }
-    public static boolean getbetEnded(){
+    public static boolean getbetEnded() {
         return betEnded;
     }
-    int c = 0;
 
     public int MainMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
@@ -107,7 +106,7 @@ public class UserInput {
 
     public int ExitAndHowToPlayMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
@@ -126,7 +125,7 @@ public class UserInput {
     }
     public int DecksMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
@@ -149,7 +148,7 @@ public class UserInput {
     }
     public int Last10GamesMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.Enter) {
             return 0;
@@ -181,9 +180,9 @@ public class UserInput {
             }
         }
         thisBet = Integer.parseInt(String.valueOf(bet));
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
-        else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'e')
+        else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'e' || key.getCharacter() == 'E'))
             return 5; //Return to main menu
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
@@ -232,11 +231,11 @@ public class UserInput {
         betEnded = false;
         //adicionar bet ao last10games
         setBet(new StringBuilder()); //limpar a bet
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
-        else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'y')
+        else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'y' || key.getCharacter() == 'Y'))
             return 0;
-        else if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'n')
+        else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'n' || key.getCharacter() == 'N'))
             return 1;
         else if (key.getKeyType() == KeyType.EOF)
             return -1;

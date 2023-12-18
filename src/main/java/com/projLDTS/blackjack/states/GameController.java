@@ -91,10 +91,10 @@ public class GameController implements StateController {
             while (true) {
                 gameViewer.playDraw();
                 int input = gameViewer.userInput();
+                gameViewer.setAfterPlay(false);
                 if (input == 0) {
                     dd = true;
                     gameSet.nextGame();
-                    gameViewer.setAfterPlay(false);
                     return 1;
                 }
                 else if (input == 1) {
@@ -118,10 +118,10 @@ public class GameController implements StateController {
                 UserInput.setCredit(1000);
                 gameViewer.playerNoCredit();
                 int input = gameViewer.userInput();
+                gameViewer.setAfterPlay(false);
                 if (input == 0) {
                     dd = true;
                     gameSet.nextGame();
-                    gameViewer.setAfterPlay(false);
                     return 1;
                 }
                 else if (input == 1) {
@@ -132,10 +132,10 @@ public class GameController implements StateController {
             while (true) {
                 gameViewer.playerLost();
                 int input = gameViewer.userInput();
+                gameViewer.setAfterPlay(false);
                 if (input == 0) {
                     dd = true;
                     gameSet.nextGame();
-                    gameViewer.setAfterPlay(false);
                     return 1;
                 }
                 else if (input == 1) {
@@ -150,10 +150,10 @@ public class GameController implements StateController {
             while (true) {
                 gameViewer.playerWon();
                 int input = gameViewer.userInput();
+                gameViewer.setAfterPlay(false);
                 if (input == 0) {
                     dd = true;
                     gameSet.nextGame();
-                    gameViewer.setAfterPlay(false);
                     return 1;
                 }
                 else if (input == 1) {
