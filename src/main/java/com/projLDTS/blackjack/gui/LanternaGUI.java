@@ -42,7 +42,7 @@ public class LanternaGUI {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(customFont);
 
-        Font loadedFont = customFont.deriveFont(Font.PLAIN, 16); // Adjust the size as needed
+        Font loadedFont = customFont.deriveFont(Font.PLAIN, 15); // Adjust the size as needed
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
 
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
