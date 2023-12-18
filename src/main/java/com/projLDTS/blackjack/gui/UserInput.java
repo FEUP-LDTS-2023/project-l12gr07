@@ -2,6 +2,8 @@ package com.projLDTS.blackjack.gui;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.model.game.Cards.Player;
 
 import java.io.IOException;
@@ -49,11 +51,13 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         else if (key.getKeyType() == KeyType.ArrowUp) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 2;
             return buttonSelected;
         }
         else if (key.getKeyType() == KeyType.ArrowDown) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected++;
             if (buttonSelected == 3) buttonSelected = 0;
             return buttonSelected;
@@ -76,6 +80,7 @@ public class UserInput {
                 username.append(character);
             }
         } else if (key.getKeyType() == KeyType.ArrowRight) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected++;
             if (buttonSelected == 3) buttonSelected = 0;
             if(UserInput.getUsername().toString().isEmpty()){
@@ -83,6 +88,7 @@ public class UserInput {
             }
             return buttonSelected;
         } else if (key.getKeyType() == KeyType.ArrowLeft) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 2;
             if(UserInput.getUsername().toString().isEmpty()){
@@ -102,9 +108,11 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         if (key.getKeyType() == KeyType.ArrowRight) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             return 1;
         }
         else if (key.getKeyType() == KeyType.ArrowLeft) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             return 0;
         }
         else if (key.getKeyType() == KeyType.Enter) {
@@ -119,11 +127,13 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         else if (key.getKeyType() == KeyType.ArrowLeft) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 3;
             return buttonSelected;
         }
         else if (key.getKeyType() == KeyType.ArrowRight) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected++;
             if (buttonSelected == 4) buttonSelected = 0;
             return buttonSelected;
@@ -177,9 +187,11 @@ public class UserInput {
             if (key.getKeyType() == KeyType.ArrowUp || key.getKeyType() == KeyType.ArrowDown) {
                 switch (buttonSelected) {
                     case 0:
+                        MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
                         buttonSelected = 2;
                         break;
                     case 2:
+                        MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
                         buttonSelected = 0;
                         break;
                 }
@@ -187,12 +199,15 @@ public class UserInput {
             else if (key.getKeyType() == KeyType.ArrowLeft || key.getKeyType() == KeyType.ArrowRight) {
                 switch (buttonSelected) {
                     case 0:
+                        MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
                         buttonSelected = 1;
                         break;
                     case 1:
+                        MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
                         buttonSelected = 0;
                         break;
                     case 2:
+                        MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
                         buttonSelected = 1;
                         break;
                 }
