@@ -105,7 +105,9 @@ public class GameController implements StateController {
         }
         else if (!aux) {
             // Player Lost
-            if (UserInput.getCredit() == 0) {
+            if (UserInput.getCredit() == 0 && (gameSet.getPlayer().getHand().getValue()>21
+                    || (gameSet.getPlayer().getHand().getValue() < gameSet.getDealer().getHand().getValue()
+                    && gameSet.getDealer().getHand().getValue() <= 21 ))) {
                 UserInput.setCredit(1000);
                 gameViewer.playerNoCredit();
                 int input = gameViewer.userInput();

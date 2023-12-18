@@ -74,9 +74,6 @@ public class GameSet {
         if (op == 1) { // Dealer Won
             return 0;
         }
-        if (UserInput.getCredit() == 0) { // Lost, no credit left
-            return 0;
-        }
         return 3; // another card
     }
 
