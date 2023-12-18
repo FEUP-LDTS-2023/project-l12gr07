@@ -26,7 +26,7 @@ public class MusicManager {
         }
         return INSTANCE;
     }
-    public void setBackgroundSound(Music music) {
+    public void setBackgroundSound(MusicOptions music) {
         backgroundMusic.loop();
     }
     public void playMusicChoice(MusicOptions music) {
@@ -48,6 +48,9 @@ public class MusicManager {
                 break;
             case OPTION_CLICK:
                 optionClickMusic.play();
+                break;
+            case BACKGROUND_MUSIC:
+                backgroundMusic.play();
                 break;
         }
     }
