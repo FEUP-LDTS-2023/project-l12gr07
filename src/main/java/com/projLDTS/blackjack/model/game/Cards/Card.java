@@ -36,16 +36,16 @@ public class Card {
     public String getSuitString(String suit) {
         switch (suit) {
             case "Hearts":
-                suit = "H";
+                suit = "{";
                 break;
             case "Diamonds":
-                suit = "D";
+                suit = "[";
                 break;
             case "Clubs":
-                suit = "C";
+                suit = "]";
                 break;
             case "Spades":
-                suit = "S";
+                suit = "}";
                 break;
         }
         return suit;
