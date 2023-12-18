@@ -1,6 +1,8 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 
@@ -30,10 +32,12 @@ public class ExitMenuController implements StateController {
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
         if (getButtonSelected() == 0) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
             applicationStateController.close();
             System.exit(0);
         }
         else if (getButtonSelected() == 1) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
             applicationStateController.changeState(ApplicationState.MainMenu);
         }
     }

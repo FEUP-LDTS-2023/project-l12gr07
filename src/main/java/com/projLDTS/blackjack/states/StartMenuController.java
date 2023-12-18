@@ -1,6 +1,8 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.menus.StartMenuViewer;
@@ -32,9 +34,18 @@ public class StartMenuController implements StateController {
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
-        if (getButtonSelected() == 0) applicationStateController.changeState(ApplicationState.MainMenu);
-        else if (getButtonSelected() == 1) applicationStateController.changeState(ApplicationState.DecksMenu);
-        else if (getButtonSelected() == 2) applicationStateController.changeState(ApplicationState.Last10Games);
+        if (getButtonSelected() == 0) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
+            applicationStateController.changeState(ApplicationState.MainMenu);
+        }
+        else if (getButtonSelected() == 1) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
+            applicationStateController.changeState(ApplicationState.DecksMenu);
+        }
+        else if (getButtonSelected() == 2) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
+            applicationStateController.changeState(ApplicationState.Last10Games);
+        }
     }
 
     @Override
