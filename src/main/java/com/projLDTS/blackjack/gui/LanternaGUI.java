@@ -13,8 +13,10 @@ import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -31,15 +33,21 @@ public class LanternaGUI {
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
+
         size = new TerminalSize(width, height);
+        URL fontResource = getClass().getClassLoader().getResource("CARDC___.TTF");
+        File fontFile = new File(Objects.requireNonNull(fontResource).toURI());
+        Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(customFont);
 
-        Font myFont = new Font("Monospaced", Font.BOLD, 16);
-        AWTTerminalFontConfiguration myFontConfiguration = AWTTerminalFontConfiguration.newInstance(myFont);
+        Font loadedFont = customFont.deriveFont(Font.PLAIN, 16); // Adjust the size as needed
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
 
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
         factory.setForceAWTOverSwing(true);
-        factory.setTerminalEmulatorFontConfiguration(myFontConfiguration);
+        factory.setTerminalEmulatorFontConfiguration(fontConfig);
 
         Terminal terminal = factory.setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
         screen = new TerminalScreen(terminal);
