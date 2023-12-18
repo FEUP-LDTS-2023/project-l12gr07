@@ -1,5 +1,7 @@
 package com.projLDTS.blackjack.viewer.game;
 
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
@@ -61,11 +63,13 @@ public class GameViewer implements StateViewer {
     }
 
     public void playerLost() throws IOException {
+        MusicManager.getInstance().playMusicChoice(MusicOptions.GAME_OVER);
         gui.drawPlayerLost();
         gui.refresh();
     }
 
     public void playerNoCredit() throws IOException {
+        MusicManager.getInstance().playMusicChoice(MusicOptions.GAME_OVER);
         gui.drawPlayerNoCredit();
         gui.refresh();
     }
@@ -75,6 +79,7 @@ public class GameViewer implements StateViewer {
     }
 
     public void playerWon() throws IOException {
+        MusicManager.getInstance().playMusicChoice(MusicOptions.WIN);
         gui.drawPlayerWon();
         gui.refresh();
     }
@@ -97,6 +102,7 @@ public class GameViewer implements StateViewer {
     }
 
     public void playDraw() throws IOException {
+        MusicManager.getInstance().playMusicChoice(MusicOptions.WIN);
         gui.drawPlayDraw();
         gui.refresh();
     }
