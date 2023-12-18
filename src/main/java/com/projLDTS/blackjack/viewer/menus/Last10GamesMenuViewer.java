@@ -36,7 +36,7 @@ public class Last10GamesMenuViewer implements StateViewer {
         gui.clear();
         gui.drawLast10GamesText();
         drawElements();
-        drawCSV();
+        //drawCSV();
         gui.refresh();
     }
 
