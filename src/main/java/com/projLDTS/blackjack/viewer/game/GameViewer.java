@@ -86,6 +86,7 @@ public class GameViewer implements StateViewer {
 
     public void drawCards(Hand hand, int row, boolean dealer) throws IOException, InterruptedException {
         if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
+            MusicManager.getInstance().playMusicChoice(MusicOptions.DEAL_CARD);
             if (dealer) gui.drawDealerCards(hand, row);
             else gui.drawCards(hand, row);
             gui.drawValues(hand.getValue(), dealer);

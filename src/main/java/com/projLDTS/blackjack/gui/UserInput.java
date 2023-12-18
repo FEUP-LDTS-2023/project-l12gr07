@@ -218,6 +218,7 @@ public class UserInput {
         }
         if (key.getKeyType() == KeyType.Enter && !UserInput.getBet().toString().isEmpty()){
             betEnded = true;
+            MusicManager.getInstance().playMusicChoice(MusicOptions.SHUFFLE);
         }
         return buttonSelected;
     }
