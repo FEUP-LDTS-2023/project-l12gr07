@@ -1,6 +1,8 @@
 package com.projLDTS.blackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 
 import java.awt.*;
 import java.io.IOException;
@@ -28,6 +30,7 @@ public class Last10GamesMenuController implements StateController {
 
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
+        MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
         applicationStateController.changeState(ApplicationState.StartMenu);
     }
 
