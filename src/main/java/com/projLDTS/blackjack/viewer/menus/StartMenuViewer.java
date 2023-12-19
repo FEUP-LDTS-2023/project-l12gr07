@@ -46,7 +46,11 @@ public class StartMenuViewer implements StateViewer {
 
     @Override
     public int userInput() throws IOException {
-        return new UserInput(gui).StartMenuInput(buttonSelected,UserInput.getUsername());
+        int inputResult = new UserInput(gui).StartMenuInput(buttonSelected, UserInput.getUsername());
+        if (inputResult == 3) { // when key is pressed, it saves it
+            UserInput.saveUsernameCSV(UserInput.getUsername().toString());
+        }
+        return inputResult;
     }
 
     @Override

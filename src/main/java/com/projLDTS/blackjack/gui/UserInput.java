@@ -6,6 +6,8 @@ import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.model.game.Cards.Player;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class UserInput {
@@ -237,5 +239,13 @@ public class UserInput {
         else if (key.getKeyType() == KeyType.EOF)
             return -1;
         return -1;
+    }
+
+    public static void saveUsernameCSV(String username) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/last10games.csv", true))) {
+            writer.write(username + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
