@@ -5,7 +5,6 @@ import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.StateViewer;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class Last10GamesMenuViewer implements StateViewer {
     private final LanternaGUI gui;
     List last10games;
 
-    public Last10GamesMenuViewer(LanternaGUI gui_, List last10games){
+    public Last10GamesMenuViewer(LanternaGUI gui_){
         buttonSelected = 0;
         gui = gui_;
         this.last10games = last10games;

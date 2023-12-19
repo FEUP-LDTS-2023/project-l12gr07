@@ -35,7 +35,7 @@ public class ApplicationStateControllerTest {
     }
 
     @Test
-    public void testRun() throws IOException, FontFormatException, URISyntaxException {
+    public void testRun() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
         StateViewer mockedStateViewer = Mockito.mock(StateViewer.class);
         applicationStateController.setStateViewer(mockedStateViewer);
         StateController mockedStateController = Mockito.mock(StateController.class);
@@ -59,6 +59,7 @@ public class ApplicationStateControllerTest {
         verify(mockedStateViewer, times(1)).draw();
     }
 
+    // TODO : não dá
     @Test
     public void testUserInput() throws IOException {
         when(applicationStateController.getStateViewer().userInput()).thenReturn(1);
@@ -69,12 +70,14 @@ public class ApplicationStateControllerTest {
         assertEquals(1, userInputResult);
     }
 
+    // TODO : não dá
     @Test
     public void testClose() throws IOException {
         applicationStateController.close();
         verify(applicationStateController.getStateViewer()).close();
     }
 
+    // TODO : não dá
     @Test
     public void testSetButtonSelected() {
         applicationStateController.setButtonSelected(2);
@@ -82,6 +85,7 @@ public class ApplicationStateControllerTest {
         verify(applicationStateController.getStateViewer()).setButtonSelected(2);
     }
 
+    // TODO : não dá
     @Test
     public void testGetButtonSelected() {
         when(applicationStateController.getStateViewer().getButtonSelected()).thenReturn(3);
