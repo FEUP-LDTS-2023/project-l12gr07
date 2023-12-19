@@ -1,4 +1,4 @@
-package com.projLDTSblackjack.controller;
+package com.projLDTSblackjack.controller.menu;
 
 import com.projLDTS.blackjack.controller.menu.*;
 import com.projLDTS.blackjack.gui.LanternaGUI;
