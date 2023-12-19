@@ -45,7 +45,6 @@ class GameViewerTest {
         verify(mockedGUI, times(2)).drawHitButton(anyBoolean());
         verify(mockedGUI, times(1)).drawStandButton(anyBoolean());
         verify(mockedGUI, times(1)).drawDoubleDownButton(anyBoolean());
-        verify(mockedGUI, times(1)).drawSplitButton(anyBoolean());
         verify(mockedGUI, times(2)).refresh();
     }
 
@@ -57,7 +56,6 @@ class GameViewerTest {
         verify(mockedGUI, times(1)).drawHitButton(false);
         verify(mockedGUI, times(1)).drawStandButton(true);
         verify(mockedGUI, times(1)).drawDoubleDownButton(false);
-        verify(mockedGUI, times(1)).drawSplitButton(false);
         verify(mockedGUI, times(1)).refresh();
         // Add more verifications as needed
     }

@@ -6,16 +6,12 @@ import com.projLDTS.blackjack.states.*;
 import com.projLDTS.blackjack.viewer.StateViewer;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 import com.projLDTS.blackjack.viewer.menus.*;
-import com.projLDTS.blackjack.controller.music.Music;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Scanner;
 
 public class ApplicationStateController {
     private StateController stateController;
@@ -88,7 +84,7 @@ public class ApplicationStateController {
 
             case Last10Games:
                 stateController = new Last10GamesMenuController(this);
-                stateViewer = new Last10GamesMenuViewer(gui, last10games);
+                stateViewer = new Last10GamesMenuViewer(gui);
                 break;
 
             case Exit:
