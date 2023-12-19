@@ -62,7 +62,6 @@ public class Last10GamesMenuViewer implements StateViewer {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/last10games.csv"))) {
             String line;
             LinkedList<String> lines = new LinkedList<>();
-
             // Read all lines and keep only the last 10 in the list
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
@@ -73,7 +72,7 @@ public class Last10GamesMenuViewer implements StateViewer {
 
             last10Lines.addAll(lines);
         } catch (IOException e) {
-            e.printStackTrace();  // Handle the exception according to your needs
+            e.printStackTrace();
         }
         return last10Lines;
     }

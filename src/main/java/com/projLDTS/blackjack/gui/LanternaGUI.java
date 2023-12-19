@@ -62,14 +62,6 @@ public class LanternaGUI {
         screen.refresh();
     }
 
-    public TerminalSize getSize() {
-        return size;
-    }
-
-    public TextGraphics getTextGraphics() {
-        return textGraphics;
-    }
-
     public Screen getScreen() {
         return this.screen;
     }
@@ -160,7 +152,7 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(60, 26), "HOW TO PLAY");
     }
 
-    public void drawLast10GamesButton(boolean selected) throws IOException {
+    public void drawLast10GamesButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
@@ -168,7 +160,7 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(115, 36), "LAST GAMES");
     }
 
-    public void drawbReturnButton(boolean selected) throws IOException {
+    public void drawbReturnButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
@@ -176,7 +168,7 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(39, 25), "RETURN");
     }
 
-    public void drawPlayButton(boolean selected) throws IOException {
+    public void drawPlayButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
@@ -294,12 +286,12 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(85, 28), "Infinite");
     }
 
-    public void drawRetDecks(boolean selected) throws IOException {
+    public void drawRetDecks(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(10, 34), new TerminalSize(14, 3), ' ');
-        textGraphics.putString(new TerminalPosition(14, 35), "RETURN");
+        textGraphics.fillRectangle(new TerminalPosition(58, 34), new TerminalSize(14, 3), ' ');
+        textGraphics.putString(new TerminalPosition(62, 35), "RETURN");
     }
 
     public void clear() throws IOException {
@@ -376,7 +368,6 @@ public class LanternaGUI {
     public void drawBet() {
         textGraphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         textGraphics.putString(new TerminalPosition(62, 32), "bet");
-        int maxUsernameLength = 5;
         int boxWidth = 7;
         int boxHeight = 3;
         int x = 60;
@@ -475,22 +466,6 @@ public class LanternaGUI {
         }
     }
 
-    public void drawAPlay(String next, int pos) {
-        String[] parts = next.split(";");
-
-        textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        textGraphics.putString(new TerminalPosition(42, pos), parts[0]);
-
-        int num = Integer.parseInt(parts[1]);
-        if (num < 0) {
-            textGraphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-            textGraphics.putString(new TerminalPosition(57, pos), parts[1]);
-        } else {
-            textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
-            textGraphics.putString(new TerminalPosition(57, pos), parts[1]);
-        }
-    }
-
 
     public void drawDealerPlayerText() {
         textGraphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
@@ -518,20 +493,15 @@ public class LanternaGUI {
     }
 
     public void drawLast10Lines(List<String> last10Lines) {
-        int row = 6;
+        int row = 4;
         for (String line : last10Lines) {
             if (line.contains("+")) {
                 textGraphics.setForegroundColor(TextColor.Factory.fromString("#00FF00")); // Green for positive values
             } else if (line.contains("-")) {
                 textGraphics.setForegroundColor(TextColor.Factory.fromString("#FF0000")); // Red for negative values
-            } else {
-                // Handle other cases if needed
             }
-
             textGraphics.putString(new TerminalPosition(82, row), line);
             row += 3;
-
-            // Reset color to default
             textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
         }
     }
