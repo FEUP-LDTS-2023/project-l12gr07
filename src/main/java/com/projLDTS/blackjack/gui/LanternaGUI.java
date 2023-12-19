@@ -65,6 +65,7 @@ public class LanternaGUI {
     public TerminalSize getSize() {
         return size;
     }
+
     public TextGraphics getTextGraphics() {
         return textGraphics;
     }
@@ -139,7 +140,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(50, 29),new TerminalSize(30, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(50, 29), new TerminalSize(30, 3), ' ');
         textGraphics.putString(new TerminalPosition(63, 30), "EXIT");
     }
 
@@ -147,7 +148,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(50, 21),new TerminalSize(30, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(50, 21), new TerminalSize(30, 3), ' ');
         textGraphics.putString(new TerminalPosition(63, 22), "START");
     }
 
@@ -155,7 +156,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(50, 25),new TerminalSize(30, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(50, 25), new TerminalSize(30, 3), ' ');
         textGraphics.putString(new TerminalPosition(60, 26), "HOW TO PLAY");
     }
 
@@ -163,7 +164,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(112, 35), new TerminalSize(16, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(112, 35), new TerminalSize(16, 3), ' ');
         textGraphics.putString(new TerminalPosition(115, 36), "LAST GAMES");
     }
 
@@ -171,7 +172,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(35, 24), new TerminalSize(14, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(35, 24), new TerminalSize(14, 3), ' ');
         textGraphics.putString(new TerminalPosition(39, 25), "RETURN");
     }
 
@@ -179,7 +180,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(83, 24), new TerminalSize(12, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(83, 24), new TerminalSize(12, 3), ' ');
         textGraphics.putString(new TerminalPosition(87, 25), "PLAY");
     }
 
@@ -187,7 +188,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(29, 27), new TerminalSize(15, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(29, 27), new TerminalSize(15, 3), ' ');
         textGraphics.putString(new TerminalPosition(35, 28), "YES");
     }
 
@@ -195,35 +196,35 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(85, 27), new TerminalSize(15, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(85, 27), new TerminalSize(15, 3), ' ');
         textGraphics.putString(new TerminalPosition(91, 28), "NO");
     }
 
     public void drawRet1() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(9, 33), new TerminalSize(50, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(9, 33), new TerminalSize(50, 3), ' ');
         textGraphics.putString(new TerminalPosition(30, 34), "RETURN");
     }
 
     public void drawNext() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(70, 33), new TerminalSize(50, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(70, 33), new TerminalSize(50, 3), ' ');
         textGraphics.putString(new TerminalPosition(94, 34), "-->");
     }
 
     public void drawPrevious() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(9, 33), new TerminalSize(50, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(9, 33), new TerminalSize(50, 3), ' ');
         textGraphics.putString(new TerminalPosition(30, 34), "<--");
     }
 
     public void drawRet2() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(70, 33), new TerminalSize(50, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(70, 33), new TerminalSize(50, 3), ' ');
         textGraphics.putString(new TerminalPosition(94, 34), "RETURN");
     }
 
@@ -269,25 +270,27 @@ public class LanternaGUI {
         textGraphics.putString(new TerminalPosition(63, 30), "4/4");
     }
 
-    public void drawOneButton (boolean selected){
+    public void drawOneButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(29, 27), new TerminalSize(20, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(29, 27), new TerminalSize(20, 3), ' ');
         textGraphics.putString(new TerminalPosition(35, 28), "One Deck");
     }
-    public void drawTwoButton (boolean selected){
+
+    public void drawTwoButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(53, 27), new TerminalSize(21, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(53, 27), new TerminalSize(21, 3), ' ');
         textGraphics.putString(new TerminalPosition(59, 28), "Two Decks");
     }
-    public void drawInfButton (boolean selected){
+
+    public void drawInfButton(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(79, 27), new TerminalSize(21, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(79, 27), new TerminalSize(21, 3), ' ');
         textGraphics.putString(new TerminalPosition(85, 28), "Infinite");
     }
 
@@ -295,7 +298,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(10, 34), new TerminalSize(14, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(10, 34), new TerminalSize(14, 3), ' ');
         textGraphics.putString(new TerminalPosition(14, 35), "RETURN");
     }
 
@@ -378,7 +381,7 @@ public class LanternaGUI {
         int boxHeight = 3;
         int x = 60;
         int y = 33;
-        textGraphics.putString(new TerminalPosition(61, 34),UserInput.getBet().toString());
+        textGraphics.putString(new TerminalPosition(61, 34), UserInput.getBet().toString());
         drawBox(x, y, boxWidth, boxHeight, TextColor.Factory.fromString("#727272"));
     }
 
@@ -386,7 +389,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(43, 31), new TerminalSize(14, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(43, 31), new TerminalSize(14, 3), ' ');
         textGraphics.putString(new TerminalPosition(48, 32), "HIT");
     }
 
@@ -394,7 +397,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(70, 31), new TerminalSize(14, 7),' ');
+        textGraphics.fillRectangle(new TerminalPosition(70, 31), new TerminalSize(14, 7), ' ');
         textGraphics.putString(new TerminalPosition(74, 34), "STAND");
     }
 
@@ -402,7 +405,7 @@ public class LanternaGUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(43, 35), new TerminalSize(14, 3),' ');
+        textGraphics.fillRectangle(new TerminalPosition(43, 35), new TerminalSize(14, 3), ' ');
         textGraphics.putString(new TerminalPosition(44, 36), "DOUBLE DOWN");
     }
 
@@ -415,7 +418,7 @@ public class LanternaGUI {
     public void drawPlayerLost() {
         textGraphics.setBackgroundColor(TextColor.Factory.fromString("#FF0000"));
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10), ' ');
         textGraphics.putString(new TerminalPosition(65, 18), "YOU LOST");
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
     }
@@ -423,7 +426,7 @@ public class LanternaGUI {
     public void drawPlayerWon() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(selectedColor);
-        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10), ' ');
         textGraphics.putString(new TerminalPosition(65, 18), "YOU WON");
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
     }
@@ -431,7 +434,7 @@ public class LanternaGUI {
     public void drawPlayDraw() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(selectedColor);
-        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10), ' ');
         textGraphics.putString(new TerminalPosition(65, 18), "DRAW");
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO KEEP PLAYING? Y/N");
     }
@@ -439,7 +442,7 @@ public class LanternaGUI {
     public void drawPlayerNoCredit() {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         textGraphics.setBackgroundColor(TextColor.Factory.fromString("#FF0000"));
-        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10),' ');
+        textGraphics.fillRectangle(new TerminalPosition(2, 15), new TerminalSize(126, 10), ' ');
         textGraphics.putString(new TerminalPosition(50, 18), "YOU LOST. THERE IS NO CREDIT LEFT");
         textGraphics.putString(new TerminalPosition(50, 20), "DO YOU WANT TO PLAY AGAIN? Y/N");
     }
@@ -482,8 +485,7 @@ public class LanternaGUI {
         if (num < 0) {
             textGraphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
             textGraphics.putString(new TerminalPosition(57, pos), parts[1]);
-        }
-        else {
+        } else {
             textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
             textGraphics.putString(new TerminalPosition(57, pos), parts[1]);
         }
@@ -514,11 +516,23 @@ public class LanternaGUI {
         if (dealer) textGraphics.putString(new TerminalPosition(90, 14), String.valueOf(value));
         else textGraphics.putString(new TerminalPosition(90, 25), String.valueOf(value));
     }
+
     public void drawLast10Lines(List<String> last10Lines) {
         int row = 6;
         for (String line : last10Lines) {
+            if (line.contains("+")) {
+                textGraphics.setForegroundColor(TextColor.Factory.fromString("#00FF00")); // Green for positive values
+            } else if (line.contains("-")) {
+                textGraphics.setForegroundColor(TextColor.Factory.fromString("#FF0000")); // Red for negative values
+            } else {
+                // Handle other cases if needed
+            }
+
             textGraphics.putString(new TerminalPosition(82, row), line);
             row += 3;
+
+            // Reset color to default
+            textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
         }
     }
 }
