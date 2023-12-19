@@ -1,4 +1,4 @@
-package com.projLDTSblackjack.controller;
+package com.projLDTSblackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.states.ApplicationState;
