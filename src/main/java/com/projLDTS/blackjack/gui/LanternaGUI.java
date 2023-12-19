@@ -116,6 +116,7 @@ public class LanternaGUI {
 
     }
 
+
     private void drawBox(int x, int y, int width, int height, TextColor borderColor) {
         for (int i = 0; i < width; i++) {
             textGraphics.setForegroundColor(borderColor);
@@ -506,6 +507,7 @@ public class LanternaGUI {
             textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
         }
     }
+
     public void setScreen(Screen mockScreen) {
         screen = mockScreen;
     }
