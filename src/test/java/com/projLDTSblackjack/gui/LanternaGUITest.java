@@ -28,6 +28,7 @@ public class LanternaGUITest {
         lanternaGUI = new LanternaGUI(mockScreen, mockTextGraphics, mockTerminalSize); // Pass appropriate width and height
     }
 
+    // TODO: não dá
     @Test
     public void testDrawBlackjack() throws IOException {
         lanternaGUI.drawBlackjack();
@@ -35,12 +36,14 @@ public class LanternaGUITest {
         verify(mockScreen).refresh();
     }
 
+    // TODO: não dá
     @Test
     public void testDrawHowToPlay() {
         lanternaGUI.drawHowToPlay();
         verify(mockTextGraphics, times(10)).putString(any(), anyString());
     }
 
+    // TODO: não dá
     @Test
     public void testDrawGetUsername() {
         StringBuilder username = new StringBuilder("TestUser");
@@ -48,6 +51,7 @@ public class LanternaGUITest {
         verify(mockTextGraphics, times(2)).putString(any(), anyString());
     }
 
+    // TODO: não dá
     @Test
     public void testDrawBox() {
         int x = 2;
