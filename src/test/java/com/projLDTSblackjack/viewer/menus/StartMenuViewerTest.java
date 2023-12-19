@@ -25,6 +25,7 @@ public class StartMenuViewerTest {
         startMenuViewer = new StartMenuViewer(mockedGUI);
     }
 
+    // TODO : não está a dar
     @Test
     public void testDraw() throws Exception {
         LanternaGUI mockedGUI = mock(LanternaGUI.class);
