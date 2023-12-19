@@ -28,9 +28,8 @@ public class Player extends CardSet {
         }
         credit = credit - Integer.parseInt(UserInput.getBet().toString());
         UserInput.setCredit(credit);
-        hand.setBet(hand.getBet() * 2);
         System.out.println("BET: " + UserInput.getBet().toString());
-        return hit(deck);
+        return true;
     }
 
     public void clearHand() {
