@@ -50,6 +50,7 @@ public class GameController implements StateController {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawFirstCards(gameSet.getPlayer().getHand(), 20, false);
         gameViewer.drawFirstCards(gameSet.getDealer().getHand(), 10, true);
+        UserInput.setBetValue(UserInput.getintBet());
     }
 
     private void drawCards() throws IOException, InterruptedException {
@@ -85,6 +86,8 @@ public class GameController implements StateController {
 
         if (staux == 2) {
             // Draw
+            UserInput.setGameResult(0);
+            // Draw
             while (true) {
                 gameViewer.playDraw();
                 int input = gameViewer.userInput();
@@ -102,11 +105,13 @@ public class GameController implements StateController {
         }
         else if (aux && (getButtonSelected() == 0 || getButtonSelected() == 2)) {
             // Keep playing
+            UserInput.setGameResult(0);
             gameViewer.setAfterPlay(false);
             return 2;
         }
         else if (!aux) {
             // Player Lost
+            UserInput.setGameResult(-1);
             if (UserInput.getCredit() == 0 && (gameSet.getPlayer().getHand().getValue()>21
                     || (gameSet.getPlayer().getHand().getValue() < gameSet.getDealer().getHand().getValue()
                     && gameSet.getDealer().getHand().getValue() <= 21 ))) {
@@ -141,6 +146,7 @@ public class GameController implements StateController {
         }
         else {
             // Player Won
+            UserInput.setGameResult(1);
             while (true) {
                 gameViewer.playerWon();
                 int input = gameViewer.userInput();

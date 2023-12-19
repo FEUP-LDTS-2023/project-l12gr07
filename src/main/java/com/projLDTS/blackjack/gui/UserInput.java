@@ -16,6 +16,8 @@ public class UserInput {
     private static int thisBet;
     static int credit = 1000;
     static boolean betEnded = false;
+    private static int gameResult = 0; // 0 for draw, 1 for win, -1 for loss
+    private static int betValue = 0;
     public UserInput(LanternaGUI gui_) {gui = gui_; }
 
     private static StringBuilder username = new StringBuilder();
@@ -241,11 +243,23 @@ public class UserInput {
         return -1;
     }
 
-    public static void saveUsernameCSV(String username) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/last10games.csv", true))) {
-            writer.write(username + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    public static void setGameResult(int result) {
+        gameResult = result;
+    }
+
+    public static int getGameResult() {
+        return gameResult;
+    }
+
+    public static void setBetValue(int value) {
+        betValue = value;
+    }
+
+    public static int getBetValue() {
+        return betValue;
+    }
+    public static void setBetEnded(boolean ended) {
+        betEnded = ended;
     }
 }

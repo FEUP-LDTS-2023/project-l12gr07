@@ -7,6 +7,8 @@ import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
 import com.projLDTS.blackjack.viewer.StateViewer;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -65,12 +67,14 @@ public class GameViewer implements StateViewer {
         MusicManager.getInstance().playMusicChoice(MusicOptions.GAME_OVER);
         gui.drawPlayerLost();
         gui.refresh();
+        saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
     }
 
     public void playerNoCredit() throws IOException {
         MusicManager.getInstance().playMusicChoice(MusicOptions.GAME_OVER);
         gui.drawPlayerNoCredit();
         gui.refresh();
+        saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
     }
 
     public void setAfterPlay(boolean i) {
@@ -81,6 +85,7 @@ public class GameViewer implements StateViewer {
         MusicManager.getInstance().playMusicChoice(MusicOptions.WIN);
         gui.drawPlayerWon();
         gui.refresh();
+        saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
     }
 
     public void drawCards(Hand hand, int row, boolean dealer) throws IOException, InterruptedException {
@@ -105,5 +110,19 @@ public class GameViewer implements StateViewer {
         MusicManager.getInstance().playMusicChoice(MusicOptions.WIN);
         gui.drawPlayDraw();
         gui.refresh();
+    }
+    private void saveGameCSV(String username, int result, int betValue) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/last10games.csv", true))) {
+           if (result == 0) {
+               writer.write(username + "," + "+0" + "\n");
+           } else if (result == 1) {
+               writer.write(username + ", +" + betValue + "\n");
+           } else if (result == -1) {
+               writer.write(username + ", -" + betValue + "\n");
+           }
+            UserInput.setBetEnded(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
