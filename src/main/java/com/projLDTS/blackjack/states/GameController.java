@@ -22,10 +22,10 @@ public class GameController implements StateController {
     @Override
     public void run() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
         gameSet = new GameSet(gameType);
-        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         while (true) {
             applicationStateController.redraw();
             drawInitialCards();
+            System.out.println("HERE");
             int aux = userInput();
             if (aux == 5) {
                 nextState();
@@ -34,6 +34,7 @@ public class GameController implements StateController {
             else if (aux == 4) {
                 dd = false;
                 int a = play();
+                // setButtonSelected(0);
                 if (a == 1 || a == 0) return;
             }
             else {
@@ -77,8 +78,8 @@ public class GameController implements StateController {
         }
 
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
-        gameViewer.drawCards(gameSet.getPlayer().getHand(), 20, false);
-        gameViewer.refreshCreditBet();
+        applicationStateController.redraw();
+        drawInitialCards();
         gameViewer.setAfterPlay(true);
 
         if (staux == 2) {
