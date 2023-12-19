@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 public class LanternaGUI {
     private final Screen screen;
@@ -330,7 +331,32 @@ public class LanternaGUI {
     }
 
     public void drawLast10GamesText() {
-        textGraphics.putString(new TerminalPosition(52, 10), "Last 10 Games");
+        textGraphics.putString(new TerminalPosition(7, 3), "88                                        ");
+        textGraphics.putString(new TerminalPosition(7, 4), "88                                 ,d     ");
+        textGraphics.putString(new TerminalPosition(7, 5), "88                                 ,d     ");
+        textGraphics.putString(new TerminalPosition(7, 6), "88          ,adPPYYba, ,adPPYba, MM88MMM  ");
+        textGraphics.putString(new TerminalPosition(7, 7), "88          \"\"     `Y8 I8[    \"\"   88    ");
+        textGraphics.putString(new TerminalPosition(7, 8), "88          ,adPPPPP88  `\"Y8ba,    88   ");
+        textGraphics.putString(new TerminalPosition(7, 9), "88          88,    ,88 aa    ]8I   88,    ");
+        textGraphics.putString(new TerminalPosition(7, 10), "88888888888 `\"8bbdP\"Y8 `\"YbbdP\"'   \"Y888  ");
+
+        textGraphics.putString(new TerminalPosition(7, 13), "    88    ,a8888a,     ");
+        textGraphics.putString(new TerminalPosition(7, 14), "  ,d88  ,8P\"'  `\"Y8,   ");
+        textGraphics.putString(new TerminalPosition(7, 15), "888888 ,8P        Y8,  ");
+        textGraphics.putString(new TerminalPosition(7, 16), "    88 88          88  ");
+        textGraphics.putString(new TerminalPosition(7, 17), "    88 88          88  ");
+        textGraphics.putString(new TerminalPosition(7, 18), "    88 `8b        d8'  ");
+        textGraphics.putString(new TerminalPosition(7, 19), "    88  `8ba,  ,ad8'   ");
+        textGraphics.putString(new TerminalPosition(7, 20), "    88    \"Y8888P\"     ");
+
+        textGraphics.putString(new TerminalPosition(7, 23), "  ,ad8888ba,                                                      ");
+        textGraphics.putString(new TerminalPosition(7, 24), " d8\"'    `\"8b                                                     ");
+        textGraphics.putString(new TerminalPosition(7, 25), "d8'                                                               ");
+        textGraphics.putString(new TerminalPosition(7, 26), "88            ,adPPYYba, 88,dPYba,,adPYba,   ,adPPYba, ,adPPYba,  ");
+        textGraphics.putString(new TerminalPosition(7, 27), "88      88888 \"\"     `Y8 88P'   \"88\"    \"8a a8P     88 I8[    \"\"  ");
+        textGraphics.putString(new TerminalPosition(7, 28), "Y8,        88 ,adPPPPP88 88      88      88 8PP\"\"\"\"\"\"\"  `\"Y8ba,   ");
+        textGraphics.putString(new TerminalPosition(7, 29), " Y8a.    .a88 88,    ,88 88      88      88 \"8b,   ,aa aa    ]8I  ");
+        textGraphics.putString(new TerminalPosition(7, 30), "  `\"Y88888P\"  `\"8bbdP\"Y8 88      88      88  `\"Ybbd8\"' `\"YbbdP\"'  ");
     }
 
     public void drawCredit() {
@@ -488,5 +514,11 @@ public class LanternaGUI {
         if (dealer) textGraphics.putString(new TerminalPosition(90, 14), String.valueOf(value));
         else textGraphics.putString(new TerminalPosition(90, 25), String.valueOf(value));
     }
-
+    public void drawLast10Lines(List<String> last10Lines) {
+        int row = 6;
+        for (String line : last10Lines) {
+            textGraphics.putString(new TerminalPosition(82, row), line);
+            row += 3;
+        }
+    }
 }

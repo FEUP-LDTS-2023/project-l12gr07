@@ -1,5 +1,6 @@
 package com.projLDTS.blackjack.viewer.game;
 
+import com.googlecode.lanterna.TextColor;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.gui.LanternaGUI;
@@ -110,15 +111,16 @@ public class GameViewer implements StateViewer {
         MusicManager.getInstance().playMusicChoice(MusicOptions.WIN);
         gui.drawPlayDraw();
         gui.refresh();
+        saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
     }
     private void saveGameCSV(String username, int result, int betValue) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/last10games.csv", true))) {
-           if (result == 0) {
-               writer.write(username + "," + "+0" + "\n");
+            if (result == 0) {
+               writer.write(username + " .............................. " + "+0" + "\n");
            } else if (result == 1) {
-               writer.write(username + ", +" + betValue + "\n");
+               writer.write(username + " .............................. +" + betValue + "\n");
            } else if (result == -1) {
-               writer.write(username + ", -" + betValue + "\n");
+               writer.write(username + " .............................. -" + betValue + "\n");
            }
             UserInput.setBetEnded(false);
         } catch (IOException e) {
