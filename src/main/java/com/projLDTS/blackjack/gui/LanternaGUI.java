@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Hand;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -24,14 +25,12 @@ import java.util.List;
 public class LanternaGUI {
     private Screen screen;
     private TerminalSize size;
-    private final TextGraphics textGraphics;
-    TextColor buttonColor = TextColor.Factory.fromString("#00CA4C");
-    TextColor selectedColor = TextColor.Factory.fromString("#FF0000");
+    private TextGraphics textGraphics;
+    TextColor buttonColor = TextColor.Factory.fromString("#727272");
+    TextColor selectedColor = TextColor.Factory.fromString("#03C04A");
 
-    public LanternaGUI(Screen screen, TextGraphics textGraphics,  TerminalSize size) {
+    public LanternaGUI(Screen screen) {
         this.screen = screen;
-        this.textGraphics = textGraphics;
-        this.size = size;
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
