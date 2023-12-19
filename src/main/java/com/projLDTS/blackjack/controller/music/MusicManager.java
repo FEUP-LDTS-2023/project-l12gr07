@@ -10,7 +10,7 @@ public class MusicManager {
     private final Music dealCardMusic;
     private final Music optionClickMusic;
 
-    private MusicManager() {
+    public MusicManager() {
         this.backgroundMusic = new Music("src/main/resources/music/background_music.wav");
         this.optionSelectMusic = new Music("src/main/resources/music/select.wav");
         this.winMusic = new Music("src/main/resources/music/win.wav");
