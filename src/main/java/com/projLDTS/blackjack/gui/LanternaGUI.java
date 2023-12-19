@@ -29,7 +29,7 @@ public class LanternaGUI {
     TextColor buttonColor = TextColor.Factory.fromString("#727272");
     TextColor selectedColor = TextColor.Factory.fromString("#03C04A");
 
-    public LanternaGUI(Screen screen) {
+    public LanternaGUI(Screen screen, TextGraphics mockTextGraphics, TerminalSize mockTerminalSize) {
         this.screen = screen;
     }
 
@@ -115,7 +115,7 @@ public class LanternaGUI {
 
     }
 
-    private void drawBox(int x, int y, int width, int height, TextColor borderColor) {
+    public void drawBox(int x, int y, int width, int height, TextColor borderColor) {
         for (int i = 0; i < width; i++) {
             textGraphics.setForegroundColor(borderColor);
             textGraphics.setCharacter(x + i, y, '-');
