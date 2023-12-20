@@ -11,8 +11,16 @@ import java.io.IOException;
 public class StartMenuViewer implements StateViewer {
     int buttonSelected;
     private final LanternaGUI gui;
+    private final UserInput userInput;
+
 
     public StartMenuViewer(LanternaGUI gui_){
+        buttonSelected = 0;
+        gui = gui_;
+        userInput = new UserInput(gui);
+    }
+    public StartMenuViewer(UserInput userInput, LanternaGUI gui_) {
+        this.userInput = userInput;
         buttonSelected = 0;
         gui = gui_;
     }
@@ -46,7 +54,7 @@ public class StartMenuViewer implements StateViewer {
 
     @Override
     public int userInput() throws IOException {
-        int inputResult = new UserInput(gui).StartMenuInput(buttonSelected, UserInput.getUsername());
+        int inputResult = userInput.StartMenuInput(buttonSelected, UserInput.getUsername());
         return inputResult;
     }
 
