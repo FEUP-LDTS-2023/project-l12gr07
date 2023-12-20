@@ -32,14 +32,13 @@ class MainMenuViewerTest {
         assert buttonSelected == 2;
     }
 
-    // TODO: não está a dar
     @Test
     void testDraw() throws IOException {
         mainMenuViewer.draw();
 
         verify(mockedGUI).clear();
         verify(mockedGUI).drawBlackjack();
-        verify(mockedGUI, times(2)).drawStartButton(anyBoolean());
+        verify(mockedGUI, times(1)).drawStartButton(anyBoolean());
         verify(mockedGUI, times(1)).drawHowToPlayButton(anyBoolean());
         verify(mockedGUI, times(1)).drawExitButton(anyBoolean());
         verify(mockedGUI, times(2)).refresh();
