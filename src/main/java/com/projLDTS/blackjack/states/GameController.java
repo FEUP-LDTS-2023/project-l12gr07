@@ -36,7 +36,7 @@ public class GameController implements StateController {
             else if (aux == 4) {
                 dd = false;
                 int a = play();
-                // setButtonSelected(0);
+                setButtonSelected(0);
                 if (a == 1 || a == 0) return;
             }
             else {

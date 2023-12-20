@@ -28,6 +28,9 @@ public class Player extends CardSet {
         }
         credit = credit - 2 * Integer.parseInt(UserInput.getBet().toString());
         UserInput.setCredit(credit);
+        StringBuilder s = new StringBuilder();
+        s.append(2 * UserInput.getintBet());
+        UserInput.setBet(s);
         return hit(deck);
     }
 
