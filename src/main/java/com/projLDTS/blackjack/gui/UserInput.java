@@ -73,16 +73,24 @@ public class UserInput {
 
     public int StartMenuInput(int buttonSelected, StringBuilder username) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
-        if (key.getKeyType() == KeyType.Backspace && !username.isEmpty()) {
+
+        if (key == null) {
+            // Handle null key, perhaps by returning the existing buttonSelected
+            return buttonSelected;
+        }
+
+        KeyType keyType = key.getKeyType();
+
+        if (keyType == KeyType.Backspace && !username.isEmpty()) {
             username.deleteCharAt(username.length() - 1);
-        } else if (key.getKeyType() == KeyType.Character) {
+        } else if (keyType == KeyType.Character) {
             char character = key.getCharacter();
             if (character == ' ') {
                 return buttonSelected; // Space bar pressed (simulate button click)
             } else if (Character.isLetter(character) && username.length() < 20) {
                 username.append(character);
             }
-        } else if (key.getKeyType() == KeyType.ArrowRight) {
+        } else if (keyType == KeyType.ArrowRight) {
             MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected++;
             if (buttonSelected == 3) buttonSelected = 0;
@@ -90,7 +98,7 @@ public class UserInput {
                 if (buttonSelected == 1) buttonSelected = 2;
             }
             return buttonSelected;
-        } else if (key.getKeyType() == KeyType.ArrowLeft) {
+        } else if (keyType == KeyType.ArrowLeft) {
             MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_SELECT);
             buttonSelected--;
             if (buttonSelected == -1) buttonSelected = 2;
@@ -98,11 +106,13 @@ public class UserInput {
                 if (buttonSelected == 1) buttonSelected = 0;
             }
             return buttonSelected;
-        } else if (key.getKeyType() == KeyType.Enter) {
+        } else if (keyType == KeyType.Enter) {
             return 3;
         }
+
         return buttonSelected;
     }
+
 
     public int ExitAndHowToPlayMenuInput(int buttonSelected) throws IOException {
         KeyStroke key = gui.getScreen().readInput();
