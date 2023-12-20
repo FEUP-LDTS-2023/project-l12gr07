@@ -151,9 +151,9 @@ public class UserInput {
         if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.Enter) {
-            return 0;
+            return 1;
         }
-        return -1;
+        return 0;
     }
 
     public int GameInput(int buttonSelected) throws IOException {
@@ -164,22 +164,25 @@ public class UserInput {
             if(!bet.toString().isEmpty()){
                 UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
             }
-        } else if (key.getKeyType() == KeyType.Character && !betEnded) {
+        }
+        else if (key.getKeyType() == KeyType.Character && !betEnded) {
             char character = key.getCharacter();
             if (character == ' ') {
                 return buttonSelected; // Space bar pressed (simulate button click)
-            } else if (Character.isDigit(character) && bet.length() < 6) {
+            }
+            else if (Character.isDigit(character) && bet.length() < 6) {
                 if (bet.toString().isEmpty() && UserInput.getCredit() > 0){
                     bet.append(character);
                     UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
-                } else if(Integer.parseInt(UserInput.getBet().toString())*10 + Character.getNumericValue(character) <= UserInput.getCredit()+ Integer.parseInt(UserInput.getBet().toString())){
+                }
+                else if(Integer.parseInt(UserInput.getBet().toString())*10 + Character.getNumericValue(character) <= UserInput.getCredit()+ Integer.parseInt(UserInput.getBet().toString())){
                     UserInput.setCredit(UserInput.getCredit()+Integer.parseInt(UserInput.getBet().toString()));
                     bet.append(character);
                     UserInput.setCredit(UserInput.getCredit()-Integer.parseInt(UserInput.getBet().toString()));
                 }
             }
         }
-        thisBet = Integer.parseInt(String.valueOf(bet));
+        if (!bet.isEmpty()) thisBet = Integer.parseInt(String.valueOf(bet));
         if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'e' || key.getCharacter() == 'E'))
@@ -229,8 +232,7 @@ public class UserInput {
     public int playInput() throws IOException {
         KeyStroke key = gui.getScreen().readInput();
         betEnded = false;
-        //adicionar bet ao last10games
-        setBet(new StringBuilder()); //limpar a bet
+        setBet(new StringBuilder());
         if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q'))
             System.exit(0);
         else if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'y' || key.getCharacter() == 'Y'))

@@ -19,7 +19,7 @@ public class Last10GamesMenuController implements StateController {
     public void run() throws IOException, FontFormatException, URISyntaxException {
         while (true) {
             int aux = userInput();
-            if (aux == 0) {
+            if (aux == 1) {
                 nextState();
                 return;
             }
