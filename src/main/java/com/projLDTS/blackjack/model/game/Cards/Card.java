@@ -28,7 +28,7 @@ public class Card {
             case "7" -> 7;
             case "8" -> 8;
             case "9" -> 9;
-            case "J", "Q", "K" -> 10;
+            case "10", "J", "Q", "K" -> 10;
             default -> 11; // Ace is 11 initially
         };
     }
