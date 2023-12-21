@@ -55,17 +55,29 @@ public class Card {
     }
 
     public void DrawPlayingCard() {
-
-        playingCard.clear();
-        playingCard.add("+---------+");
-        playingCard.add("|" + rank + "        |");
-        playingCard.add("|         |");
-        playingCard.add("|         |");
-        playingCard.add("|    " + getSuitString(suit) + "    |");
-        playingCard.add("|         |");
-        playingCard.add("|         |");
-        playingCard.add("|       " +  rank + " |");
-        playingCard.add("+---------+");
+        if (rank == "10") {
+            playingCard.clear();
+            playingCard.add("+---------+");
+            playingCard.add("|" + rank + "       |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|    " + getSuitString(suit) + "    |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|       " +  rank + "|");
+            playingCard.add("+---------+");
+        } else {
+            playingCard.clear();
+            playingCard.add("+---------+");
+            playingCard.add("|" + rank + "        |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|    " + getSuitString(suit) + "    |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|        " +  rank + "|");
+            playingCard.add("+---------+");
+        }
     }
 
     public ArrayList<String> getPlayingCard() {
