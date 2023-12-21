@@ -4,6 +4,9 @@ import com.projLDTS.blackjack.model.game.Cards.Card;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CardTest {
@@ -11,7 +14,7 @@ public class CardTest {
 
     @BeforeEach
     void setUp() {
-        card = new Card("Hearts", "10");
+        card = new Card("Hearts", "9");
     }
 
     @Test
@@ -23,7 +26,7 @@ public class CardTest {
     @Test
     void testGetValue() {
         int value = card.getValue();
-        assertEquals(10, value);
+        assertEquals(9, value);
     }
 
     @Test
@@ -35,7 +38,7 @@ public class CardTest {
     @Test
     void testGetRankString() {
         String rankString = card.getRankString();
-        assertEquals("10", rankString);
+        assertEquals("9", rankString);
     }
     @Test
     void testGetSuitForHearts() {
@@ -166,5 +169,21 @@ public class CardTest {
         card = new Card("InvalidSuit", "9");
         int value = card.getValue();
         assertEquals(9, value);
+    }
+
+    @Test
+    void testGetPlayingCard() {
+        List<String> expectedPlayingCard = new ArrayList<>();
+        expectedPlayingCard.add("+---------+");
+        expectedPlayingCard.add("|9        |");
+        expectedPlayingCard.add("|         |");
+        expectedPlayingCard.add("|         |");
+        expectedPlayingCard.add("|    {    |");
+        expectedPlayingCard.add("|         |");
+        expectedPlayingCard.add("|         |");
+        expectedPlayingCard.add("|       9 |");
+        expectedPlayingCard.add("+---------+");
+
+        assertEquals(expectedPlayingCard, card.getPlayingCard());
     }
 }

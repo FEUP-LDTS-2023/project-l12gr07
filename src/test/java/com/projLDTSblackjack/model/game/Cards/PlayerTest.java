@@ -1,5 +1,6 @@
 package com.projLDTSblackjack.model.game.Cards;
 
+import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Cards.Card;
 import com.projLDTS.blackjack.model.game.Cards.Player;
 import com.projLDTS.blackjack.model.game.Decks.Deck;
@@ -56,6 +57,10 @@ public class PlayerTest {
         player.getHand().addCard(new Card("Spades", "8"));
         player.clearHand();
         assertTrue(player.getHand().getHand().isEmpty());
+    }
+    @Test
+    void testDoubleDown() {
+        // TODO
     }
 
 }
