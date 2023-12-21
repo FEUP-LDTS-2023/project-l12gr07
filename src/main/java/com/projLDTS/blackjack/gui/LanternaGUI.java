@@ -29,8 +29,32 @@ public class LanternaGUI {
     TextColor buttonColor = TextColor.Factory.fromString("#727272");
     TextColor selectedColor = TextColor.Factory.fromString("#03C04A");
 
-    public LanternaGUI(Screen screen, TextGraphics mockTextGraphics, TerminalSize mockTerminalSize) {
-        this.screen = screen;
+    public LanternaGUI(DefaultTerminalFactory dtf) throws IOException, FontFormatException, URISyntaxException {
+
+        size = new TerminalSize(130, 40);
+        URL fontResource = getClass().getClassLoader().getResource("CARDC___.TTF");
+        File fontFile = new File(Objects.requireNonNull(fontResource).toURI());
+        Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(customFont);
+
+        Font loadedFont = customFont.deriveFont(Font.PLAIN, 15);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+
+        dtf.setForceAWTOverSwing(true);
+        dtf.setTerminalEmulatorFontConfiguration(fontConfig);
+
+        Terminal terminal = dtf.setInitialTerminalSize(size).createTerminal();
+        screen = new TerminalScreen(terminal);
+        screen.setCursorPosition(null);
+        screen.startScreen();
+        textGraphics = newTextGraphics();
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        textGraphics.fillRectangle(new TerminalPosition(0, 0), size, ' ');
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#03C04A"));
+
+        screen.refresh();
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
@@ -43,14 +67,14 @@ public class LanternaGUI {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(customFont);
 
-        Font loadedFont = customFont.deriveFont(Font.PLAIN, 15); // Adjust the size as needed
+        Font loadedFont = customFont.deriveFont(Font.PLAIN, 15);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
 
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
         factory.setForceAWTOverSwing(true);
         factory.setTerminalEmulatorFontConfiguration(fontConfig);
 
-        Terminal terminal = factory.setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
+        Terminal terminal = factory.setInitialTerminalSize(size).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);
         screen.startScreen();
@@ -455,7 +479,7 @@ public class LanternaGUI {
         }
     }
 
-    private void drawCard(Card card, int position, int row) {
+    public void drawCard(Card card, int position, int row) {
         ArrayList<String> playingCard = card.getPlayingCard();
         if (Objects.equals(card.getSuit(), "Hearts") || Objects.equals(card.getSuit(), "Diamonds"))
             textGraphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
@@ -506,11 +530,25 @@ public class LanternaGUI {
         }
     }
 
+    // tests
+
     public void setScreen(Screen mockScreen) {
         screen = mockScreen;
     }
 
     public void setSize(TerminalSize mockTerminalSize) {
         size = mockTerminalSize;
+    }
+
+    public void setTextGraphics(TextGraphics mockTextGraphics) {
+        textGraphics = mockTextGraphics;
+    }
+
+    public TerminalSize getSize() {
+        return size;
+    }
+
+    public TextGraphics getTextGraphics() {
+        return textGraphics;
     }
 }
