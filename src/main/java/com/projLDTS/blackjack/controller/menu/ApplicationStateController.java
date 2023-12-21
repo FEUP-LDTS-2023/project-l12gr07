@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 public class ApplicationStateController {
+    private boolean run;
     private StateController stateController;
     private StateViewer stateViewer;
     private ApplicationState applicationState;
@@ -22,6 +23,7 @@ public class ApplicationStateController {
 
     public ApplicationStateController() throws IOException, FontFormatException, URISyntaxException {
         gui = new LanternaGUI(130, 40);
+        run = true;
         changeState(ApplicationState.MainMenu);
         stateViewer = new MainMenuViewer(gui);
         MusicManager.getInstance().setBackgroundSound(MusicOptions.BACKGROUND_MUSIC);
@@ -39,10 +41,14 @@ public class ApplicationStateController {
     }
 
     public void run() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
-        while (true) {
+        while (run) {
             stateViewer.draw();
             stateController.run();
         }
+    }
+
+    public void stop() {
+        run = false;
     }
 
     public void redraw() throws IOException {
