@@ -5,8 +5,8 @@ import com.projLDTS.blackjack.model.game.Cards.Player;
 import com.projLDTS.blackjack.model.game.Cards.Dealer;
 
 public class GameSet {
-    private final Player player;
-    private final Dealer dealer;
+    private Player player;
+    private Dealer dealer;
     private Deck deck;
     private static GameSet game = null;
     int type;
@@ -79,5 +79,9 @@ public class GameSet {
 
     public boolean doubledown() {
         return player.doubleDown(deck);
+    }
+
+    public void setDeck(Deck mockDeck) {
+        this.deck = deck;
     }
 }
