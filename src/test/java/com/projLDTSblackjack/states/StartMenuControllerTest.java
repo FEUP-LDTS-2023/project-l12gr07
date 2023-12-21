@@ -19,15 +19,17 @@ class StartMenuControllerTest {
     @Mock
     private ApplicationStateController mockApplicationStateController;
 
+    private StartMenuController startMenuController;
+
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException, URISyntaxException, FontFormatException {
         MockitoAnnotations.initMocks(this);
+        startMenuController = new StartMenuController(mockApplicationStateController);
     }
 
     @Test
     void runShouldChangeStateWhenInputIs3() throws IOException, FontFormatException, URISyntaxException {
         when(mockApplicationStateController.userInput()).thenReturn(3);
-        StartMenuController startMenuController = new StartMenuController(mockApplicationStateController);
 
         startMenuController.run();
 
@@ -38,8 +40,6 @@ class StartMenuControllerTest {
     void runShouldSetButtonSelectedWhenInputIsNot3() throws IOException, FontFormatException, URISyntaxException {
         when(mockApplicationStateController.userInput()).thenReturn(1, 3);
 
-        StartMenuController startMenuController = new StartMenuController(mockApplicationStateController);
-
         startMenuController.run();
 
         verify(mockApplicationStateController, times(1)).setButtonSelected(anyInt());
@@ -49,7 +49,6 @@ class StartMenuControllerTest {
 
     @Test
     void nextStateShouldChangeStateAccordingToButtonSelected() throws IOException, FontFormatException, URISyntaxException {
-        StartMenuController startMenuController = new StartMenuController(mockApplicationStateController);
         when(mockApplicationStateController.getButtonSelected()).thenReturn(0);
 
         startMenuController.nextState();
@@ -59,7 +58,6 @@ class StartMenuControllerTest {
 
     @Test
     void nextStateShouldChangeStateAccordingToButtonSelected2() throws IOException, FontFormatException, URISyntaxException {
-        StartMenuController startMenuController = new StartMenuController(mockApplicationStateController);
         when(mockApplicationStateController.getButtonSelected()).thenReturn(1);
 
         startMenuController.nextState();
@@ -69,7 +67,6 @@ class StartMenuControllerTest {
 
     @Test
     void nextStateShouldChangeStateAccordingToButtonSelected3() throws IOException, FontFormatException, URISyntaxException {
-        StartMenuController startMenuController = new StartMenuController(mockApplicationStateController);
         when(mockApplicationStateController.getButtonSelected()).thenReturn(2);
 
         startMenuController.nextState();
