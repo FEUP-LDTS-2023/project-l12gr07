@@ -13,7 +13,6 @@ public class Player extends CardSet {
     public boolean hit(Deck deck) {
         Hand currentHand = hand;
         if (currentHand.getValue() < 21) {
-            System.out.println(currentHand.getValue());
             currentHand.addCard(deck);
         }
         return currentHand.getValue() <= 21;

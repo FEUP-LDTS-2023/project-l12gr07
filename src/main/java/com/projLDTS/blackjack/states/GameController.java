@@ -27,7 +27,6 @@ public class GameController implements StateController {
         while (true) {
             applicationStateController.redraw();
             drawInitialCards();
-            System.out.println("HERE");
             int aux = userInput();
             if (aux == 5) {
                 nextState();
@@ -74,7 +73,6 @@ public class GameController implements StateController {
                 else if (staux == 1) aux = true;
                 drawCards();
             }
-            System.out.println(staux);
         }
         else if (getButtonSelected() == 2) {
             aux = gameSet.doubledown();
