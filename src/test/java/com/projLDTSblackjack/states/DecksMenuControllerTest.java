@@ -1,7 +1,6 @@
 package com.projLDTSblackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
-import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.states.ApplicationState;
 import com.projLDTS.blackjack.states.DecksMenuController;
 import com.projLDTS.blackjack.states.GameController;
@@ -23,9 +22,6 @@ public class DecksMenuControllerTest {
 
     @Mock
     private GameController gameController;
-
-    @Mock
-    private MusicManager musicManager;
 
     private DecksMenuController decksMenuController;
 
