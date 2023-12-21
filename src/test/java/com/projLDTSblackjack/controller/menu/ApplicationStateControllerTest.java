@@ -1,7 +1,6 @@
 package com.projLDTSblackjack.controller.menu;
 
 import com.projLDTS.blackjack.controller.menu.*;
-import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.states.ApplicationState;
 import com.projLDTS.blackjack.states.StartMenuController;
 import com.projLDTS.blackjack.states.StateController;
@@ -14,6 +13,9 @@ import org.mockito.Mockito;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static java.time.Duration.ofSeconds;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,14 +44,23 @@ public class ApplicationStateControllerTest {
         assert(applicationStateController.getStateViewer() instanceof StartMenuViewer);
     }
 
-//    @Test
-//    public void testRun() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
-//        applicationStateController.run();
-//
-//        verify(mockedStateViewer, atLeastOnce()).draw();
-//        verify(mockedStateController, atLeastOnce()).run();
-//        applicationStateController.stop();
-//    }
+    @Test
+    public void testRun() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<?> future = executor.submit(() -> {
+            try {
+                applicationStateController.run();
+            } catch (IOException | FontFormatException | URISyntaxException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        Thread.sleep(2000);
+        future.cancel(true);
+
+        verify(mockedStateViewer, atLeastOnce()).draw();
+        verify(mockedStateController, atLeastOnce()).run();
+    }
 
     @Test
     public void testRedraw() throws IOException {

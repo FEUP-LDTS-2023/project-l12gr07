@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 public class ApplicationStateController {
+    private boolean run;
     private StateController stateController;
     private StateViewer stateViewer;
     private ApplicationState applicationState;
@@ -39,10 +40,15 @@ public class ApplicationStateController {
     }
 
     public void run() throws IOException, FontFormatException, URISyntaxException, InterruptedException {
-        while (true) {
+        run = true;
+        while (run) {
             stateViewer.draw();
             stateController.run();
         }
+    }
+
+    public void stop() {
+        run = false;
     }
 
     public void redraw() throws IOException {
