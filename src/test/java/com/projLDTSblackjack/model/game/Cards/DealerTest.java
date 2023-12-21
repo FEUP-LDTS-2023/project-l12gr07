@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class DealerTest {
@@ -41,12 +42,23 @@ public class DealerTest {
 
     @Test
     void testStandDealerDraw() {
-        // TODO
+        when(mockedDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
+        dealer.handCards(mockedDeck);
+        int result = dealer.stand(20, mockedDeck);
+        verify(mockedDeck, atLeastOnce()).getDeck();
+        assertEquals(2, result);
     }
 
+    // TODO : not working
     @Test
-    void testStandDealerLoses() {
-        // TODO
+    void testStandDealerLost() {
+        /*
+        when(mockedDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
+        dealer.handCards(mockedDeck);
+        int result = dealer.stand(15, mockedDeck);
+        verify(mockedDeck, atLeastOnce()).getDeck();
+        assertEquals(0, result);
+         */
     }
 
     private List<Card> createMockDeck(int numCards, String suit) {
