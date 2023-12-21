@@ -4,6 +4,7 @@ import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.states.ApplicationState;
 import com.projLDTS.blackjack.states.DecksMenuController;
 import com.projLDTS.blackjack.states.GameController;
+import com.projLDTS.blackjack.states.StartMenuController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -13,6 +14,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class DecksMenuControllerTest {
@@ -90,5 +92,41 @@ public class DecksMenuControllerTest {
         decksMenuController.nextState();
 
         verify(mockApplicationStateController).changeState(ApplicationState.MainMenu);
+    }
+
+    @Test
+    void testGetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
+        when(mockController.getButtonSelected()).thenReturn(1);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        assertEquals(1, controller.getButtonSelected());
+
+        verify(mockController, times(1)).getButtonSelected();
+    }
+    @Test
+    void testSetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        controller.setButtonSelected(0);
+
+        // Ensure that setButtonSelected() is called on the mockController
+        verify(mockController, times(1)).setButtonSelected(0);
+    }
+
+    @Test
+    void testUserInput() throws IOException, URISyntaxException, FontFormatException {
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
+        when(mockController.userInput()).thenReturn(3);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        assertEquals(3, controller.userInput());
+
+        // Ensure that userInput() is called on the mockController
+        verify(mockController, times(1)).userInput();
     }
 }

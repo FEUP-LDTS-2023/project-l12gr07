@@ -2,7 +2,9 @@ package com.projLDTSblackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.states.ApplicationState;
-import com.projLDTS.blackjack.states.MainMenuController;
+import com.projLDTS.blackjack.states.HowToPlayMenuController;
+import com.projLDTS.blackjack.states.Last10GamesMenuController;
+import com.projLDTS.blackjack.states.GameController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -16,34 +18,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
-public class MainMenuControllerTest {
-
+public class Last10GamesMenuControllerTest {
     @Mock
     private ApplicationStateController mockApplicationStateController;
 
-    private MainMenuController mainMenuController;
+    private Last10GamesMenuController last10GamesMenuController;
 
     @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mainMenuController = new MainMenuController(mockApplicationStateController);
+        last10GamesMenuController = new Last10GamesMenuController(mockApplicationStateController);
     }
 
     @Test
-    public void runShouldChangeStateWhenInputIs3() throws Exception {
-        when(mockApplicationStateController.userInput()).thenReturn(3);
+    public void runShouldChangeStateWhenInputIs1() throws Exception {
+        when(mockApplicationStateController.userInput()).thenReturn(1);
 
-        mainMenuController.run();
+        last10GamesMenuController.run();
 
         verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
     }
     @Test
     void runShouldSetButtonSelectedWhenInputIsNot4() throws IOException, FontFormatException, URISyntaxException {
-        when(mockApplicationStateController.userInput()).thenReturn(1, 3);
+        when(mockApplicationStateController.userInput()).thenReturn(0, 1);
 
-        mainMenuController.run();
+        last10GamesMenuController.run();
 
         verify(mockApplicationStateController, times(1)).setButtonSelected(anyInt());
         verify(mockApplicationStateController, times(1)).redraw();
@@ -51,28 +52,12 @@ public class MainMenuControllerTest {
     }
 
     @Test
-    public void testNextStateStart() throws Exception {
+    public void testNextStateRet() throws Exception {
         when(mockApplicationStateController.getButtonSelected()).thenReturn(0);
 
-        mainMenuController.nextState();
+        last10GamesMenuController.nextState();
 
         verify(mockApplicationStateController).changeState(ApplicationState.StartMenu);
-    }
-    @Test
-    public void testNextStateHowToPlay() throws Exception {
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(1);
-
-        mainMenuController.nextState();
-
-        verify(mockApplicationStateController).changeState(ApplicationState.HowToPlay);
-    }
-    @Test
-    public void testNextStateExit() throws Exception {
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(2);
-
-        mainMenuController.nextState();
-
-        verify(mockApplicationStateController).changeState(ApplicationState.Exit);
     }
 
     @Test
@@ -80,7 +65,7 @@ public class MainMenuControllerTest {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.getButtonSelected()).thenReturn(1);
 
-        MainMenuController controller = new MainMenuController(mockController);
+        Last10GamesMenuController controller = new Last10GamesMenuController(mockController);
 
         assertEquals(1, controller.getButtonSelected());
 
@@ -90,7 +75,7 @@ public class MainMenuControllerTest {
     void testSetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
 
-        MainMenuController controller = new MainMenuController(mockController);
+        Last10GamesMenuController controller = new Last10GamesMenuController(mockController);
 
         controller.setButtonSelected(0);
 
@@ -103,7 +88,7 @@ public class MainMenuControllerTest {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.userInput()).thenReturn(3);
 
-        MainMenuController controller = new MainMenuController(mockController);
+        Last10GamesMenuController controller = new Last10GamesMenuController(mockController);
 
         assertEquals(3, controller.userInput());
 
