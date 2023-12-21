@@ -181,7 +181,7 @@ public class CardTest {
         expectedPlayingCard.add("|    {    |");
         expectedPlayingCard.add("|         |");
         expectedPlayingCard.add("|         |");
-        expectedPlayingCard.add("|       9 |");
+        expectedPlayingCard.add("|        9|");
         expectedPlayingCard.add("+---------+");
 
         assertEquals(expectedPlayingCard, card.getPlayingCard());
