@@ -32,7 +32,6 @@ class MainMenuViewerTest {
         assert buttonSelected == 2;
     }
 
-    // TODO: não está a dar
     @Test
     void testDraw() throws IOException {
         mainMenuViewer.draw();

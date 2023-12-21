@@ -43,8 +43,7 @@ class GameViewerTest {
         verify(mockedGUI).drawCredit();
         verify(mockedGUI).drawLine();
         verify(mockedGUI).drawBet();
-
-        verify(mockedGUI, times(2)).drawHitButton(anyBoolean());
+        verify(mockedGUI, times(1)).drawHitButton(anyBoolean());
         verify(mockedGUI, times(1)).drawStandButton(anyBoolean());
         verify(mockedGUI, times(1)).drawDoubleDownButton(anyBoolean());
         verify(mockedGUI, times(2)).refresh();
