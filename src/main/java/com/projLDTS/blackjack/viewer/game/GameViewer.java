@@ -127,4 +127,9 @@ public class GameViewer implements StateViewer {
             e.printStackTrace();
         }
     }
+
+    public void resetBetAndUsername() {
+        UserInput.setUsername("");
+        UserInput.setCredit(1000);
+    }
 }

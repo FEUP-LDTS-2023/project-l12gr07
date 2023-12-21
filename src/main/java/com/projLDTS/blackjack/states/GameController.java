@@ -168,6 +168,8 @@ public class GameController implements StateController {
     @Override
     public void nextState() throws IOException, FontFormatException, URISyntaxException {
         MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
+        GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
+        gameViewer.resetBetAndUsername();
         applicationStateController.changeState(ApplicationState.MainMenu);
     }
 
