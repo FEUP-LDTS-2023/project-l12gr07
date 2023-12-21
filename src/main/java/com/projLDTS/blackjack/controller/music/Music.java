@@ -6,6 +6,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
 import java.io.File;
+import java.io.IOException;
 
 import static java.lang.System.load;
 
@@ -13,10 +14,12 @@ public class Music {
     private final Clip music;
     private float volume;
     private final FloatControl floatControl;
+    private Clip clip;
+
     public Music(String musicFile) {
         this.music = load(musicFile);
         this.floatControl = (FloatControl) music.getControl(FloatControl.Type.MASTER_GAIN);
-        setVolume(0.2);
+        setVolume(0.5);
     }
     private Clip load(String musicFile) throws NullPointerException {
         try {
@@ -25,6 +28,7 @@ public class Music {
             AudioInputStream musicInput = AudioSystem.getAudioInputStream(file);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(musicInput);
+            // musicInput.close();
             return musicClip;
 
         } catch (Exception e) {
@@ -40,9 +44,17 @@ public class Music {
         music.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public void setVolume(double volume) {
-        if (volume < 0.0 || volume > 1.0) throw new IllegalArgumentException("Volume not valid: " + volume);
+        if (volume < 0.0 || volume > 1.0) {
+            throw new IllegalArgumentException("Volume not valid: " + volume);
+        }
         float value = (float) (Math.log(volume) / Math.log(10.0) * 20.0);
         floatControl.setValue(value);
         this.volume = value;
     }
+    public void close() {
+        if (music.isOpen()) {
+            music.close();
+        }
+    }
+
 }
