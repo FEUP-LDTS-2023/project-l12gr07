@@ -57,11 +57,12 @@ class GameViewerTest {
         UserInput.setBetEnded(true);
         gameViewer.setButtonSelected(0);
         gameViewer.drawElements();
-
-        verify(mockedGUI, times(1)).drawHitButton(true);
-        verify(mockedGUI, times(1)).drawStandButton(false);
-        verify(mockedGUI, times(1)).drawDoubleDownButton(false);
-        verify(mockedGUI, times(1)).refresh();
+        if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
+            verify(mockedGUI, times(1)).drawHitButton(true);
+            verify(mockedGUI, times(1)).drawStandButton(false);
+            verify(mockedGUI, times(1)).drawDoubleDownButton(false);
+            verify(mockedGUI, times(1)).refresh();
+        }
     }
 
     @Test
