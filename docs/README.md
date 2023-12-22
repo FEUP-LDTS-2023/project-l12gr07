@@ -30,7 +30,7 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 - All features were implemented.
 
 ## UML
-<img src='photos/LDTS_UML.png' width='500'>
+<img src='photos/LDTS_UML.png' width='1000'>
 
 ## DESIGN
 

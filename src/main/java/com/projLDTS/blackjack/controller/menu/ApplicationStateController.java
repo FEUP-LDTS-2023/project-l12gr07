@@ -108,29 +108,6 @@ public class ApplicationStateController {
         return stateViewer.getButtonSelected();
     }
 
-//    private void readFromCSV() throws FileNotFoundException {
-//        Scanner sc = new Scanner(new File("src/main/resources/last10games.csv"));
-//        //parsing a CSV file into the constructor of Scanner class
-//        sc.useDelimiter(",");
-//        //setting comma as delimiter pattern
-//        while (sc.hasNext()) {
-//            last10games.add(sc.next());
-//        }
-//        sc.close();
-//    }
-
-//    private void setToCSV() {
-//
-//    }
-
-//    private void addToCSV(String username, String value) {
-//        String result = username + ";" + value;
-//        last10games.add(result);
-//        if (last10games.size() == 11) {
-//            last10games.remove(0);
-//        }
-//    }
-
     public void setStateViewer(StateViewer stateViewer_) {
         stateViewer = stateViewer_;
     }
