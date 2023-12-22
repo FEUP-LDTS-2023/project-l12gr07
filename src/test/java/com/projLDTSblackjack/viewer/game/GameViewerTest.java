@@ -153,4 +153,13 @@ class GameViewerTest {
         gameViewer.setAfterPlay(false);
         assertEquals(false, gameViewer.isAfterPlay());
     }
+
+    @Test
+    void testResetBetAndUsername(){
+        UserInput.setUsername("Apaga isto");
+        UserInput.setCredit(234567765);
+        gameViewer.resetBetAndUsername();
+        assertEquals(UserInput.getCredit(),1000);
+        assert(UserInput.getUsername().isEmpty());
+    }
 }
