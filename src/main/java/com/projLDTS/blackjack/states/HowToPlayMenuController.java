@@ -36,6 +36,8 @@ public class HowToPlayMenuController implements StateController {
                     setPage(getPage() - 1);
                 else if (getPage() < 3 && getButtonSelected() == 1)
                     setPage(getPage() + 1);
+            } else if (aux == -1) {
+                break;
             }
             applicationStateController.redraw();
         }
