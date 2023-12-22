@@ -1,18 +1,18 @@
 package com.projLDTSblackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.states.ApplicationState;
 import com.projLDTS.blackjack.states.DecksMenuController;
 import com.projLDTS.blackjack.states.GameController;
-import com.projLDTS.blackjack.states.StartMenuController;
+import com.projLDTS.blackjack.viewer.menus.DecksMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -43,7 +43,7 @@ public class DecksMenuControllerTest {
         verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
     }
     @Test
-    void runShouldSetButtonSelectedWhenInputIsNot4() throws IOException, FontFormatException, URISyntaxException {
+    void runShouldSetButtonSelectedWhenInputIsNot4() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(1, 4);
         when(mockApplicationStateController.getStateController()).thenReturn(gameController);
 
@@ -56,46 +56,98 @@ public class DecksMenuControllerTest {
 
     @Test
     public void testNextStateOneDeck() throws Exception {
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(0);
-        when(mockApplicationStateController.getStateController()).thenReturn(gameController);
+        MusicManager mockMusicManager = mock(MusicManager.class);
 
-        decksMenuController.nextState();
+        DecksMenuViewer mockViewer = mock(DecksMenuViewer.class);
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
 
-        verify(mockApplicationStateController).changeState(ApplicationState.Game);
+        when(mockController.getStateViewer()).thenReturn(mockViewer);
+        when(mockController.getButtonSelected()).thenReturn(0);
+        when(mockController.getStateController()).thenReturn(gameController);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        Field instanceField = MusicManager.class.getDeclaredField("INSTANCE");
+        instanceField.setAccessible(true);
+        instanceField.set(null, mockMusicManager);
+
+        controller.nextState();
+
+        verify(mockMusicManager, times(1)).playMusicChoice(MusicOptions.OPTION_CLICK);
+        verify(mockController, times(1)).changeState(ApplicationState.Game);
         verify(gameController).setGameType(1);
     }
     @Test
     public void testNextStateTwoDeck() throws Exception {
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(1);
-        when(mockApplicationStateController.getStateController()).thenReturn(gameController);
+        MusicManager mockMusicManager = mock(MusicManager.class);
 
-        decksMenuController.nextState();
+        DecksMenuViewer mockViewer = mock(DecksMenuViewer.class);
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
 
-        verify(mockApplicationStateController).changeState(ApplicationState.Game);
+        when(mockController.getStateViewer()).thenReturn(mockViewer);
+        when(mockController.getButtonSelected()).thenReturn(1);
+        when(mockController.getStateController()).thenReturn(gameController);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        Field instanceField = MusicManager.class.getDeclaredField("INSTANCE");
+        instanceField.setAccessible(true);
+        instanceField.set(null, mockMusicManager);
+
+        controller.nextState();
+
+        verify(mockMusicManager, times(1)).playMusicChoice(MusicOptions.OPTION_CLICK);
+        verify(mockController, times(1)).changeState(ApplicationState.Game);
         verify(gameController).setGameType(2);
     }
     @Test
     public void testNextStateInfDeck() throws Exception {
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(2);
-        when(mockApplicationStateController.getStateController()).thenReturn(gameController);
+        MusicManager mockMusicManager = mock(MusicManager.class);
 
-        decksMenuController.nextState();
+        DecksMenuViewer mockViewer = mock(DecksMenuViewer.class);
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
 
-        verify(mockApplicationStateController).changeState(ApplicationState.Game);
+        when(mockController.getStateViewer()).thenReturn(mockViewer);
+        when(mockController.getButtonSelected()).thenReturn(2);
+        when(mockController.getStateController()).thenReturn(gameController);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        Field instanceField = MusicManager.class.getDeclaredField("INSTANCE");
+        instanceField.setAccessible(true);
+        instanceField.set(null, mockMusicManager);
+
+        controller.nextState();
+
+        verify(mockMusicManager, times(1)).playMusicChoice(MusicOptions.OPTION_CLICK);
+        verify(mockController, times(1)).changeState(ApplicationState.Game);
         verify(gameController).setGameType(0);
     }
 
     @Test
     public void testNextStateRet() throws Exception {
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(3);
+        MusicManager mockMusicManager = mock(MusicManager.class);
 
-        decksMenuController.nextState();
+        DecksMenuViewer mockViewer = mock(DecksMenuViewer.class);
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
 
-        verify(mockApplicationStateController).changeState(ApplicationState.MainMenu);
+        when(mockController.getStateViewer()).thenReturn(mockViewer);
+        when(mockController.getButtonSelected()).thenReturn(3);
+
+        DecksMenuController controller = new DecksMenuController(mockController);
+
+        Field instanceField = MusicManager.class.getDeclaredField("INSTANCE");
+        instanceField.setAccessible(true);
+        instanceField.set(null, mockMusicManager);
+
+        controller.nextState();
+
+        verify(mockMusicManager, times(1)).playMusicChoice(MusicOptions.OPTION_CLICK);
+        verify(mockController, times(1)).changeState(ApplicationState.MainMenu);
     }
 
     @Test
-    void testGetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+    void testGetButtonSelected() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.getButtonSelected()).thenReturn(1);
 
@@ -106,19 +158,18 @@ public class DecksMenuControllerTest {
         verify(mockController, times(1)).getButtonSelected();
     }
     @Test
-    void testSetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+    void testSetButtonSelected() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
 
         DecksMenuController controller = new DecksMenuController(mockController);
 
         controller.setButtonSelected(0);
 
-        // Ensure that setButtonSelected() is called on the mockController
         verify(mockController, times(1)).setButtonSelected(0);
     }
 
     @Test
-    void testUserInput() throws IOException, URISyntaxException, FontFormatException {
+    void testUserInput()throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.userInput()).thenReturn(3);
 
@@ -126,7 +177,6 @@ public class DecksMenuControllerTest {
 
         assertEquals(3, controller.userInput());
 
-        // Ensure that userInput() is called on the mockController
         verify(mockController, times(1)).userInput();
     }
 }
