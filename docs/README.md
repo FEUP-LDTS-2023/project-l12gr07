@@ -16,6 +16,9 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 - **Insert username and bet** - in start menu the user can write the username using alpha keys and when ready presses enter key, in the game the user write the bet using numerical keys and then presses the enter key so the game can start.
 - **Chose how many decks** - in a menu the user is presented with 3 options, to play with one deck, two decks, or the infinite mode.
 - **Chose the move** - the user can choose between hit, stand or double down.
+- **Card Information** - stores the suit, rank, and graphical representation of the playing card. 
+- **Value Calculation** - calculates and returns the numerical value of the card based on its rank.
+- **Dealing Cards** - the game will deal two cards to the player at the start of the round.
 - **Hit** - gives the player another card from the deck.
 - **Stand** - the player has finished the move and gives the dealer's turn to play.
 - **Double down** - gives the player another card from the deck and double the bet.
@@ -23,7 +26,19 @@ This project was developed by *Filipa Geraldes* (*up202208030*@fe.up.pt), *Filip
 - **Player won** - when player chooses stand and the dealer's hand has a value bigger than 21.
 - **Player lost** - when player chooses hit or double down and the player's hand becomes bigger than 21 or the player chooses stand and dealer's hand is bigger than the player's hand and smaller or equal to 21.
 - **Draw** - when player chooses stand and dealer's hand has the same value.
+- **Placing Bets** - the player can place a bet by entering a specific amount before the round begins. Supports backspace for correction and limits the bet to 6 digits.
+- **Adjusting Credits** - depending on the outcome, the player's credits are adjusted. Winning a round may increase their credits, while losing decreases them.
+- **Next Round** - the game allows the player to start a new round, placing a new bet and continuing the gameplay.
 - **Save game information** - for each play the game saves the username and the value won or lost in a csv file.
+- **Background Music** - the background music, initialized with a file path to "background_music.wav," creates a pleasant ambiance during gameplay.
+- **Music Selection** - different music tracks are available for specific in-game events. For example:
+- **Option Selection** - a distinct sound is played when a player selects an option. This adds responsiveness to user actions and enhances the interactive feel of the game.
+- **Option Click Music** - when a player successfully clicks on an option, the "select_successfully.wav" track plays, providing auditory feedback for the action.
+- **Win Music** - when a player achieves victory, the "win.wav" music track is played, celebrating their success.
+- **Game Over Music** - the "game_over.wav" track is triggered when the game concludes, providing an audio cue for the end of the gaming session.
+- **Card-related Sounds** - the "card_shuffle.wav" track is played during the shuffling of cards, adding realism to the card game environment. The "dealing_card.wav" track is used to signify the dealing of cards, contributing to the immersive gameplay experience.
+- **Adjusting Credits** - depending on the outcome, the player's credits are adjusted. Winning a round may increase their credits, while losing decreases them.
+- **Next Round** - the game allows the player to start a new round, placing a new bet and continuing the gameplay.
 - **Display last 10 games** - the user can access the last 10 games in the program.
 
 ### PLANNED FEATURES
@@ -96,9 +111,33 @@ By using the State design pattern we ensure that:
 - The pattern allows effortless addition of new states without disrupting the code of existing states, ensuring flexibility in expanding game features.
 - Massive conditional statements are avoided, keeping the code simple and readable.
 
+#### We aim to centralize audio resources.
+
+**Problem Context**
+
+Handling sound effects independently in each class was impractical, as it would complicate management and adaptability. Additionally, the need for uninterrupted background music underscored the necessity for a centralized solution. 
+
+**The Pattern**
+
+We applied the **Singleton** pattern. This design guarantees the creation of an instance of the class responsible for managing music and sound effects, and this instance is accessible universally. 
+
+**Implementation:**
+
+These classes can be found in the following files:
+- [here](src/main/java/com/projLDTS/blackjack/controller/music/Music.java)
+- [here](src/main/java/com/projLDTS/blackjack/controller/music/MusicManager.java)
+- [here](src/main/java/com/projLDTS/blackjack/controller/music/MusicOptions.java)
+
+**Consequences**
+
+By using the Singleton design pattern we ensure that:
+- The code becomes isolated from the intricacies of music and sound effects management.
+- With only one instance of the class in existence, the risk of simultaneous playback of multiple background musics is eradicated. This ensures a seamless audio experience without unwanted overlaps.
+- Altering music tracks and sound effects becomes a straightforward task. With a single class handling these elements, modifications are centralized, simplifying the process and promoting maintainability.
+
 ### KNOWN CODE SMELLS
 
-For now, we believe that we don't have any known code smells.
+In our game, audio elements like sounds and music are stored in .wav files. To avoid delays in sound effects caused by loading each file before playing, we opted to preload all sounds in the MusicManager class. However, a challenge arose – the MusicManager class became burdened with numerous switch statements, each dedicated to playing a specific sound effect. Extensive use of switch statements is generally discouraged, and this case is no exception. The presence of numerous cases in this scenario contributes to a code smell, indicating that a more streamlined and maintainable approach is needed.
 
 ## TESTING
 
