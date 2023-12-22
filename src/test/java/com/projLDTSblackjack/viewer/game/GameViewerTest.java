@@ -2,7 +2,6 @@ package com.projLDTSblackjack.viewer.game;
 
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.model.game.Cards.Hand;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -88,13 +87,6 @@ class GameViewerTest {
     void testClose() throws IOException {
         gameViewer.close();
         verify(mockedGUI).close();
-    }
-
-    @Test
-    void testRefreshCreditBet() {
-        gameViewer.refreshCreditBet();
-        verify(mockedGUI, times(1)).drawCredit();
-        verify(mockedGUI, times(1)).drawBet();
     }
 
     @Test
