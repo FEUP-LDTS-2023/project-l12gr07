@@ -43,14 +43,12 @@ class ExitMenuViewerTest {
 
     @Test
     void testDrawElements() throws IOException {
-        // Test drawElements method
         exitMenuViewer.setButtonSelected(0);
         exitMenuViewer.drawElements();
 
         verify(mockedGUI, times(1)).drawYesButton(true);
         verify(mockedGUI).drawNoButton(false);
         verify(mockedGUI, times(1)).refresh();
-        // You can add more verifications as needed
     }
 
     @Test
@@ -72,7 +70,6 @@ class ExitMenuViewerTest {
 
     @Test
     void testClose() throws IOException {
-        // Test close method
         exitMenuViewer.close();
 
         verify(mockedGUI).close();
