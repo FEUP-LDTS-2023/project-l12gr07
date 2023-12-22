@@ -8,14 +8,10 @@ import com.projLDTS.blackjack.states.HowToPlayMenuController;
 import com.projLDTS.blackjack.viewer.menus.HowToPlayMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.awt.*;
-import java.io.IOException;
 import java.lang.reflect.Field;
-import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -26,7 +22,7 @@ public class HowToPlayMenuControllerTest {
     private HowToPlayMenuController howToPlayMenuController;
 
     @BeforeEach
-    public void setUp() throws IOException, URISyntaxException, FontFormatException {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         howToPlayMenuController = new HowToPlayMenuController(mockApplicationStateController);
     }
@@ -40,7 +36,6 @@ public class HowToPlayMenuControllerTest {
 
         howToPlayMenuController.run();
 
-        // Ensure that changeState() is called when input is 1 and page is 3
         verify(mockApplicationStateController, times(1)).changeState(ApplicationState.MainMenu);
     }
 
@@ -56,7 +51,7 @@ public class HowToPlayMenuControllerTest {
     }
 
     @Test
-    public void runShouldSetButtonSelectedAndChangePageWhenInputIsNotMinusOne() throws IOException, FontFormatException, URISyntaxException {
+    public void runShouldSetButtonSelectedAndChangePageWhenInputIsNotMinusOne() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(2);
         when(howToPlayMenuController.getPage()).thenReturn(2);
         when(mockApplicationStateController.getButtonSelected()).thenReturn(1);
@@ -71,7 +66,7 @@ public class HowToPlayMenuControllerTest {
     }
 
     @Test
-    public void runShouldBreakLoopWhenInputIsMinusOne() throws IOException, FontFormatException, URISyntaxException {
+    public void runShouldBreakLoopWhenInputIsMinusOne() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(-1);
 
         howToPlayMenuController.run();
@@ -84,7 +79,7 @@ public class HowToPlayMenuControllerTest {
     }*/
 
     @Test
-    void testGetPage() throws IOException, URISyntaxException, FontFormatException {
+    void testGetPage() throws Exception {
         HowToPlayMenuViewer mockViewer = mock(HowToPlayMenuViewer.class);
         ApplicationStateController mockController = mock(ApplicationStateController.class);
 
@@ -94,12 +89,11 @@ public class HowToPlayMenuControllerTest {
         when(mockViewer.getPage()).thenReturn(2);
         assertEquals(2, controller.getPage());
 
-        // Ensure that getStateViewer() is called
         verify(mockController, times(1)).getStateViewer();
     }
 
     @Test
-    void testSetPage() throws IOException, URISyntaxException, FontFormatException {
+    void testSetPage() throws Exception {
         HowToPlayMenuViewer mockViewer = mock(HowToPlayMenuViewer.class);
         ApplicationStateController mockController = mock(ApplicationStateController.class);
 
@@ -108,12 +102,11 @@ public class HowToPlayMenuControllerTest {
 
         controller.setPage(3);
 
-        // Ensure that setPage() is called on the mockViewer
         verify(mockViewer, times(1)).setPage(3);
     }
 
     @Test
-    void testNextState() throws IOException, URISyntaxException, FontFormatException, IllegalAccessException, NoSuchFieldException {
+    void testNextState() throws Exception {
         MusicManager mockMusicManager = mock(MusicManager.class);
 
         HowToPlayMenuViewer mockViewer = mock(HowToPlayMenuViewer.class);
@@ -124,22 +117,18 @@ public class HowToPlayMenuControllerTest {
 
         HowToPlayMenuController controller = new HowToPlayMenuController(mockController);
 
-        // Inject the mock MusicManager into the controller using reflection
         Field instanceField = MusicManager.class.getDeclaredField("INSTANCE");
         instanceField.setAccessible(true);
         instanceField.set(null, mockMusicManager);
 
         controller.nextState();
 
-        // Ensure that playMusicChoice() is called on the mockMusicManager
         verify(mockMusicManager, times(1)).playMusicChoice(MusicOptions.OPTION_CLICK);
-
-        // Ensure that changeState() is called on the mockController
         verify(mockController, times(1)).changeState(ApplicationState.MainMenu);
     }
 
     @Test
-    void testGetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+    void testGetButtonSelected() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.getButtonSelected()).thenReturn(1);
 
@@ -151,19 +140,18 @@ public class HowToPlayMenuControllerTest {
     }
 
     @Test
-    void testSetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+    void testSetButtonSelected() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
 
         HowToPlayMenuController controller = new HowToPlayMenuController(mockController);
 
         controller.setButtonSelected(0);
 
-        // Ensure that setButtonSelected() is called on the mockController
         verify(mockController, times(1)).setButtonSelected(0);
     }
 
     @Test
-    void testUserInput() throws IOException, URISyntaxException, FontFormatException {
+    void testUserInput() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.userInput()).thenReturn(3);
 
@@ -171,7 +159,6 @@ public class HowToPlayMenuControllerTest {
 
         assertEquals(3, controller.userInput());
 
-        // Ensure that userInput() is called on the mockController
         verify(mockController, times(1)).userInput();
     }
 

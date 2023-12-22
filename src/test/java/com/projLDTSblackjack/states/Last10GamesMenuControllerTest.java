@@ -1,18 +1,17 @@
 package com.projLDTSblackjack.states;
 
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
+import com.projLDTS.blackjack.controller.music.MusicManager;
+import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.states.ApplicationState;
-import com.projLDTS.blackjack.states.HowToPlayMenuController;
 import com.projLDTS.blackjack.states.Last10GamesMenuController;
-import com.projLDTS.blackjack.states.GameController;
+import com.projLDTS.blackjack.viewer.menus.Last10GamesMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -41,7 +40,7 @@ public class Last10GamesMenuControllerTest {
         verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
     }
     @Test
-    void runShouldSetButtonSelectedWhenInputIsNot4() throws IOException, FontFormatException, URISyntaxException {
+    void runShouldSetButtonSelectedWhenInputIsNot4() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(0, 1);
 
         last10GamesMenuController.run();
@@ -53,15 +52,28 @@ public class Last10GamesMenuControllerTest {
 
     @Test
     public void testNextStateRet() throws Exception {
+        MusicManager mockMusicManager = mock(MusicManager.class);
+
+        Last10GamesMenuViewer mockViewer = mock(Last10GamesMenuViewer.class);
+        ApplicationStateController mockController = mock(ApplicationStateController.class);
+
+        when(mockController.getStateViewer()).thenReturn(mockViewer);
         when(mockApplicationStateController.getButtonSelected()).thenReturn(0);
 
-        last10GamesMenuController.nextState();
+        Last10GamesMenuController controller = new Last10GamesMenuController(mockController);
 
-        verify(mockApplicationStateController).changeState(ApplicationState.StartMenu);
+        Field instanceField = MusicManager.class.getDeclaredField("INSTANCE");
+        instanceField.setAccessible(true);
+        instanceField.set(null, mockMusicManager);
+
+        controller.nextState();
+
+        verify(mockMusicManager, times(1)).playMusicChoice(MusicOptions.OPTION_CLICK);
+        verify(mockController, times(1)).changeState(ApplicationState.StartMenu);
     }
 
     @Test
-    void testGetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+    void testGetButtonSelected() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.getButtonSelected()).thenReturn(1);
 
@@ -72,19 +84,18 @@ public class Last10GamesMenuControllerTest {
         verify(mockController, times(1)).getButtonSelected();
     }
     @Test
-    void testSetButtonSelected() throws IOException, URISyntaxException, FontFormatException {
+    void testSetButtonSelected() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
 
         Last10GamesMenuController controller = new Last10GamesMenuController(mockController);
 
         controller.setButtonSelected(0);
 
-        // Ensure that setButtonSelected() is called on the mockController
         verify(mockController, times(1)).setButtonSelected(0);
     }
 
     @Test
-    void testUserInput() throws IOException, URISyntaxException, FontFormatException {
+    void testUserInput() throws Exception {
         ApplicationStateController mockController = mock(ApplicationStateController.class);
         when(mockController.userInput()).thenReturn(3);
 
@@ -92,7 +103,6 @@ public class Last10GamesMenuControllerTest {
 
         assertEquals(3, controller.userInput());
 
-        // Ensure that userInput() is called on the mockController
         verify(mockController, times(1)).userInput();
     }
 }
