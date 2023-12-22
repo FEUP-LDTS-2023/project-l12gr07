@@ -1,6 +1,5 @@
 package com.projLDTS.blackjack.viewer.game;
 
-import com.googlecode.lanterna.TextColor;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.gui.LanternaGUI;
