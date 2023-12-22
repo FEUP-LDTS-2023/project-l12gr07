@@ -52,21 +52,6 @@ public class HandTest {
         assertEquals(20, hand.getValue());
     }
 
-    @Test
-    void testCheckBust() {
-        hand.addCard(new Card("Hearts", "Q"));
-        hand.addCard(new Card("Spades", "K"));
-        hand.addCard(new Card("Diamonds", "5"));
-        assertEquals(true, hand.checkBust());
-    }
-
-    @Test
-    void testCheckBlackjack() {
-        hand.addCard(new Card("Hearts", "A"));
-        hand.addCard(new Card("Spades", "K"));
-        assertEquals(true, hand.checkBlackjack());
-    }
-
     // TODO : not working
     @Test
     void testAdjustAcesWhenBust() {

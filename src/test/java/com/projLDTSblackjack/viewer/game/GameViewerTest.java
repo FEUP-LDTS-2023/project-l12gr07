@@ -7,7 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -144,6 +148,19 @@ class GameViewerTest {
         UserInput.setBetValue(10);
         UserInput.setBetEnded(true);
         gameViewer.saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
+
+        String aux = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/last10games.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                aux = line;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String orig = "UsernameTest .............................. +10";
+        assertEquals(orig, aux);
     }
 
     @Test
