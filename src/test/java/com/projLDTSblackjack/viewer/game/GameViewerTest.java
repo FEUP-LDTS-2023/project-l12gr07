@@ -2,6 +2,7 @@ package com.projLDTSblackjack.viewer.game;
 
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
+import com.projLDTS.blackjack.model.game.Cards.Hand;
 import com.projLDTS.blackjack.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class GameViewerTest {
@@ -80,10 +82,83 @@ class GameViewerTest {
         assert userInputResult == 0;
     }
 
+
+
     @Test
     void testClose() throws IOException {
         gameViewer.close();
-
         verify(mockedGUI).close();
+    }
+
+    @Test
+    void testRefreshCreditBet() {
+        gameViewer.refreshCreditBet();
+        verify(mockedGUI, times(1)).drawCredit();
+        verify(mockedGUI, times(1)).drawBet();
+    }
+
+    @Test
+    void testPlayerLost() throws IOException {
+        gameViewer.playerLost();
+        verify(mockedGUI).drawPlayerLost();
+        verify(mockedGUI).refresh();
+        verify(mockedGUI, never()).drawHitButton(anyBoolean());
+        verify(mockedGUI, never()).drawStandButton(anyBoolean());
+        verify(mockedGUI, never()).drawDoubleDownButton(anyBoolean());
+    }
+
+    @Test
+    void testPlayerNoCredit() throws IOException {
+        gameViewer.playerNoCredit();
+        verify(mockedGUI).drawPlayerNoCredit();
+        verify(mockedGUI).refresh();
+        verify(mockedGUI, never()).drawHitButton(anyBoolean());
+        verify(mockedGUI, never()).drawStandButton(anyBoolean());
+        verify(mockedGUI, never()).drawDoubleDownButton(anyBoolean());
+    }
+
+    @Test
+    void testPlayerWon() throws IOException {
+        gameViewer.playerWon();
+        verify(mockedGUI).drawPlayerWon();
+        verify(mockedGUI).refresh();
+        verify(mockedGUI, never()).drawHitButton(anyBoolean());
+        verify(mockedGUI, never()).drawStandButton(anyBoolean());
+        verify(mockedGUI, never()).drawDoubleDownButton(anyBoolean());
+    }
+
+    @Test
+    void testDrawCards() {
+        // TODO
+    }
+
+    @Test
+    void testDrawFirstCards() {
+        // TODO
+    }
+
+    @Test
+    void testPlayDraw() throws IOException {
+        gameViewer.playDraw();
+        verify(mockedGUI).drawPlayDraw();
+        verify(mockedGUI).refresh();
+    }
+
+    @Test
+    void testSaveGameCSV() throws IOException {
+        UserInput.setUsername("UsernameTest");
+        UserInput.setGameResult(1);
+        UserInput.setBetValue(10);
+        UserInput.setBetEnded(true);
+        gameViewer.saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
+    }
+
+    @Test
+    void testSetAfterPlay() {
+        GameViewer gameViewer = new GameViewer(mockedGUI);
+        gameViewer.setAfterPlay(true);
+        assertEquals(true, gameViewer.isAfterPlay());
+        gameViewer.setAfterPlay(false);
+        assertEquals(false, gameViewer.isAfterPlay());
     }
 }
