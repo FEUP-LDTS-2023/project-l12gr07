@@ -33,9 +33,10 @@ class GameViewerTest {
         assert buttonSelected == 2;
     }
 
-    // TODO: não está a passar
     @Test
     void testDraw() throws IOException {
+        UserInput.setBet(new StringBuilder("10"));
+        UserInput.setBetEnded(true);
         gameViewer.draw();
 
         verify(mockedGUI).clear();
@@ -49,9 +50,10 @@ class GameViewerTest {
         verify(mockedGUI, times(2)).refresh();
     }
 
-    // TODO: não está a passar
     @Test
     void testDrawElements() throws IOException {
+        UserInput.setBet(new StringBuilder("10"));
+        UserInput.setBetEnded(true);
         gameViewer.setButtonSelected(0);
         gameViewer.drawElements();
 

@@ -33,11 +33,6 @@ public class GameViewer implements StateViewer {
         gui.refresh();
     }
 
-    public void refreshCreditBet() {
-        gui.drawCredit();
-        gui.drawBet();
-    }
-
     public int getButtonSelected() {
         return buttonSelected;
     }
