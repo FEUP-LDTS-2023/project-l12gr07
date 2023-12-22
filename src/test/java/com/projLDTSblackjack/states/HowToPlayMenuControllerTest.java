@@ -50,19 +50,6 @@ public class HowToPlayMenuControllerTest {
         howToPlayMenuController.run();
         verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
     }
-    /*
-    @Test
-    void runShouldUpdatePageWhenInputIsNotMinusOne() throws Exception {
-        when(mockApplicationStateController.userInput()).thenReturn(2); // Replace with your desired input
-
-        howToPlayMenuController.run();
-
-        verify(mockApplicationStateController, times(1)).setButtonSelected(2);
-        verify(mockApplicationStateController, times(1)).redraw();
-        verify(mockHowToPlayMenuViewer, times(1)).getPage();
-        verify(mockHowToPlayMenuViewer, times(1)).setPage(anyInt());
-    }
-     */
 
     @Test
     void runShouldNotUpdatePageWhenInputIsMinusOne() throws Exception {
