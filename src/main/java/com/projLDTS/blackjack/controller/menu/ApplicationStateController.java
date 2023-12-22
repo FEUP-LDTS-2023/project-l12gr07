@@ -17,9 +17,7 @@ public class ApplicationStateController {
     private boolean run;
     private StateController stateController;
     private StateViewer stateViewer;
-    private ApplicationState applicationState;
     private LanternaGUI gui;
-    List last10games;
 
     public ApplicationStateController() throws IOException, FontFormatException, URISyntaxException {
         gui = new LanternaGUI(130, 40);
@@ -56,7 +54,6 @@ public class ApplicationStateController {
     }
 
     public void changeState(ApplicationState state) throws IOException, FontFormatException, URISyntaxException {
-        applicationState = state;
         switch (state) {
             case Game:
                 stateController = new GameController(this);

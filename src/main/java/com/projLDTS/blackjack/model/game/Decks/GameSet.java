@@ -14,7 +14,7 @@ public class GameSet {
     public GameSet(int n) {
         super();
         type = n;
-        deck = new Deck(n); // TODO : ir buscar aos decks
+        deck = new Deck(n);
         deck.randomize();
         player = new Player();
         dealer = new Dealer();

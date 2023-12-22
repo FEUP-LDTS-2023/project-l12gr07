@@ -17,6 +17,7 @@ public class GameViewer implements StateViewer {
     private final LanternaGUI gui;
     int buttonSelected;
     boolean afterPlay = false;
+
     public GameViewer(LanternaGUI gui_) {
         gui = gui_;
     }

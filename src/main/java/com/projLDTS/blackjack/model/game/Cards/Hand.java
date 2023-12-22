@@ -20,15 +20,15 @@ public class Hand {
         return hand;
     }
     public void addCard(Deck deck) {
+        if (deck.isInfinite())
+            deck.randomize();
         List<Card> deckList = deck.getDeck();
         if (!deckList.isEmpty()) {
             Card drawnCard = deckList.get(deckList.size() - 1);
             hand.add(drawnCard);
-            deckList.remove(deckList.size() - 1);
+            if (!deck.isInfinite())
+                deckList.remove(deckList.size() - 1);
         }
-    }
-    public void addCard(Card card) {
-        hand.add(card);
     }
     public int getValue() {
         int sum = 0;
@@ -46,20 +46,9 @@ public class Hand {
         }
         return sum;
     }
-    public boolean checkBust() {
-        return getValue() > 21;
-    }
-    public boolean checkBlackjack() {
-        return (hand.size() == 2 && getValue() == 21);
-    }
     public int getBet() {
         bet = UserInput.getintBet();
         return bet;
-    }
-    public void setBet(int bet) {
-        int totalCredit = UserInput.getCredit();
-        UserInput.setCredit(totalCredit - bet / 2);
-        UserInput.setBet(new StringBuilder(bet));
     }
 
     public void removeCard(int i) {
