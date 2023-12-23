@@ -5,25 +5,18 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.terminal.Terminal;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Cards.Card;
-import com.projLDTS.blackjack.model.game.Cards.Hand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import static org.mockito.Mockito.*;
 
@@ -33,9 +26,6 @@ public class LanternaGUITest {
 
     private TextGraphics mockTextGraphics;
 
-    @Mock
-    private Terminal mockTerminal;
-
     private LanternaGUI lanternaGUI;
 
     @BeforeEach
@@ -43,8 +33,6 @@ public class LanternaGUITest {
         lanternaGUI = new LanternaGUI(130, 40);
         mockScreen = Mockito.mock(Screen.class);
         mockTextGraphics = Mockito.mock(TextGraphics.class);
-        when(mockScreen.newTextGraphics()).thenReturn(mockTextGraphics);
-
         lanternaGUI.setScreen(mockScreen);
         lanternaGUI.setTextGraphics(mockTextGraphics);
     }
@@ -233,6 +221,16 @@ public class LanternaGUITest {
     }
 
     @Test
+    public void drawOneButtonNotSelectedTest() {
+        lanternaGUI.drawOneButton(false);
+
+        verify(mockTextGraphics).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        verify(mockTextGraphics).setBackgroundColor(TextColor.Factory.fromString("#727272"));
+        verify(mockTextGraphics).fillRectangle(new TerminalPosition(29, 27), new TerminalSize(20, 3), ' ');
+        verify(mockTextGraphics).putString(new TerminalPosition(35, 28), "One Deck");
+    }
+
+    @Test
     public void testGetUsername() {
         StringBuilder username = new StringBuilder("TestUsername");
         lanternaGUI.drawGetUsername(username);
@@ -399,16 +397,6 @@ public class LanternaGUITest {
 
         verify(mockTextGraphics).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         verify(mockTextGraphics).setBackgroundColor(TextColor.Factory.fromString("#03C04A"));
-        verify(mockTextGraphics).fillRectangle(new TerminalPosition(29, 27), new TerminalSize(20, 3), ' ');
-        verify(mockTextGraphics).putString(new TerminalPosition(35, 28), "One Deck");
-    }
-
-    @Test
-    public void drawOneButtonNotSelectedTest() {
-        lanternaGUI.drawOneButton(false);
-
-        verify(mockTextGraphics).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        verify(mockTextGraphics).setBackgroundColor(TextColor.Factory.fromString("#727272"));
         verify(mockTextGraphics).fillRectangle(new TerminalPosition(29, 27), new TerminalSize(20, 3), ' ');
         verify(mockTextGraphics).putString(new TerminalPosition(35, 28), "One Deck");
     }
