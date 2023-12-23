@@ -73,15 +73,13 @@ public class GameSetTest {
     // TODO: not working
     @Test
     void testNextGame() {
-        /*
         gameSet.getPlayer().getHand().setBet(10);
         when(mockDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
         doNothing().when(mockDeck).randomize();
         gameSet.nextGame();
         assertEquals(0, gameSet.getPlayer().getHand().getBet());
-        assertEquals(0, gameSet.getDealer().getHand().getHand().size());
-        assertEquals(0, gameSet.getPlayer().getHand().getHand().size());
-         */
+        assertEquals(1, gameSet.getDealer().getHand().getHand().size());
+        assertEquals(2, gameSet.getPlayer().getHand().getHand().size());
     }
 
     private List<Card> createMockDeck(int numCards, String suit) {
