@@ -36,10 +36,6 @@ public class GameSet {
         return dealer;
     }
 
-    public Deck getDeck() {
-        return deck;
-    }
-
     public void dealCards() {
         player.getHand().addCard(deck);
         player.getHand().addCard(deck);
@@ -48,7 +44,6 @@ public class GameSet {
 
     public void nextGame() {
         player.getHand().getBet();
-
         deck = new Deck(type);
         deck.randomize();
         dealer.clearHand();

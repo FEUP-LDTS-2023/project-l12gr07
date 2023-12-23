@@ -12,7 +12,7 @@ import java.net.URISyntaxException;
 public class HowToPlayMenuController implements StateController {
     private final ApplicationStateController applicationStateController;
 
-    public HowToPlayMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
+    public HowToPlayMenuController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
     }
 

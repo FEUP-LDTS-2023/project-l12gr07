@@ -10,8 +10,9 @@ import java.net.URISyntaxException;
 
 public class ExitMenuController implements StateController {
     private final ApplicationStateController applicationStateController;
+
     boolean isTest = false;
-    public ExitMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
+    public ExitMenuController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
     }
 

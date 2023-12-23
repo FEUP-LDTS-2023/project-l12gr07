@@ -3,9 +3,6 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
-import com.projLDTS.blackjack.viewer.menus.StartMenuViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -14,7 +11,7 @@ import java.net.URISyntaxException;
 public class StartMenuController implements StateController {
     private final ApplicationStateController applicationStateController;
 
-    public StartMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
+    public StartMenuController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
 
     }

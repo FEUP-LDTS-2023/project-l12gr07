@@ -8,7 +8,6 @@ import javax.sound.sampled.FloatControl;
 import java.io.File;
 import java.io.IOException;
 
-import static java.lang.System.load;
 
 public class Music {
     private final Clip music;

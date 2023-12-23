@@ -1,6 +1,6 @@
 ## LDTS_<1207> - BLACKJACK
 
-In this exiciting gambling game of 'Blackjack', we provide an engaging and strategic experience for players within the constraints of purely textual interface.
+In this exciting gambling game of 'Blackjack', we provide an engaging and strategic experience for players within the constraints of purely textual interface.
 
 Players are dealt virtual cards, and the objective is to build a hand with a total value as close to 21 as possible without exceeding it. The game incorporates the classic rules of this iconic game, where numbered cards retain their face value, face cards are worth 10 points, and an Ace can be either 1 or 11 points. Players make decisions to hit, stand or
 double down based on their current hand and the dealer's visible card. The challenge lies in making strategic choices to beat the dealer while managing the risk of going over 21.
@@ -123,10 +123,12 @@ We applied the **Singleton** pattern. This design guarantees the creation of an 
 
 **Implementation:**
 
+<img src='photos/UMLMusic.jpg' width='800'>
+
 These classes can be found in the following files:
-- [here](src/main/java/com/projLDTS/blackjack/controller/music/Music.java)
-- [here](src/main/java/com/projLDTS/blackjack/controller/music/MusicManager.java)
-- [here](src/main/java/com/projLDTS/blackjack/controller/music/MusicOptions.java)
+- [Music](src/main/java/com/projLDTS/blackjack/controller/music/Music.java)
+- [MusicManager](src/main/java/com/projLDTS/blackjack/controller/music/MusicManager.java)
+- [MusicOptions](src/main/java/com/projLDTS/blackjack/controller/music/MusicOptions.java)
 
 **Consequences**
 
