@@ -143,17 +143,12 @@ class GameViewerTest {
 
     @Test
     void testSaveGameCSV() throws IOException {
-        UserInput.setUsername("UsernameTest");
-        UserInput.setGameResult(1);
-        UserInput.setBetValue(10);
-        UserInput.setBetEnded(true);
-        gameViewer.saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
+        gameViewer.saveGameCSV("UsernameTest", 1, 10);
 
         String aux = "";
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/last10games.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                aux = line;
+            while (reader.readLine() != null) {
+                aux = reader.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
