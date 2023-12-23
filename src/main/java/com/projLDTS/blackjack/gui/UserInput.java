@@ -40,6 +40,9 @@ public class UserInput {
     public static int getintBet() {
         return thisBet;
     }
+    public static void setintBet(int b) {
+        thisBet = b;
+    }
     public static boolean getbetEnded() {
         return betEnded;
     }
@@ -72,7 +75,6 @@ public class UserInput {
         KeyStroke key = gui.getScreen().readInput();
 
         if (key == null) {
-            // Handle null key, perhaps by returning the existing buttonSelected
             return buttonSelected;
         }
 
