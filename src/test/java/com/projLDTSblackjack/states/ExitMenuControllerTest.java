@@ -30,37 +30,37 @@ class ExitMenuControllerTest {
         exitMenuController = new ExitMenuController(mockApplicationStateController);
     }
 
-    //TODO : N FUNCIONA
-    /*@Test
+    @Test
     void runShouldChangeStateWhenInputIs2() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(2);
+        exitMenuController.setTest(true);
 
         exitMenuController.run();
 
-        verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
-    }*/
+        verify(mockApplicationStateController, times(1)).close();
+    }
 
-    //TODO : N FUNCIONA
-    /*@Test
+    @Test
     void runShouldSetButtonSelectedWhenInputIsNot2() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(1, 2);
+        exitMenuController.setTest(true);
 
         exitMenuController.run();
 
         verify(mockApplicationStateController, times(1)).setButtonSelected(anyInt());
         verify(mockApplicationStateController, times(1)).redraw();
         verify(mockApplicationStateController, times(2)).userInput();
-    }*/
+    }
 
-    //TODO : N FUNCIONA
-    /*@Test
+    @Test
     void testnextStateExit() throws Exception {
         when(mockApplicationStateController.getButtonSelected()).thenReturn(0);
+        exitMenuController.setTest(true);
 
         exitMenuController.nextState();
 
         verify(mockApplicationStateController, times(1)).close();
-    }*/
+    }
 
     @Test
     void testnextStateMainMenu() throws Exception {
