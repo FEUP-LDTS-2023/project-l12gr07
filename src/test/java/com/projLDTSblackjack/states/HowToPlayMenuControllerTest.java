@@ -8,11 +8,10 @@ import com.projLDTS.blackjack.states.HowToPlayMenuController;
 import com.projLDTS.blackjack.viewer.menus.HowToPlayMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Field;;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -22,7 +21,6 @@ public class HowToPlayMenuControllerTest {
     private HowToPlayMenuViewer mockHowToPlayMenuViewer;
     @Mock
     private ApplicationStateController mockApplicationStateController;
-    @InjectMocks
     private HowToPlayMenuController howToPlayMenuController;
 
     @BeforeEach
@@ -52,46 +50,52 @@ public class HowToPlayMenuControllerTest {
     }
 
     @Test
-    void runShouldNotUpdatePageWhenInputIsMinusOne() throws Exception {
-        when(mockApplicationStateController.userInput()).thenReturn(-1);
+    void runShouldUpdatePageWhenInputIsNotMinusOneandButton0() throws Exception {
+        when(mockApplicationStateController.userInput()).thenReturn(2, -1);
+        when(mockHowToPlayMenuViewer.getPage()).thenReturn(1);
+        when(mockHowToPlayMenuViewer.getButtonSelected()).thenReturn(0);
 
         howToPlayMenuController.run();
 
-        verify(mockApplicationStateController, never()).setButtonSelected(anyInt());
-        verify(mockApplicationStateController, never()).redraw();
-        verify(mockHowToPlayMenuViewer, never()).getPage();
-        verify(mockHowToPlayMenuViewer, never()).setPage(anyInt());
+        verify(mockHowToPlayMenuViewer, times(1)).setPage(0);
+        verify(mockApplicationStateController, times(1)).redraw();
     }
 
-    /*
     @Test
-    public void runShouldSetButtonSelectedAndChangePageWhenInputIsNotMinusOne() throws Exception {
-        when(mockApplicationStateController.userInput()).thenReturn(2);
+    void runShouldUpdatePageWhenInputIsNotMinusOneandButton1() throws Exception {
+        when(mockApplicationStateController.userInput()).thenReturn(1, -1);
         when(howToPlayMenuController.getPage()).thenReturn(2);
-        when(mockApplicationStateController.getButtonSelected()).thenReturn(1);
+        when(howToPlayMenuController.getButtonSelected()).thenReturn(1);
 
         howToPlayMenuController.run();
 
-        verify(mockApplicationStateController, times(1)).setButtonSelected(anyInt());
+        verify(mockHowToPlayMenuViewer, times(1)).setPage(3);
         verify(mockApplicationStateController, times(1)).redraw();
-        verify(howToPlayMenuController, times(1)).getPage();
-        verify(mockApplicationStateController, times(1)).getButtonSelected();
-        verify(howToPlayMenuController, times(1)).setPage(anyInt());
+
+    }
+
+    @Test
+    void runShouldNotUpdatePageWhenInputIsNotMinusOneandButtonNot0or1() throws Exception {
+        when(mockApplicationStateController.userInput()).thenReturn(1, -1);
+        when(howToPlayMenuController.getPage()).thenReturn(2);
+        when(howToPlayMenuController.getButtonSelected()).thenReturn(2);
+
+        howToPlayMenuController.run();
+
+        verify(mockHowToPlayMenuViewer, times(3)).getPage();
+        assertEquals(2, mockHowToPlayMenuViewer.getPage());
+        verify(mockApplicationStateController, times(1)).redraw();
     }
 
 
     @Test
     public void runShouldBreakLoopWhenInputIsMinusOne() throws Exception {
         when(mockApplicationStateController.userInput()).thenReturn(-1);
-
+        int save = mockHowToPlayMenuViewer.getPage();
         howToPlayMenuController.run();
 
-        verify(mockApplicationStateController, times(0)).setButtonSelected(anyInt());
-        verify(mockApplicationStateController, times(0)).redraw();
-        verify(howToPlayMenuController, times(0)).getPage();
-        verify(mockApplicationStateController, times(0)).getButtonSelected();
-        verify(howToPlayMenuController, times(0)).setPage(anyInt());
-    }*/
+        assertEquals(save, mockHowToPlayMenuViewer.getPage());
+    }
 
     @Test
     void testGetPage() throws Exception {

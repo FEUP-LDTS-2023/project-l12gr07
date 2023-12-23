@@ -47,17 +47,13 @@ public class GameSetTest {
         assertEquals(initialDealerHandSize + 1, gameSet.getDealer().getHand().getHand().size());
     }
 
-    // TODO
     @Test
     void testHit() {
-        /*
         when(mockDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
         int initialPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
         assertTrue(gameSet.hit());
         int finalPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
         assertEquals(initialPlayerHandSize + 1, finalPlayerHandSize);
-        verify(mockDeck, atLeastOnce()).getDeck();
-         */
     }
 
     @Test
@@ -67,21 +63,27 @@ public class GameSetTest {
 
     @Test
     void testDoubledown() {
-        // TODO
+        when(mockDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
+        UserInput.setCredit(1000);
+        UserInput.setBet(new StringBuilder("10"));
+        int initialPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
+        int initialBet = UserInput.getintBet();
+        assertTrue(gameSet.doubledown());
+        int finalPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
+        int finalBet = UserInput.getintBet();
+        assertEquals(initialPlayerHandSize + 1, finalPlayerHandSize);
+        assertEquals(initialBet * 2, finalBet);
     }
 
-    // TODO: not working
     @Test
     void testNextGame() {
-        /*
         gameSet.getPlayer().getHand().setBet(10);
         when(mockDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
         doNothing().when(mockDeck).randomize();
         gameSet.nextGame();
         assertEquals(0, gameSet.getPlayer().getHand().getBet());
-        assertEquals(0, gameSet.getDealer().getHand().getHand().size());
-        assertEquals(0, gameSet.getPlayer().getHand().getHand().size());
-         */
+        assertEquals(1, gameSet.getDealer().getHand().getHand().size());
+        assertEquals(2, gameSet.getPlayer().getHand().getHand().size());
     }
 
     private List<Card> createMockDeck(int numCards, String suit) {

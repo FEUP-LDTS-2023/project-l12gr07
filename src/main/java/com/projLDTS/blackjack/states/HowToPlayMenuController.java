@@ -3,8 +3,6 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.menus.HowToPlayMenuViewer;
 
 import java.awt.*;
