@@ -47,7 +47,7 @@ public class GameController implements StateController {
         }
     }
 
-    private void drawInitialCards() throws IOException {
+    public void drawInitialCards() throws IOException {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawFirstCards(gameSet.getPlayer().getHand(), 20, false);
         gameViewer.drawFirstCards(gameSet.getDealer().getHand(), 10, true);
@@ -61,7 +61,7 @@ public class GameController implements StateController {
     }
 
 
-    private int play() throws IOException, URISyntaxException, FontFormatException, InterruptedException {
+    public int play() throws IOException, URISyntaxException, FontFormatException, InterruptedException {
         boolean aux = false;
         int staux = 3;
         if (getButtonSelected() == 0) {
