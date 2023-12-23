@@ -47,17 +47,13 @@ public class GameSetTest {
         assertEquals(initialDealerHandSize + 1, gameSet.getDealer().getHand().getHand().size());
     }
 
-    // TODO
     @Test
     void testHit() {
-        /*
         when(mockDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
         int initialPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
         assertTrue(gameSet.hit());
         int finalPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
         assertEquals(initialPlayerHandSize + 1, finalPlayerHandSize);
-        verify(mockDeck, atLeastOnce()).getDeck();
-         */
     }
 
     @Test
@@ -70,7 +66,6 @@ public class GameSetTest {
         // TODO
     }
 
-    // TODO: not working
     @Test
     void testNextGame() {
         gameSet.getPlayer().getHand().setBet(10);
