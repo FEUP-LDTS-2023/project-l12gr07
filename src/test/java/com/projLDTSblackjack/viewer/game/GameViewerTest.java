@@ -55,27 +55,7 @@ class GameViewerTest {
         verify(mockedGUI, times(2)).refresh();
     }
 
-<<<<<<< HEAD
-    @Test
-    void testSaveGameCSV() {
-        gameViewer.saveGameCSV("UsernameTest", 1, 10);
-
-        String aux = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/last10games.csv"))) {
-            while (reader.readLine() != null) {
-                aux = reader.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String orig = "UsernameTest .............................. +10";
-        assertEquals(orig, aux);
-    }
-
     // TODO: não está a passar
-=======
->>>>>>> Tests
     @Test
     void testDrawElements() throws IOException {
         UserInput.setBet(new StringBuilder("10"));
