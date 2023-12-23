@@ -19,7 +19,6 @@ public class GameController implements StateController {
 
     public GameController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
-        this.gameSet = gameSet;
     }
 
     @Override

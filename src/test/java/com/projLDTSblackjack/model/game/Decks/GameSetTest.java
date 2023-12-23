@@ -63,7 +63,16 @@ public class GameSetTest {
 
     @Test
     void testDoubledown() {
-        // TODO
+        when(mockDeck.getDeck()).thenReturn(createMockDeck(10, "Hearts"));
+        UserInput.setCredit(1000);
+        UserInput.setBet(new StringBuilder("10"));
+        int initialPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
+        int initialBet = UserInput.getintBet();
+        assertTrue(gameSet.doubledown());
+        int finalPlayerHandSize = gameSet.getPlayer().getHand().getHand().size();
+        int finalBet = UserInput.getintBet();
+        assertEquals(initialPlayerHandSize + 1, finalPlayerHandSize);
+        assertEquals(initialBet * 2, finalBet);
     }
 
     @Test
