@@ -114,7 +114,7 @@ public class GameViewer implements StateViewer {
         gui.refresh();
         saveGameCSV(UserInput.getUsername().toString(), UserInput.getGameResult(), UserInput.getBetValue());
     }
-    private void saveGameCSV(String username, int result, int betValue) {
+    public void saveGameCSV(String username, int result, int betValue) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/last10games.csv", true))) {
             if (result == 0) {
                writer.write(username + " .............................. " + "+0" + "\n");
