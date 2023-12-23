@@ -1,7 +1,5 @@
 package com.projLDTS.blackjack.viewer.menus;
 
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.projLDTS.blackjack.gui.LanternaGUI;
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.viewer.StateViewer;

@@ -14,11 +14,12 @@ import java.net.URISyntaxException;
 public class GameController implements StateController {
     private ApplicationStateController applicationStateController;
     private GameSet gameSet;
-    private int gameType;
+    public int gameType;
     private boolean dd = true;
 
     public GameController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
+        this.gameSet = gameSet;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class GameController implements StateController {
         UserInput.setBetValue(UserInput.getintBet());
     }
 
-    private void drawCards() throws IOException, InterruptedException {
+    public void drawCards() throws IOException, InterruptedException {
         GameViewer gameViewer = (GameViewer) applicationStateController.getStateViewer();
         gameViewer.drawCards(gameSet.getPlayer().getHand(), 20, false);
         gameViewer.drawCards(gameSet.getDealer().getHand(), 10, true);

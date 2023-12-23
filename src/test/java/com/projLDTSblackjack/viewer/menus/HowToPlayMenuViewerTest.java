@@ -69,18 +69,65 @@ class HowToPlayMenuViewerTest {
     }
 
     @Test
-    void testDrawPageContent() throws IOException {
+    void testDrawPageContent0() throws IOException {
         howToPlayMenuViewer.setPage(0);
+        howToPlayMenuViewer.drawPageContent();
+
+        verify(mockedGUI).refresh();
+    }
+    @Test
+    void testDrawPageContent1() throws IOException {
+        howToPlayMenuViewer.setPage(1);
+        howToPlayMenuViewer.drawPageContent();
+
+        verify(mockedGUI).refresh();
+    }
+    @Test
+    void testDrawPageContent2() throws IOException {
+        howToPlayMenuViewer.setPage(2);
+        howToPlayMenuViewer.drawPageContent();
+
+        verify(mockedGUI).refresh();
+    }
+    @Test
+    void testDrawPageContent3() throws IOException {
+        howToPlayMenuViewer.setPage(3);
         howToPlayMenuViewer.drawPageContent();
 
         verify(mockedGUI).refresh();
     }
 
     @Test
-    void testDrawPageButtons() throws IOException {
+    void testDrawPageButtons0() throws IOException {
+        howToPlayMenuViewer.setPage(0);
+        howToPlayMenuViewer.drawPageButtons();
+
+        verify(mockedGUI).refresh();
+    }
+    @Test
+    void testDrawPageButtons1() throws IOException {
         howToPlayMenuViewer.setPage(1);
         howToPlayMenuViewer.drawPageButtons();
 
         verify(mockedGUI).refresh();
+    }
+    @Test
+    void testDrawPageButtons2() throws IOException {
+        howToPlayMenuViewer.setPage(2);
+        howToPlayMenuViewer.drawPageButtons();
+
+        verify(mockedGUI).refresh();
+    }
+    @Test
+    void testDrawPageButtons3() throws IOException {
+        howToPlayMenuViewer.setPage(3);
+        howToPlayMenuViewer.drawPageButtons();
+
+        verify(mockedGUI).refresh();
+    }
+    @Test
+    public void testClose() throws IOException {
+        howToPlayMenuViewer.close();
+        verify(mockedGUI).close();
     }
 }

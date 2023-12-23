@@ -7,8 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class GameViewerTest {
@@ -33,9 +38,10 @@ class GameViewerTest {
         assert buttonSelected == 2;
     }
 
-    // TODO: não está a passar
     @Test
     void testDraw() throws IOException {
+        UserInput.setBet(new StringBuilder("10"));
+        UserInput.setBetEnded(true);
         gameViewer.draw();
 
         verify(mockedGUI).clear();
@@ -52,13 +58,16 @@ class GameViewerTest {
     // TODO: não está a passar
     @Test
     void testDrawElements() throws IOException {
+        UserInput.setBet(new StringBuilder("10"));
+        UserInput.setBetEnded(true);
         gameViewer.setButtonSelected(0);
         gameViewer.drawElements();
-
-        verify(mockedGUI, times(1)).drawHitButton(true);
-        verify(mockedGUI, times(1)).drawStandButton(false);
-        verify(mockedGUI, times(1)).drawDoubleDownButton(false);
-        verify(mockedGUI, times(1)).refresh();
+        if(!UserInput.getBet().toString().isEmpty() && UserInput.getbetEnded()) {
+            verify(mockedGUI, times(1)).drawHitButton(true);
+            verify(mockedGUI, times(1)).drawStandButton(false);
+            verify(mockedGUI, times(1)).drawDoubleDownButton(false);
+            verify(mockedGUI, times(1)).refresh();
+        }
     }
 
     @Test
@@ -78,10 +87,93 @@ class GameViewerTest {
         assert userInputResult == 0;
     }
 
+
+
     @Test
     void testClose() throws IOException {
         gameViewer.close();
-
         verify(mockedGUI).close();
+    }
+
+    @Test
+    void testPlayerLost() throws IOException {
+        gameViewer.playerLost();
+        verify(mockedGUI).drawPlayerLost();
+        verify(mockedGUI).refresh();
+        verify(mockedGUI, never()).drawHitButton(anyBoolean());
+        verify(mockedGUI, never()).drawStandButton(anyBoolean());
+        verify(mockedGUI, never()).drawDoubleDownButton(anyBoolean());
+    }
+
+    @Test
+    void testPlayerNoCredit() throws IOException {
+        gameViewer.playerNoCredit();
+        verify(mockedGUI).drawPlayerNoCredit();
+        verify(mockedGUI).refresh();
+        verify(mockedGUI, never()).drawHitButton(anyBoolean());
+        verify(mockedGUI, never()).drawStandButton(anyBoolean());
+        verify(mockedGUI, never()).drawDoubleDownButton(anyBoolean());
+    }
+
+    @Test
+    void testPlayerWon() throws IOException {
+        gameViewer.playerWon();
+        verify(mockedGUI).drawPlayerWon();
+        verify(mockedGUI).refresh();
+        verify(mockedGUI, never()).drawHitButton(anyBoolean());
+        verify(mockedGUI, never()).drawStandButton(anyBoolean());
+        verify(mockedGUI, never()).drawDoubleDownButton(anyBoolean());
+    }
+
+    @Test
+    void testDrawCards() {
+        // TODO
+    }
+
+    @Test
+    void testDrawFirstCards() {
+        // TODO
+    }
+
+    @Test
+    void testPlayDraw() throws IOException {
+        gameViewer.playDraw();
+        verify(mockedGUI).drawPlayDraw();
+        verify(mockedGUI).refresh();
+    }
+
+    @Test
+    void testSaveGameCSV() throws IOException {
+        gameViewer.saveGameCSV("UsernameTest", 1, 10);
+
+        String aux = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/last10games.csv"))) {
+            while (reader.readLine() != null) {
+                aux = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String orig = "UsernameTest .............................. +10";
+        assertEquals(orig, aux);
+    }
+
+    @Test
+    void testSetAfterPlay() {
+        GameViewer gameViewer = new GameViewer(mockedGUI);
+        gameViewer.setAfterPlay(true);
+        assertEquals(true, gameViewer.isAfterPlay());
+        gameViewer.setAfterPlay(false);
+        assertEquals(false, gameViewer.isAfterPlay());
+    }
+
+    @Test
+    void testResetBetAndUsername(){
+        UserInput.setUsername("Apaga isto");
+        UserInput.setCredit(234567765);
+        gameViewer.resetBetAndUsername();
+        assertEquals(UserInput.getCredit(),1000);
+        assert(UserInput.getUsername().isEmpty());
     }
 }

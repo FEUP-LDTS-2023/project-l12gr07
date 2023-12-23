@@ -40,6 +40,9 @@ public class UserInput {
     public static int getintBet() {
         return thisBet;
     }
+    public static void setintBet(int b) {
+        thisBet = b;
+    }
     public static boolean getbetEnded() {
         return betEnded;
     }

@@ -39,7 +39,7 @@ class Last10GamesMenuViewerTest {
         verify(mockedGUI).clear();
         verify(mockedGUI).drawLast10GamesText();
         verify(mockedGUI, times(1)).drawRetDecks(anyBoolean());
-        verify(mockedGUI, times(2)).refresh(); // Multiple refresh calls in the method
+        verify(mockedGUI, times(2)).refresh();
     }
 
     @Test

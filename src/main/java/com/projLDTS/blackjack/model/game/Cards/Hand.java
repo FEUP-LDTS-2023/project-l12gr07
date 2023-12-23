@@ -28,6 +28,11 @@ public class Hand {
                 deckList.remove(deckList.size() - 1);
         }
     }
+
+    public void addCard(Card card) {
+        hand.add(card);
+    }
+
     public int getValue() {
         int sum = 0;
         int numAces = 0;
@@ -47,6 +52,10 @@ public class Hand {
     public int getBet() {
         bet = UserInput.getintBet();
         return bet;
+    }
+
+    public void setBet(int b) {
+        bet = b;
     }
 
     public void removeCard(int i) {

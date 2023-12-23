@@ -28,7 +28,7 @@ public class Card {
             case "7" -> 7;
             case "8" -> 8;
             case "9" -> 9;
-            case "J", "Q", "K" -> 10;
+            case "10", "J", "Q", "K" -> 10;
             default -> 11; // Ace is 11 initially
         };
     }
@@ -55,16 +55,29 @@ public class Card {
     }
 
     public void DrawPlayingCard() {
-        playingCard.clear();
-        playingCard.add("+---------+");
-        playingCard.add("|" + rank + "        |");
-        playingCard.add("|         |");
-        playingCard.add("|         |");
-        playingCard.add("|    " + getSuitString(suit) + "    |");
-        playingCard.add("|         |");
-        playingCard.add("|         |");
-        playingCard.add("|       " +  rank + " |");
-        playingCard.add("+---------+");
+        if (rank == "10") {
+            playingCard.clear();
+            playingCard.add("+---------+");
+            playingCard.add("|" + rank + "       |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|    " + getSuitString(suit) + "    |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|       " +  rank + "|");
+            playingCard.add("+---------+");
+        } else {
+            playingCard.clear();
+            playingCard.add("+---------+");
+            playingCard.add("|" + rank + "        |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|    " + getSuitString(suit) + "    |");
+            playingCard.add("|         |");
+            playingCard.add("|         |");
+            playingCard.add("|        " +  rank + "|");
+            playingCard.add("+---------+");
+        }
     }
 
     public ArrayList<String> getPlayingCard() {
