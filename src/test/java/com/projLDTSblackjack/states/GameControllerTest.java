@@ -3,6 +3,7 @@ package com.projLDTSblackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
+import com.projLDTS.blackjack.model.game.Decks.GameSet;
 import com.projLDTS.blackjack.states.ApplicationState;
 import com.projLDTS.blackjack.states.GameController;
 import com.projLDTS.blackjack.states.StartMenuController;
@@ -26,6 +27,7 @@ public class GameControllerTest {
     private GameViewer mockGameViewer;
 
     private GameController gameController;
+    private GameSet gameSet;
 
     @BeforeEach
     void setUp() throws Exception {
@@ -40,6 +42,16 @@ public class GameControllerTest {
         gameController.run();
         verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
     }
+
+    //TODO : N FUNCIONA
+    /*@Test
+    void runShouldChangeStateWhenInputIs4() throws Exception {
+        when(mockApplicationStateController.userInput()).thenReturn(4);
+        when(gameController.play()).thenReturn(0);
+
+        gameController.run();
+        verify(mockApplicationStateController, times(1)).changeState(any(ApplicationState.class));
+    }*/
 
     @Test
     void runShouldSetButtonSelectedWhenInputIsNot5() throws Exception {

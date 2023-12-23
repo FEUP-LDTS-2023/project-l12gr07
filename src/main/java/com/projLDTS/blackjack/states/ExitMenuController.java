@@ -3,8 +3,6 @@ package com.projLDTS.blackjack.states;
 import com.projLDTS.blackjack.controller.menu.ApplicationStateController;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
-import com.projLDTS.blackjack.gui.LanternaGUI;
-import com.projLDTS.blackjack.gui.UserInput;
 
 import java.awt.*;
 import java.io.IOException;
@@ -12,6 +10,7 @@ import java.net.URISyntaxException;
 
 public class ExitMenuController implements StateController {
     private final ApplicationStateController applicationStateController;
+    boolean isTest = false;
     public ExitMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
         applicationStateController = applicationStateController_;
     }
@@ -34,7 +33,9 @@ public class ExitMenuController implements StateController {
         if (getButtonSelected() == 0) {
             MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
             applicationStateController.close();
-            System.exit(0);
+            if (!isTest){
+                System.exit(0);
+            }
         }
         else if (getButtonSelected() == 1) {
             MusicManager.getInstance().playMusicChoice(MusicOptions.OPTION_CLICK);
@@ -55,5 +56,8 @@ public class ExitMenuController implements StateController {
     @Override
     public int userInput() throws IOException {
         return applicationStateController.userInput();
+    }
+    public void setTest(boolean i){
+        isTest = i;
     }
 }
