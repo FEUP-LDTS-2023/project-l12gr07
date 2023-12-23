@@ -123,10 +123,12 @@ We applied the **Singleton** pattern. This design guarantees the creation of an 
 
 **Implementation:**
 
+<img src='photos/UMLMusic.jpg' width='800'>
+
 These classes can be found in the following files:
-- [here](src/main/java/com/projLDTS/blackjack/controller/music/Music.java)
-- [here](src/main/java/com/projLDTS/blackjack/controller/music/MusicManager.java)
-- [here](src/main/java/com/projLDTS/blackjack/controller/music/MusicOptions.java)
+- [Music](src/main/java/com/projLDTS/blackjack/controller/music/Music.java)
+- [MusicManager](src/main/java/com/projLDTS/blackjack/controller/music/MusicManager.java)
+- [MusicOptions](src/main/java/com/projLDTS/blackjack/controller/music/MusicOptions.java)
 
 **Consequences**
 

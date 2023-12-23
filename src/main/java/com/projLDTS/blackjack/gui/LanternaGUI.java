@@ -307,15 +307,15 @@ public class LanternaGUI {
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
         textGraphics.fillRectangle(new TerminalPosition(79, 27), new TerminalSize(21, 3), ' ');
-        textGraphics.putString(new TerminalPosition(85, 28), "Infinite");
+        textGraphics.putString(new TerminalPosition(86, 28), "Infinite");
     }
 
     public void drawRetDecks(boolean selected) {
         textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         if (selected) textGraphics.setBackgroundColor(selectedColor);
         else textGraphics.setBackgroundColor(buttonColor);
-        textGraphics.fillRectangle(new TerminalPosition(58, 34), new TerminalSize(14, 3), ' ');
-        textGraphics.putString(new TerminalPosition(62, 35), "RETURN");
+        textGraphics.fillRectangle(new TerminalPosition(57, 34), new TerminalSize(14, 3), ' ');
+        textGraphics.putString(new TerminalPosition(61, 35), "RETURN");
     }
 
     public void clear() throws IOException {
@@ -536,19 +536,7 @@ public class LanternaGUI {
         screen = mockScreen;
     }
 
-    public void setSize(TerminalSize mockTerminalSize) {
-        size = mockTerminalSize;
-    }
-
     public void setTextGraphics(TextGraphics mockTextGraphics) {
         textGraphics = mockTextGraphics;
-    }
-
-    public TerminalSize getSize() {
-        return size;
-    }
-
-    public TextGraphics getTextGraphics() {
-        return textGraphics;
     }
 }

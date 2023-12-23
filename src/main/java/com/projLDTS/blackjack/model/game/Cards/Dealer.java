@@ -5,11 +5,6 @@ public class Dealer extends CardSet {
     public Dealer() {
         super();
     }
-    public void handCards(Deck deck) {
-        while (hand.getValue() < 17) {
-            hand.addCard(deck);
-        }
-    }
 
     public int stand(int playerHand, Deck deck) {
         hand.addCard(deck);

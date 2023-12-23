@@ -11,7 +11,6 @@ import com.projLDTS.blackjack.controller.music.MusicOptions;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 public class ApplicationStateController {
     private boolean run;
@@ -24,7 +23,6 @@ public class ApplicationStateController {
         changeState(ApplicationState.MainMenu);
         stateViewer = new MainMenuViewer(gui);
         MusicManager.getInstance().setBackgroundSound(MusicOptions.BACKGROUND_MUSIC);
-        //readFromCSV();
     }
 
     public StateController getStateController() {
@@ -45,10 +43,6 @@ public class ApplicationStateController {
         }
     }
 
-    public void stop() {
-        run = false;
-    }
-
     public void redraw() throws IOException {
         stateViewer.draw();
     }
@@ -59,33 +53,26 @@ public class ApplicationStateController {
                 stateController = new GameController(this);
                 stateViewer = new GameViewer(gui);
                 break;
-
             case MainMenu:
                 stateController = new MainMenuController(this);
                 stateViewer = new MainMenuViewer(gui);
-                //setToCSV();
                 break;
-
             case HowToPlay:
                 stateController = new HowToPlayMenuController(this);
                 stateViewer = new HowToPlayMenuViewer(gui);
                 break;
-
             case StartMenu:
                 stateController = new StartMenuController(this);
                 stateViewer = new StartMenuViewer(gui);
                 break;
-
             case DecksMenu:
                 stateController = new DecksMenuController(this);
                 stateViewer = new DecksMenuViewer(gui);
                 break;
-
             case Last10Games:
                 stateController = new Last10GamesMenuController(this);
                 stateViewer = new Last10GamesMenuViewer(gui);
                 break;
-
             case Exit:
                 stateController = new ExitMenuController(this);
                 stateViewer = new ExitMenuViewer(gui);

@@ -2,8 +2,6 @@ package com.projLDTS.blackjack.model.game.Cards;
 
 import com.projLDTS.blackjack.gui.UserInput;
 import com.projLDTS.blackjack.model.game.Decks.Deck;
-import com.projLDTS.blackjack.model.game.Decks.GameSet;
-import com.projLDTS.blackjack.viewer.game.GameViewer;
 
 import java.util.ArrayList;
 import java.util.List;

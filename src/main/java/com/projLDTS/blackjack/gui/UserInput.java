@@ -72,7 +72,6 @@ public class UserInput {
         KeyStroke key = gui.getScreen().readInput();
 
         if (key == null) {
-            // Handle null key, perhaps by returning the existing buttonSelected
             return buttonSelected;
         }
 

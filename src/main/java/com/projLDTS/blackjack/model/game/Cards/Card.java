@@ -55,7 +55,6 @@ public class Card {
     }
 
     public void DrawPlayingCard() {
-
         playingCard.clear();
         playingCard.add("+---------+");
         playingCard.add("|" + rank + "        |");

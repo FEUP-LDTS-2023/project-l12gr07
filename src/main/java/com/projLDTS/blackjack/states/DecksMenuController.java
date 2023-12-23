@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 
 public class DecksMenuController implements StateController {
     private ApplicationStateController applicationStateController;
-    public DecksMenuController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
+    public DecksMenuController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
     }
 

@@ -1,6 +1,5 @@
 package com.projLDTS.blackjack.viewer.game;
 
-import com.googlecode.lanterna.TextColor;
 import com.projLDTS.blackjack.controller.music.MusicManager;
 import com.projLDTS.blackjack.controller.music.MusicOptions;
 import com.projLDTS.blackjack.gui.LanternaGUI;
@@ -31,11 +30,6 @@ public class GameViewer implements StateViewer {
         drawElements();
         gui.drawDealerPlayerText();
         gui.refresh();
-    }
-
-    public void refreshCreditBet() {
-        gui.drawCredit();
-        gui.drawBet();
     }
 
     public int getButtonSelected() {

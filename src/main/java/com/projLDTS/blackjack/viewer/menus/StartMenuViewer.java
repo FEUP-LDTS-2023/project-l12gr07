@@ -13,7 +13,6 @@ public class StartMenuViewer implements StateViewer {
     private final LanternaGUI gui;
     private final UserInput userInput;
 
-
     public StartMenuViewer(LanternaGUI gui_){
         buttonSelected = 0;
         gui = gui_;

@@ -17,7 +17,7 @@ public class GameController implements StateController {
     private int gameType;
     private boolean dd = true;
 
-    public GameController(ApplicationStateController applicationStateController_) throws IOException, FontFormatException, URISyntaxException {
+    public GameController(ApplicationStateController applicationStateController_) {
         applicationStateController = applicationStateController_;
     }
 
@@ -188,9 +188,5 @@ public class GameController implements StateController {
 
     public void setGameType(int n_) {
         gameType = n_;
-    }
-
-    public void setDd(boolean dd) {
-        this.dd = dd;
     }
 }
