@@ -24,12 +24,16 @@ public class StartMenuViewerTest {
         mockedUserInput = Mockito.mock(UserInput.class);
         startMenuViewer = new StartMenuViewer(mockedGUI);
 
-
-        // Mock behavior for getScreen() to return a non-null value
-        Screen mockedScreen = Mockito.mock(Screen.class); // Create a mock Screen
+        Screen mockedScreen = Mockito.mock(Screen.class);
         when(mockedGUI.getScreen()).thenReturn(mockedScreen);
     }
+    @Test
+    void testGetButtonSelected() {
+        startMenuViewer.setButtonSelected(2);
+        int buttonSelected = startMenuViewer.getButtonSelected();
 
+        assert buttonSelected == 2;
+    }
 
     @Test
     public void testDraw() throws IOException {
@@ -47,7 +51,6 @@ public class StartMenuViewerTest {
         inOrder.verify(mockedGUI).drawLast10GamesButton(false);
         inOrder.verify(mockedGUI).drawbReturnButton(true);
 
-        // Verify that drawPlayButton is called only when the username is not empty
         if (!testUsername.isEmpty()) {
             inOrder.verify(mockedGUI).drawPlayButton(false);
         }
@@ -60,7 +63,7 @@ public class StartMenuViewerTest {
 
     @Test
     public void testDrawElements() throws IOException {
-        startMenuViewer.setButtonSelected(2); // Assuming buttonSelected is 0 for this test
+        startMenuViewer.setButtonSelected(2);
         startMenuViewer.drawElements();
 
         verify(mockedGUI).drawLast10GamesButton(true);
@@ -70,17 +73,14 @@ public class StartMenuViewerTest {
 
     @Test
     public void testUserInput() throws IOException {
-        int userInputResult = 1;
-
-        when(mockedUserInput.StartMenuInput(anyInt(), any(StringBuilder.class))).thenReturn(userInputResult);
+        when(mockedUserInput.StartMenuInput(anyInt(), any(StringBuilder.class))).thenReturn(1);
         UserInput.setUsername("Stringggg");
 
         startMenuViewer = new StartMenuViewer(mockedUserInput, mockedGUI);
 
         int result = startMenuViewer.userInput();
         verify(mockedUserInput, times(1)).StartMenuInput(anyInt(), any(StringBuilder.class));
-        verify(mockedUserInput).StartMenuInput(anyInt(), any(StringBuilder.class));
-        assertEquals(userInputResult, result);
+        assertEquals(1, result);
     }
 
     @Test

@@ -25,6 +25,7 @@ public class Deck {
                 deck.add(new Card(suit, "7"));
                 deck.add(new Card(suit, "8"));
                 deck.add(new Card(suit, "9"));
+                deck.add(new Card(suit, "10"));
                 deck.add(new Card(suit, "J"));
                 deck.add(new Card(suit, "Q"));
                 deck.add(new Card(suit, "K"));

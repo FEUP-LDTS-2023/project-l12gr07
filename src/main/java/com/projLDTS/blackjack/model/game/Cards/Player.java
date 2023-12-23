@@ -34,8 +34,6 @@ public class Player extends CardSet {
     }
 
     public void clearHand() {
-        for (int i = 0; i < hand.getHand().size(); i++) {
-            hand.removeCard(i);
-        }
+        hand.getHand().clear();
     }
 }
