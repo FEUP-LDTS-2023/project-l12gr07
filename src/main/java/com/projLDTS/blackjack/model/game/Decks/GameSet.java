@@ -43,7 +43,7 @@ public class GameSet {
     }
 
     public void nextGame() {
-        player.getHand().getBet();
+        player.getHand().setBet(0);
         deck = new Deck(type);
         deck.randomize();
         dealer.clearHand();
@@ -78,5 +78,9 @@ public class GameSet {
 
     public void setDeck(Deck mockDeck) {
         this.deck = deck;
+    }
+
+    public Deck getDeck() {
+        return deck;
     }
 }

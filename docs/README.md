@@ -145,19 +145,9 @@ In our game, audio elements like sounds and music are stored in .wav files. To a
 
 <img src='photos/img3.png' width='250'>
 
-## ERROR-PRONE WARNINGS
-
-
 ## TEST COVERAGE
 
-<img src='photos/testCoverage.png' width='250'>
-
-## MUTATION TESTING
-We excluded the Application class from the pitest because it is not testable.
-
-<img src='photos/mutationTesting.png' width='250'>
-
-To consult the report, click [here](pitest/index.html).
+<img src='photos/img5.png' width='250'>
 
 ## SELF-EVALUATION
 

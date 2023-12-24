@@ -20,6 +20,8 @@ dependencies {
 
 pitest {
     junit5PluginVersion = '0.12'
+    pitestVersion = '1.6.7'
+    excludedClasses = ['com.projLDTS.blackjack.Application']
 }
 
 test {

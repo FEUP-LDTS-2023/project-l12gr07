@@ -17,4 +17,10 @@ public class Dealer extends CardSet {
     public void clearHand() {
         hand.getHand().clear();
     }
+
+    public void handCards(Deck deck) {
+        while (hand.getValue() < 17) {
+            hand.addCard(deck);
+        }
+    }
 }
